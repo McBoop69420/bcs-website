@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Annual Risk Assessment: What Examiners Expect and How to Build One That Holds Up | Bluegrass Cybersecurity Solutions</title>
+    <meta name="description" content="Most institutions complete an annual risk assessment because they have to. The ones that get the most value out of it treat it as a management tool, not a compliance checkbox.">
+    <link rel="canonical" href="https://www.bluegrasscompliancesolutions.com/blog/annual-risk-assessment.html">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
+    <meta property="og:title"       content="The Annual Risk Assessment: What Examiners Expect and How to Build One That Holds Up | Bluegrass Cybersecurity Solutions">
+    <meta property="og:description" content="Most institutions complete an annual risk assessment because they have to. The ones that get the most value out of it treat it as a management tool, not a compliance checkbox.">
+    <meta property="og:url"         content="https://www.bluegrasscompliancesolutions.com/blog/annual-risk-assessment.html">
+    <meta property="og:image"       content="https://www.bluegrasscompliancesolutions.com/Images/logo-new.png">
+
+    <link rel="icon" type="image/png" href="/Images/logo-new.png">
+    <link rel="apple-touch-icon" href="/Images/logo-new.png">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The Annual Risk Assessment: What Examiners Expect and How to Build One That Holds Up",
+      "description": "Most institutions complete an annual risk assessment because they have to. The ones that get the most value out of it treat it as a management tool, not a compliance checkbox.",
+      "url": "https://www.bluegrasscompliancesolutions.com/blog/annual-risk-assessment.html",
+      "datePublished": "2026-02-24",
+      "dateModified": "2026-02-24",
+      "image": "https://www.bluegrasscompliancesolutions.com/Images/logo-new.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jared Luyster",
+        "jobTitle": "Founder & Principal Consultant",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Bluegrass Cybersecurity Solutions",
+          "url": "https://www.bluegrasscompliancesolutions.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bluegrass Cybersecurity Solutions",
+        "url": "https://www.bluegrasscompliancesolutions.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.bluegrasscompliancesolutions.com/Images/logo-new.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.bluegrasscompliancesolutions.com/blog/annual-risk-assessment.html"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* Page banner */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--green) 100%);
+            color: var(--white);
+            padding: 9rem 2rem 3.5rem;
+            text-align: center;
+        }
+        .page-banner h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .page-banner p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* Blog post layout */
+        .post-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 6rem 2rem 5rem;
+        }
+
+        .back-link {
+            display: block;
+            margin-bottom: 2rem;
+        }
+        .back-link a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .back-link a:hover { text-decoration: underline; }
+
+        .post-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1.3;
+            margin-bottom: 0.6rem;
+        }
+        .post-meta {
+            font-style: italic;
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 2.25rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e5eaf0;
+        }
+
+        .post-body section { margin-bottom: 2rem; }
+
+        .post-body h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.65rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+        .post-body h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin: 1rem 0 0.4rem;
+        }
+        .post-body p { margin-bottom: 1rem; }
+        .post-body ul,
+        .post-body ol { margin: 0.5rem 0 1rem 1.5rem; }
+        .post-body li { margin-bottom: 0.4rem; }
+
+        .checklist { list-style: none; margin-left: 0; }
+        .checklist li {
+            padding-left: 1.6rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        .checklist li::before {
+            content: "\2610";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* CTA block */
+        .cta-block {
+            margin-top: 2.5rem;
+            background: var(--light-gray);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 6px 6px 0;
+            padding: 1.4rem 1.75rem;
+        }
+        .cta-block p {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+        .cta-block a {
+            color: var(--accent-blue);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .cta-block a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .post-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/index.html"><img src="/Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/index.html#about">What We Do</a></li>
+                <li><a href="/index.html#services">Services</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/blog.html" aria-current="page">Blog</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="post-wrapper">
+
+            <span class="back-link"><a href="/blog.html">&#8592; Back to Blog</a></span>
+
+            <h1 class="post-title">The Annual Risk Assessment: What Examiners Expect and How to Build One That Holds Up</h1>
+            <p class="post-meta">Published February 24, 2026</p>
+
+            <article class="post-body">
+
+                <section>
+                    <h2>The Problem</h2>
+                    <p>Most regulated institutions complete an annual risk assessment because they are required to. They pull last year&rsquo;s document, update a few dates, maybe add a new vendor or two, and submit it to the board for approval. Examiners have seen this pattern thousands of times, and they know how to spot it.</p>
+                    <p>A stale or superficial risk assessment is one of the most common examination findings across institution sizes and charter types. And unlike a missing policy, which has a clear fix, a weak risk assessment signals something broader to examiners: that management may not have a genuine understanding of where the institution&rsquo;s risks actually live.</p>
+                </section>
+
+                <section>
+                    <h2>What Regulators Require</h2>
+                    <p>The FFIEC Information Security Booklet and the GLBA Safeguards Rule both require institutions to conduct risk assessments as the foundation of the information security program. The Safeguards Rule, updated in 2021 and effective for most institutions in 2022, specifically requires a written risk assessment that identifies reasonably foreseeable internal and external risks to the security, confidentiality, and integrity of customer information.</p>
+                    <p>The NCUA&rsquo;s Part 748 Appendix A carries parallel requirements for credit unions. Across all frameworks, the expectation is the same: the risk assessment should drive your controls, not the other way around.</p>
+                </section>
+
+                <section>
+                    <h2>What Examiners Are Looking For</h2>
+                    <p>When examiners sit down with your risk assessment, they are evaluating several things simultaneously:</p>
+
+                    <h3>Is It Actually Current?</h3>
+                    <p>Examiners compare the risk assessment against other documentation &mdash; vendor inventory, IT audit findings, incident logs, and new product approvals &mdash; to verify that the assessment reflects actual current-year conditions. A risk assessment that doesn&rsquo;t account for a new mobile banking platform launched six months ago will stand out immediately.</p>
+
+                    <h3>Does It Cover the Right Asset Types?</h3>
+                    <p>A complete risk assessment covers people, processes, and technology. Examiners expect to see risks identified across all three dimensions &mdash; not just a list of IT systems. Insider threat, social engineering, and process failures are just as much a part of the risk picture as network vulnerabilities.</p>
+
+                    <h3>Is the Scoring Methodology Defensible?</h3>
+                    <p>Examiners will ask how you arrived at your risk ratings. A methodology that assigns risk scores based on likelihood and impact &mdash; with documented criteria for each rating level &mdash; is far more credible than one that assigns ratings without explanation. Inherent risk, control effectiveness, and residual risk should each be addressed.</p>
+
+                    <h3>Does It Connect to Your Controls?</h3>
+                    <p>The risk assessment is supposed to tell you where to invest in controls. Examiners look for evidence that your identified risks are reflected in your information security program &mdash; and conversely, that your controls exist because of identified risks, not as a generic checklist copied from a template.</p>
+
+                    <h3>Has Board Seen It?</h3>
+                    <p>The board must review and approve the risk assessment as part of its oversight of the information security program. Examiners will verify this in meeting minutes. Approval without meaningful discussion &mdash; particularly at institutions that are actively managing identified risks &mdash; is another pattern they recognize.</p>
+                </section>
+
+                <section>
+                    <h2>How to Build One That Holds Up</h2>
+
+                    <h3>Start With Your Asset Inventory</h3>
+                    <p>You cannot assess risk to assets you haven&rsquo;t inventoried. Begin with a current list of information assets: systems, databases, data repositories, and the processes that touch customer information. Map each asset to its owner, its data sensitivity classification, and its criticality to operations.</p>
+
+                    <h3>Identify Threats and Vulnerabilities Separately</h3>
+                    <p>A common mistake is conflating threats and vulnerabilities into a single entry. A threat is something that could cause harm &mdash; a phishing attack, a disgruntled employee, a power outage. A vulnerability is a weakness that a threat could exploit &mdash; lack of multi-factor authentication, inadequate access reviews, a single point of failure in your network topology. Keeping them separate makes the scoring more meaningful and the analysis more useful.</p>
+
+                    <h3>Score Inherent Risk Before Controls</h3>
+                    <p>Assess the likelihood and impact of each threat-vulnerability pairing as if you had no controls in place. This is your inherent risk. Then evaluate the effectiveness of your existing controls and arrive at a residual risk rating. This two-step process gives you a way to identify where controls are actually reducing risk &mdash; and where they may not be doing as much as you think.</p>
+
+                    <h3>Map Residual Risk to Open Action Items</h3>
+                    <p>For every residual risk rated Medium or above, there should be either an accepted risk documented with board approval, or an active remediation item tracked in your information security program. Examiners look for this linkage. A long list of high residual risks with no corresponding action items is a red flag.</p>
+
+                    <h3>Update It Throughout the Year</h3>
+                    <p>The annual cycle is a floor, not a ceiling. Significant events &mdash; a new core system, a data breach at a peer institution, a material change in your product offerings &mdash; should trigger a reassessment of the affected risk areas. Document those interim reviews so examiners can see that your risk management is ongoing, not just a year-end exercise.</p>
+                </section>
+
+                <section>
+                    <h2>Practical Checklist</h2>
+                    <p>Before submitting your next risk assessment to the board, confirm it includes all of the following:</p>
+                    <ul class="checklist">
+                        <li>A current asset inventory covering all systems and processes that handle customer information</li>
+                        <li>Threats and vulnerabilities identified separately, with documented likelihood and impact scoring criteria</li>
+                        <li>Inherent risk ratings calculated before controls are factored in</li>
+                        <li>Control effectiveness assessed and residual risk ratings documented</li>
+                        <li>All risks rated Medium or above linked to either an accepted-risk decision or an active remediation item</li>
+                        <li>Changes since the prior year&rsquo;s assessment explicitly noted</li>
+                        <li>Board review and approval reflected in meeting minutes</li>
+                        <li>A schedule or trigger criteria for interim updates during the year</li>
+                    </ul>
+                </section>
+
+            </article>
+
+            <div class="cta-block">
+                <p>Need help building or refreshing your risk assessment? <a href="/index.html#contact">Book a $500 Risk Assessment.</a></p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+        <p>Bridging the gap between findings and fixes</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

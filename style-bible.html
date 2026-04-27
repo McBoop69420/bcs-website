@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Bible — Bluegrass Cybersecurity Solutions</title>
+    <link rel="icon" type="image/png" href="Images/logo-new.png">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ── Style Bible page-specific styles ── */
+        .sb-hero {
+            background: linear-gradient(135deg, rgba(30,58,95,0.92) 0%, rgba(45,80,22,0.92) 100%);
+            color: var(--white);
+            padding: 140px 2rem 80px;
+            text-align: center;
+        }
+        .sb-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .sb-hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section wrapper */
+        .sb-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 2rem;
+        }
+        .sb-section + .sb-section { border-top: 1px solid #e2e6ea; }
+
+        /* Section title */
+        .sb-section-title {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .sb-section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--light-green);
+            margin-bottom: 0.6rem;
+        }
+        .sb-section-desc {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            max-width: 680px;
+        }
+        .sb-divider {
+            width: 48px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── Color swatches ── */
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.25rem;
+        }
+        .swatch {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background: var(--white);
+        }
+        .swatch-block {
+            height: 90px;
+        }
+        .swatch-meta {
+            padding: 0.75rem 1rem;
+        }
+        .swatch-name {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 0.15rem;
+        }
+        .swatch-hex {
+            font-size: 0.8rem;
+            color: #777;
+            font-family: 'Courier New', monospace;
+        }
+        .swatch-token {
+            font-size: 0.72rem;
+            color: #aaa;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ── Typography specimens ── */
+        .type-stack { display: flex; flex-direction: column; gap: 2rem; }
+        .type-specimen {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .type-specimen .sample { flex: 1; min-width: 200px; }
+        .type-specimen .meta { flex: 0 0 200px; }
+        .type-meta-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #aaa; }
+        .type-meta-value { font-size: 0.85rem; color: #555; font-family: 'Courier New', monospace; margin-bottom: 0.5rem; }
+        .specimen-h1 { font-size: clamp(2.2rem, 5vw + 1rem, 5rem); font-weight: 800; color: var(--primary-blue); line-height: 1.1; }
+        .specimen-h2 { font-size: 2.5rem; font-weight: 700; color: var(--primary-blue); line-height: 1.2; }
+        .specimen-h3 { font-size: 1.8rem; font-weight: 700; color: var(--primary-blue); line-height: 1.3; }
+        .specimen-h4 { font-size: 1.3rem; font-weight: 700; color: var(--accent-blue); }
+        .specimen-body { font-size: 1rem; line-height: 1.6; color: var(--gray); }
+        .specimen-small { font-size: 0.85rem; color: #666; line-height: 1.5; }
+        .specimen-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-green); }
+        .specimen-gold { font-size: clamp(1.5rem, 2vw + 0.9rem, 2.5rem); font-weight: 700; color: var(--gold); font-style: italic; }
+
+        /* ── Button showcase ── */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            background: var(--light-green);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover {
+            background: var(--green);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 0.9rem 2.5rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s, color 0.3s;
+        }
+        .btn-secondary:hover { background: var(--primary-blue); color: var(--white); }
+        .btn-ghost {
+            background: transparent;
+            color: var(--light-green);
+            padding: 0.85rem 2rem;
+            border: 2px solid var(--light-green);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s, color 0.3s;
+        }
+        .btn-ghost:hover { background: var(--light-green); color: var(--white); }
+
+        .btn-spec-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: start;
+            gap: 1.5rem 2.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            margin-bottom: 1rem;
+        }
+        .btn-spec-row .btn-label { font-weight: 700; color: var(--primary-blue); margin-bottom: 0.3rem; font-size: 0.95rem; }
+        .btn-spec-row code { font-size: 0.8rem; color: #888; font-family: 'Courier New', monospace; display: block; margin-top: 0.2rem; }
+
+        /* ── Card showcase ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.15); transform: translateY(-4px); }
+        .card h3 { color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .card p { color: var(--gray); font-size: 1rem; line-height: 1.6; }
+        .card .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .card-flat {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--light-blue);
+        }
+        .card-flat h3 { color: var(--accent-blue); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .card-flat p { font-size: 0.95rem; color: var(--gray); }
+
+        /* ── Spacing system ── */
+        .spacing-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+        .spacing-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+        }
+        .spacing-bar { background: var(--light-blue); border-radius: 3px; height: 20px; flex-shrink: 0; }
+        .spacing-label { font-weight: 700; font-size: 0.9rem; color: var(--primary-blue); min-width: 40px; }
+        .spacing-val { font-family: 'Courier New', monospace; font-size: 0.82rem; color: #777; }
+        .spacing-use { font-size: 0.82rem; color: #aaa; margin-left: auto; }
+
+        /* ── Iconography ── */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+        .icon-item {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .icon-item .icon { font-size: 2.2rem; display: block; margin-bottom: 0.5rem; }
+        .icon-item .icon-name { font-size: 0.78rem; color: #777; }
+
+        /* ── Voice & Tone ── */
+        .voice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 768px) { .voice-grid { grid-template-columns: 1fr; } }
+        .voice-card {
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+        .voice-card.do { background: #f0f7ec; border-top: 4px solid var(--light-green); }
+        .voice-card.dont { background: #fdf0f0; border-top: 4px solid #c0392b; }
+        .voice-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+        .voice-card.do h4 { color: var(--green); }
+        .voice-card.dont h4 { color: #c0392b; }
+        .voice-card ul { list-style: none; padding: 0; }
+        .voice-card ul li { font-size: 0.95rem; color: var(--gray); padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .voice-card ul li:last-child { border-bottom: none; }
+        .voice-card.do ul li::before { content: "✓  "; color: var(--light-green); font-weight: 700; }
+        .voice-card.dont ul li::before { content: "✕  "; color: #c0392b; font-weight: 700; }
+
+        /* ── CTA band (dark) ── */
+        .cta-band {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 70px 2rem;
+        }
+        .cta-band h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+        .cta-band p { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; }
+        .btn-cta-inverse {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 0.9rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-cta-inverse:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
+
+        /* ── Logo zone ── */
+        .logo-zone {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+        .logo-panel {
+            border-radius: 10px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+        .logo-panel.light { background: var(--white); }
+        .logo-panel.dark  { background: var(--primary-blue); }
+        .logo-panel.gray  { background: var(--light-gray); }
+        .logo-panel img   { height: 80px; width: auto; }
+        .logo-panel span  { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .logo-panel.light span { color: #aaa; }
+        .logo-panel.dark span  { color: rgba(255,255,255,0.5); }
+        .logo-panel.gray span  { color: #aaa; }
+
+        /* ── Form elements ── */
+        .form-demo {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            max-width: 520px;
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--primary-blue); }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid #d0d7de;
+            border-radius: 5px;
+            color: var(--gray);
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 0.65rem 0.85rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-blue);
+            box-shadow: 0 0 0 3px rgba(74,144,199,0.18);
+        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        /* ── Accessibility callout ── */
+        .a11y-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .a11y-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .a11y-card h4 { font-size: 1rem; color: var(--primary-blue); margin-bottom: 0.5rem; }
+        .a11y-card p  { font-size: 0.88rem; color: #666; line-height: 1.5; }
+
+        /* ── Contrast badges ── */
+        .contrast-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+        .contrast-badge {
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .contrast-badge .ratio { font-size: 1rem; }
+        .contrast-badge .label { font-weight: 400; font-size: 0.75rem; opacity: 0.8; }
+
+        /* ── Sticky nav tweaks for style bible ── */
+        .sb-toc {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            align-items: center;
+        }
+        .sb-toc-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-right: 0.5rem; }
+        .sb-toc a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sb-toc a:hover { background: var(--light-gray); color: var(--light-green); }
+
+        .bg-light-gray { background: var(--light-gray); }
+
+        /* ── Responsive tweaks ── */
+        @media (max-width: 768px) {
+            .type-specimen { flex-direction: column; }
+            .type-specimen .meta { flex: unset; }
+            .btn-spec-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip link -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- ── Shared Header ── -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions">
+                </a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#what-we-do">What We Do</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ── Hero ── -->
+    <section class="sb-hero">
+        <h1>Style Bible</h1>
+        <p>The visual and editorial standards for Bluegrass Cybersecurity Solutions — for consistent, professional brand execution across every touchpoint.</p>
+    </section>
+
+    <!-- ── Table of Contents ── -->
+    <div style="background: var(--light-gray); padding: 1rem 2rem;">
+        <div class="sb-toc">
+            <span class="sb-toc-label">Jump to</span>
+            <a href="#colors">Colors</a>
+            <a href="#typography">Typography</a>
+            <a href="#logo">Logo</a>
+            <a href="#buttons">Buttons</a>
+            <a href="#cards">Cards</a>
+            <a href="#forms">Forms</a>
+            <a href="#spacing">Spacing</a>
+            <a href="#icons">Icons</a>
+            <a href="#voice">Voice &amp; Tone</a>
+            <a href="#accessibility">Accessibility</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         MAIN CONTENT
+    ════════════════════════════════════════════════ -->
+    <main id="main-content">
+
+        <!-- ── 1. Colors ── -->
+        <section id="colors">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 01</div>
+                <h2 class="sb-section-title">Color Palette</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">These are the only approved colors for BCS communications. Always use the CSS custom property token when building on the web — never hard-code hex values.</p>
+
+                <div class="swatch-grid">
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#1e3a5f;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Primary Blue</div>
+                            <div class="swatch-hex">#1e3a5f</div>
+                            <div class="swatch-token">--primary-blue</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#2c5f8d;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Accent Blue</div>
+                            <div class="swatch-hex">#2c5f8d</div>
+                            <div class="swatch-token">--accent-blue</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#4a90c7;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Light Blue</div>
+                            <div class="swatch-hex">#4a90c7</div>
+                            <div class="swatch-token">--light-blue</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#2d5016;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Forest Green</div>
+                            <div class="swatch-hex">#2d5016</div>
+                            <div class="swatch-token">--green</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#5a7d3d;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Light Green</div>
+                            <div class="swatch-hex">#5a7d3d</div>
+                            <div class="swatch-token">--light-green</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#d4a017;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Gold</div>
+                            <div class="swatch-hex">#d4a017</div>
+                            <div class="swatch-token">--gold</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#333333;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Body Gray</div>
+                            <div class="swatch-hex">#333333</div>
+                            <div class="swatch-token">--gray</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#f8f9fa; border: 1px solid #e2e6ea;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">Light Gray</div>
+                            <div class="swatch-hex">#f8f9fa</div>
+                            <div class="swatch-token">--light-gray</div>
+                        </div>
+                    </div>
+                    <div class="swatch">
+                        <div class="swatch-block" style="background:#ffffff; border: 1px solid #e2e6ea;"></div>
+                        <div class="swatch-meta">
+                            <div class="swatch-name">White</div>
+                            <div class="swatch-hex">#ffffff</div>
+                            <div class="swatch-token">--white</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2.5rem;">
+                    <h3 style="font-size:1.1rem; color:var(--primary-blue); margin-bottom: 0.75rem;">Color Roles</h3>
+                    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem;">
+                        <div class="card-flat"><h3>Primary</h3><p>Headlines, nav, footer backgrounds. The brand's anchor color.</p></div>
+                        <div class="card-flat"><h3>Accent Blue</h3><p>Section headers, supporting text, gradient pairings with Primary.</p></div>
+                        <div class="card-flat"><h3>Light Green</h3><p>Primary CTA buttons, hover states, active nav links. Action color.</p></div>
+                        <div class="card-flat"><h3>Gold</h3><p>Tagline, emphasis, highlight accents. Use sparingly for impact.</p></div>
+                        <div class="card-flat"><h3>Light Gray</h3><p>Page and section backgrounds. Provides visual breathing room.</p></div>
+                        <div class="card-flat"><h3>White</h3><p>Card surfaces, header background, form fields.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 2. Typography ── -->
+        <section id="typography" class="bg-light-gray">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 02</div>
+                <h2 class="sb-section-title">Typography</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">The BCS typeface stack is <strong>'Segoe UI', Tahoma, Geneva, Verdana, sans-serif</strong> — a system font stack that renders crisply across all platforms with no external dependency.</p>
+
+                <div class="type-stack">
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-h1">Display Heading</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">Hero H1</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">clamp(2.2rem, 5vw + 1rem, 5rem)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">800 — ExtraBold</div>
+                            <div class="type-meta-label">Color</div>
+                            <div class="type-meta-value">--primary-blue or --white</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-h2">Section Heading</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">H2 — Page sections</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">2.5rem (40px)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">700 — Bold</div>
+                            <div class="type-meta-label">Color</div>
+                            <div class="type-meta-value">--primary-blue</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-h3">Card / Sub-heading</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">H3 — Cards, bios</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">1.8rem (28.8px)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">700 — Bold</div>
+                            <div class="type-meta-label">Color</div>
+                            <div class="type-meta-value">--primary-blue</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-h4">Value-Item Heading</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">H4 — Value items</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">1.3rem (20.8px)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">700 — Bold</div>
+                            <div class="type-meta-label">Color</div>
+                            <div class="type-meta-value">--accent-blue</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-body">Body copy is set in the system sans-serif stack at 1rem with a 1.6 line-height. This gives comfortable reading density for paragraphs, service descriptions, and blog content. Keep line length between 60–80 characters for optimal readability.</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">Body / paragraph</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">1rem (16px)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">400 — Regular</div>
+                            <div class="type-meta-label">Line height</div>
+                            <div class="type-meta-value">1.6</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-small">Caption / footnote text at 0.85rem — used for card metadata, footer copy, form hints, and secondary labels.</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">Small / caption</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">0.85rem (13.6px)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">400 — Regular</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-label">Section Label / Eyebrow</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">Section labels, tags</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">0.8rem, uppercase</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">700, letter-spacing 0.14em</div>
+                            <div class="type-meta-label">Color</div>
+                            <div class="type-meta-value">--light-green</div>
+                        </div>
+                    </div>
+
+                    <div class="type-specimen">
+                        <div class="sample">
+                            <span class="specimen-gold">"Bridging the gap between findings and fixes."</span>
+                        </div>
+                        <div class="meta">
+                            <div class="type-meta-label">Usage</div>
+                            <div class="type-meta-value">Brand tagline / pull quote</div>
+                            <div class="type-meta-label">Size</div>
+                            <div class="type-meta-value">clamp(1.5rem, 2vw + 0.9rem, 2.5rem)</div>
+                            <div class="type-meta-label">Weight</div>
+                            <div class="type-meta-value">700, italic</div>
+                            <div class="type-meta-label">Color</div>
+                            <div class="type-meta-value">--gold</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 2.5rem; background: var(--white); border-radius: 10px; padding: 2rem 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.07);">
+                    <h3 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 1rem;">Nav Link Style</h3>
+                    <p style="font-size: 0.9rem; color:#555; margin-bottom:0.5rem;">Navigation links use <code style="font-family:'Courier New',monospace; background:#f0f2f4; padding:0.1rem 0.4rem; border-radius:3px;">font-size: 1rem; font-weight: 600;</code> in <strong>--primary-blue</strong>. On hover or active page, color changes to <strong>--light-green</strong> with a 0.3s transition.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 3. Logo ── -->
+        <section id="logo">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 03</div>
+                <h2 class="sb-section-title">Logo Usage</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">Always use the official logo file at <code style="font-family:'Courier New',monospace; background:#f0f2f4; padding:0.15rem 0.45rem; border-radius:3px;">/Images/logo-new.png</code>. Do not stretch, recolor, add drop shadows, or place on busy backgrounds.</p>
+
+                <div class="logo-zone">
+                    <div class="logo-panel light">
+                        <img src="Images/logo-new.png" alt="BCS Logo on white">
+                        <span>On White ✓</span>
+                    </div>
+                    <div class="logo-panel gray">
+                        <img src="Images/logo-new.png" alt="BCS Logo on light gray">
+                        <span>On Light Gray ✓</span>
+                    </div>
+                    <div class="logo-panel dark">
+                        <img src="Images/logo-new.png" alt="BCS Logo on dark">
+                        <span>On Primary Blue ✓</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:1rem;">
+                    <div class="card-flat"><h3>Minimum Size</h3><p>60px height in mobile nav. 100px height in desktop nav. Never smaller than 48px.</p></div>
+                    <div class="card-flat"><h3>Clear Space</h3><p>Maintain at least half the logo height as clear space on all four sides.</p></div>
+                    <div class="card-flat"><h3>File Format</h3><p>PNG for web. Request SVG from brand owner for print or large-format use.</p></div>
+                    <div class="card-flat"><h3>Don't Do</h3><p>No rotation, no color filters, no cropping, no unofficial variations.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 4. Buttons ── -->
+        <section id="buttons" class="bg-light-gray">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 04</div>
+                <h2 class="sb-section-title">Buttons</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">Three button variants cover all use cases. Never create ad-hoc button styles. Maintain consistent sizing and spacing.</p>
+
+                <!-- Live examples -->
+                <div class="btn-group" style="margin-bottom: 2.5rem;">
+                    <a href="#" class="btn-primary">Get Started</a>
+                    <a href="#" class="btn-secondary">Learn More</a>
+                    <a href="#" class="btn-ghost">View Services</a>
+                </div>
+
+                <!-- Specs -->
+                <div class="btn-spec-row">
+                    <div>
+                        <a href="#" class="btn-primary" style="white-space:nowrap;">Primary CTA</a>
+                    </div>
+                    <div>
+                        <div class="btn-label">Primary Button</div>
+                        <p style="font-size:0.88rem; color:#666; margin-bottom:0.4rem;">Main call-to-action. One per visual section. Use for the most important action (Get Started, Contact Us, Download).</p>
+                        <code>background: var(--light-green) → hover: var(--green)</code>
+                        <code>padding: 1rem 2.5rem · border-radius: 5px · font-size: 1.1rem · font-weight: 600</code>
+                        <code>box-shadow: 0 4px 15px rgba(0,0,0,0.2) · transition: 0.3s</code>
+                    </div>
+                </div>
+
+                <div class="btn-spec-row">
+                    <div>
+                        <a href="#" class="btn-secondary" style="white-space:nowrap;">Secondary</a>
+                    </div>
+                    <div>
+                        <div class="btn-label">Secondary Button</div>
+                        <p style="font-size:0.88rem; color:#666; margin-bottom:0.4rem;">Supporting actions alongside a primary CTA. Use for Learn More, Read More, View All.</p>
+                        <code>background: --white · border: 2px solid --primary-blue · color: --primary-blue</code>
+                        <code>hover: background --primary-blue · color --white · padding: 0.9rem 2.5rem</code>
+                    </div>
+                </div>
+
+                <div class="btn-spec-row">
+                    <div>
+                        <a href="#" class="btn-ghost" style="white-space:nowrap;">Ghost</a>
+                    </div>
+                    <div>
+                        <div class="btn-label">Ghost Button</div>
+                        <p style="font-size:0.88rem; color:#666; margin-bottom:0.4rem;">Low-emphasis action on light backgrounds. Use when a full button would overpower the surrounding content.</p>
+                        <code>background: transparent · border: 2px solid --light-green · color: --light-green</code>
+                        <code>hover: background --light-green · color --white · padding: 0.85rem 2rem</code>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; background:var(--white); border-radius:10px; padding:1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                    <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.75rem;">Dark Background Variant</h3>
+                    <p style="font-size:0.88rem; color:#666; margin-bottom:1rem;">On the blue gradient CTA band, use the inverse button:</p>
+                    <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%); padding: 1.5rem 2rem; border-radius: 8px; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <a href="#" class="btn-cta-inverse">Contact Us</a>
+                        <code style="color:rgba(255,255,255,0.7); font-size:0.8rem;">background: --white · color: --primary-blue · hover bg: --gold</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 5. Cards ── -->
+        <section id="cards">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 05</div>
+                <h2 class="sb-section-title">Cards &amp; Panels</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">Cards are the primary content container for services, values, blog previews, and team bios.</p>
+
+                <div class="card-grid" style="margin-bottom:2.5rem;">
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3>Service Card</h3>
+                        <p>Used for primary services. White background, 10px radius, elevated shadow. Lifts on hover.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📋</div>
+                        <h3>Policy Development</h3>
+                        <p>Consistent padding of 2.5rem 2rem keeps content from touching card edges.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>MSP Oversight</h3>
+                        <p>Icon height for service cards is 60px. Use role-appropriate alt text on all images.</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 560px;">
+                    <div class="card-flat">
+                        <h3>Flat / Value Panel</h3>
+                        <p>Light gray background with left accent border. Used for value items, stats, and callout facts. Less visual weight than an elevated card.</p>
+                    </div>
+                    <div class="card-flat">
+                        <h3>Specs</h3>
+                        <p>background: --light-gray · border-left: 4px solid --light-blue · padding: 1.5rem · border-radius: 8px</p>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; background:var(--white); border-radius:10px; padding:1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                    <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.5rem;">Card Specs (Elevated)</h3>
+                    <code style="font-family:'Courier New',monospace; font-size:0.82rem; color:#666; display:block; line-height:1.8;">
+                        background: var(--white)<br>
+                        padding: 2.5rem 2rem<br>
+                        border-radius: 10px<br>
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.1)<br>
+                        hover box-shadow: 0 8px 25px rgba(0,0,0,0.15)<br>
+                        hover transform: translateY(-4px)<br>
+                        transition: 0.3s
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 6. Forms ── -->
+        <section id="forms" class="bg-light-gray">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 06</div>
+                <h2 class="sb-section-title">Form Elements</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">Form inputs appear on the contact section dark band. Labels are bold, inputs have subtle fill and 1px border that activates a focus ring on interaction.</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; flex-wrap: wrap;">
+                    <div class="form-demo">
+                        <h3 style="font-size:1.1rem; color:var(--primary-blue); margin-bottom:1.5rem;">Light Background Variant</h3>
+                        <div class="form-group">
+                            <label for="demo-name">Full Name</label>
+                            <input type="text" id="demo-name" placeholder="Jared Luyster">
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-email">Email Address</label>
+                            <input type="email" id="demo-email" placeholder="jared@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-service">Service Interest</label>
+                            <select id="demo-service">
+                                <option>Risk Assessment</option>
+                                <option>Policy Development</option>
+                                <option>MSP Oversight</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="demo-msg">Message</label>
+                            <textarea id="demo-msg" placeholder="Tell us about your needs..."></textarea>
+                        </div>
+                        <button class="btn-primary" style="width:100%;">Send Message</button>
+                    </div>
+
+                    <div style="display:flex; flex-direction:column; gap:1rem;">
+                        <div style="background:var(--white); border-radius:10px; padding:1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                            <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.75rem;">Field Specs</h3>
+                            <code style="font-family:'Courier New',monospace; font-size:0.82rem; color:#666; display:block; line-height:1.9;">
+                                background: rgba(0,0,0,0.04)<br>
+                                border: 1px solid #d0d7de<br>
+                                border-radius: 5px<br>
+                                padding: 0.65rem 0.85rem<br>
+                                font-size: 0.95rem<br>
+                                color: var(--gray)
+                            </code>
+                        </div>
+                        <div style="background:var(--white); border-radius:10px; padding:1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                            <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.75rem;">Focus State</h3>
+                            <code style="font-family:'Courier New',monospace; font-size:0.82rem; color:#666; display:block; line-height:1.9;">
+                                border-color: var(--light-blue)<br>
+                                box-shadow: 0 0 0 3px rgba(74,144,199,0.18)<br>
+                                outline: none
+                            </code>
+                        </div>
+                        <div style="background:var(--white); border-radius:10px; padding:1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                            <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.75rem;">Dark Band Variant</h3>
+                            <div style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue)); border-radius:8px; padding:1.25rem 1.5rem;">
+                                <label style="color:rgba(255,255,255,0.8); font-size:0.85rem; font-weight:600; display:block; margin-bottom:0.4rem;">Email</label>
+                                <input type="email" placeholder="you@example.com" style="width:100%; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.4); border-radius:5px; color:#fff; font-family:inherit; font-size:0.95rem; padding:0.65rem 0.85rem;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 7. Spacing ── -->
+        <section id="spacing">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 07</div>
+                <h2 class="sb-section-title">Spacing System</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">Spacing follows a consistent scale. Sections use generous vertical rhythm — never crowd the content.</p>
+
+                <div class="spacing-grid">
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:4px;"></div>
+                        <span class="spacing-label">4px</span>
+                        <span class="spacing-val">0.25rem</span>
+                        <span class="spacing-use">Micro gap — icon-to-label</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:8px;"></div>
+                        <span class="spacing-label">8px</span>
+                        <span class="spacing-val">0.5rem</span>
+                        <span class="spacing-use">Tight — footer line margin</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:16px;"></div>
+                        <span class="spacing-label">16px</span>
+                        <span class="spacing-val">1rem</span>
+                        <span class="spacing-use">Base unit — nav link gap, form fields</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:24px;"></div>
+                        <span class="spacing-label">24px</span>
+                        <span class="spacing-val">1.5rem</span>
+                        <span class="spacing-use">Card internal padding, nav padding</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:32px;"></div>
+                        <span class="spacing-label">32px</span>
+                        <span class="spacing-val">2rem</span>
+                        <span class="spacing-use">Section horizontal padding, nav gap</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:40px;"></div>
+                        <span class="spacing-label">40px</span>
+                        <span class="spacing-val">2.5rem</span>
+                        <span class="spacing-use">Card internal padding (elevated)</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:80px;"></div>
+                        <span class="spacing-label">80px</span>
+                        <span class="spacing-val">5rem</span>
+                        <span class="spacing-use">Section vertical padding (standard)</span>
+                    </div>
+                    <div class="spacing-row">
+                        <div class="spacing-bar" style="width:140px;"></div>
+                        <span class="spacing-label">140px</span>
+                        <span class="spacing-val">8.75rem</span>
+                        <span class="spacing-use">Hero top padding (clears fixed nav)</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; background:var(--white); border-radius:10px; padding:1.5rem 2rem; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                    <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.5rem;">Layout Container</h3>
+                    <code style="font-family:'Courier New',monospace; font-size:0.85rem; color:#666; display:block;">max-width: 1200px · margin: 0 auto · padding: 0 2rem</code>
+                    <p style="font-size:0.85rem; color:#888; margin-top:0.5rem;">All page sections constrain content to 1200px centered. The 2rem side padding becomes the safe zone on smaller viewports.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 8. Iconography ── -->
+        <section id="icons" class="bg-light-gray">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 08</div>
+                <h2 class="sb-section-title">Iconography</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">Service icons are custom PNG assets at <strong>60px height</strong>. Supporting UI icons use Unicode/emoji at <strong>2.2–3rem</strong>. All icons must have descriptive <code style="font-family:'Courier New',monospace; background:#f0f2f4; padding:0.1rem 0.4rem; border-radius:3px;">alt</code> text.</p>
+
+                <div class="icon-grid">
+                    <div class="icon-item"><span class="icon">🛡️</span><div class="icon-name">Risk Assessment</div></div>
+                    <div class="icon-item"><span class="icon">📋</span><div class="icon-name">Policy Writing</div></div>
+                    <div class="icon-item"><span class="icon">🔍</span><div class="icon-name">MSP Oversight</div></div>
+                    <div class="icon-item"><span class="icon">✅</span><div class="icon-name">Compliance</div></div>
+                    <div class="icon-item"><span class="icon">🔒</span><div class="icon-name">Security</div></div>
+                    <div class="icon-item"><span class="icon">📊</span><div class="icon-name">Reporting</div></div>
+                    <div class="icon-item"><span class="icon">🤝</span><div class="icon-name">Partnership</div></div>
+                    <div class="icon-item"><span class="icon">⚡</span><div class="icon-name">Response</div></div>
+                </div>
+
+                <div style="margin-top: 2rem; display:grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap:1rem;">
+                    <div class="card-flat"><h3>Service Icons (PNG)</h3><p>60px × auto from /Images/. Use loading="lazy" and descriptive alt text.</p></div>
+                    <div class="card-flat"><h3>Decorative Emoji Icons</h3><p>2.2rem–3rem. Role="img" aria-label when meaning is non-decorative.</p></div>
+                    <div class="card-flat"><h3>Nav Hamburger</h3><p>Unicode ☰ (&#9776;) at 1.5rem. Visible only below 1024px breakpoint.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 9. Voice & Tone ── -->
+        <section id="voice">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 09</div>
+                <h2 class="sb-section-title">Voice &amp; Tone</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">BCS speaks plainly, confidently, and practically — like a trusted advisor, not a vendor. We translate technical complexity into business outcomes without talking down to the reader.</p>
+
+                <div class="voice-grid">
+                    <div class="voice-card do">
+                        <h4>DO — Brand Voice</h4>
+                        <ul>
+                            <li>Speak plainly — say "risk" not "threat surface"</li>
+                            <li>Focus on the client's outcome, not our process</li>
+                            <li>Use "we" and "your" — make it a conversation</li>
+                            <li>Be direct: strong verbs, short sentences</li>
+                            <li>Show expertise through clarity, not jargon</li>
+                            <li>Be confident without overselling</li>
+                            <li>Reference "Bluegrass" as a nod to community &amp; roots</li>
+                        </ul>
+                    </div>
+                    <div class="voice-card dont">
+                        <h4>DON'T — Off-Brand</h4>
+                        <ul>
+                            <li>Don't use fear tactics to sell services</li>
+                            <li>Don't stack acronyms (NIST, SOC2, HIPAA) without context</li>
+                            <li>Avoid passive voice and corporate filler</li>
+                            <li>Don't promise outcomes you can't guarantee</li>
+                            <li>Never condescend — assume the reader is smart</li>
+                            <li>Don't make every headline a question</li>
+                            <li>Avoid exclamation points in professional copy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem;">
+                    <h3 style="font-size:1.1rem; color:var(--primary-blue); margin-bottom:1rem;">Tagline</h3>
+                    <div style="background:var(--white); border-radius:10px; padding:2rem 2.5rem; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-left:4px solid var(--gold);">
+                        <p class="specimen-gold" style="margin-bottom:0.75rem;">"Bridging the gap between findings and fixes."</p>
+                        <p style="font-size:0.9rem; color:#666;">Use verbatim in hero sections and email signatures. Do not paraphrase. Rendered in Gold (#d4a017) italic at tagline scale.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.5rem; display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:1rem;">
+                    <div class="card-flat"><h3>Headings</h3><p>Title Case for section headings. Sentence case for body sub-headings and card titles.</p></div>
+                    <div class="card-flat"><h3>CTAs</h3><p>Action verbs: "Get Started", "Contact Us", "View Services". Not "Click Here" or "Submit".</p></div>
+                    <div class="card-flat"><h3>Blog Posts</h3><p>Conversational but expert. 800–1,500 words. Practical takeaways in every post.</p></div>
+                    <div class="card-flat"><h3>Company Name</h3><p>"Bluegrass Cybersecurity Solutions" on first mention. "BCS" acceptable thereafter in informal contexts.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 10. Accessibility ── -->
+        <section id="accessibility" class="bg-light-gray">
+            <div class="sb-section">
+                <div class="sb-section-label">Section 10</div>
+                <h2 class="sb-section-title">Accessibility</h2>
+                <div class="sb-divider"></div>
+                <p class="sb-section-desc">BCS targets WCAG 2.1 AA compliance. Every design decision must account for keyboard navigation, color contrast, and screen readers.</p>
+
+                <div class="a11y-grid">
+                    <div class="a11y-card">
+                        <h4>Skip Link</h4>
+                        <p>A visually hidden "Skip to content" link appears at top-of-page for keyboard users. It becomes visible on focus. Class: <code>.skip-link</code></p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Focus Rings</h4>
+                        <p>Interactive elements show a visible focus indicator. The blue focus ring on form inputs is <code>box-shadow: 0 0 0 3px rgba(74,144,199,0.18)</code>.</p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Aria Labels</h4>
+                        <p>Hamburger button uses <code>aria-label="Toggle navigation"</code> and <code>aria-expanded</code>. All images have meaningful <code>alt</code> attributes.</p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Semantic HTML</h4>
+                        <p>Use <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>. Heading hierarchy must not skip levels.</p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Color Contrast</h4>
+                        <p>All text must meet 4.5:1 minimum (AA). White on Primary Blue passes at 9.8:1. White on Light Green passes at 4.6:1.</p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Motion</h4>
+                        <p>All transitions are 0.2–0.3s. Respect <code>prefers-reduced-motion</code> by removing transforms and fading instead of sliding.</p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Images</h4>
+                        <p>Decorative images: <code>alt=""</code>. Informational images: descriptive alt text. Logo: <code>alt="Bluegrass Cybersecurity Solutions"</code>.</p>
+                    </div>
+                    <div class="a11y-card">
+                        <h4>Loading</h4>
+                        <p>Below-the-fold images use <code>loading="lazy"</code>. Critical above-fold images (logo, hero) load eagerly.</p>
+                    </div>
+                </div>
+
+                <!-- Contrast badges -->
+                <div style="margin-top:2rem;">
+                    <h3 style="font-size:1rem; color:var(--primary-blue); margin-bottom:0.75rem;">Key Contrast Ratios</h3>
+                    <div class="contrast-row">
+                        <div class="contrast-badge" style="background:#1e3a5f; color:#fff;">
+                            <span class="ratio">9.8:1</span>
+                            <span class="label">White on Primary Blue — PASS AAA</span>
+                        </div>
+                        <div class="contrast-badge" style="background:#5a7d3d; color:#fff;">
+                            <span class="ratio">4.6:1</span>
+                            <span class="label">White on Light Green — PASS AA</span>
+                        </div>
+                        <div class="contrast-badge" style="background:#2c5f8d; color:#fff;">
+                            <span class="ratio">6.5:1</span>
+                            <span class="label">White on Accent Blue — PASS AA</span>
+                        </div>
+                        <div class="contrast-badge" style="background:#f8f9fa; color:#333; border:1px solid #ddd;">
+                            <span class="ratio">12.6:1</span>
+                            <span class="label">Body Gray on Light Gray — PASS AAA</span>
+                        </div>
+                        <div class="contrast-badge" style="background:#d4a017; color:#fff;">
+                            <span class="ratio">2.9:1</span>
+                            <span class="label" style="color:rgba(255,255,255,0.9);">White on Gold — Large text only</span>
+                        </div>
+                    </div>
+                    <p style="font-size:0.8rem; color:#888; margin-top:0.75rem;">Gold (#d4a017) should only be used for large display text (≥18px bold or ≥24px regular) or decorative elements — never for small body copy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CTA Band ── -->
+        <div class="cta-band">
+            <h2>Questions about the brand?</h2>
+            <p>Reach out to the BCS team for logo files, brand assets, or editorial guidance.</p>
+            <a href="index.html#contact" class="btn-cta-inverse">Contact Us</a>
+        </div>
+
+    </main>
+
+    <!-- ── Shared Footer ── -->
+    <footer>
+        <p>&copy; 2025 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+        <p>Style Bible — Internal Reference Document</p>
+    </footer>
+
+    <script>
+        // Hamburger nav toggle (same as main site)
+        const toggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
+
+</body>
+</html>

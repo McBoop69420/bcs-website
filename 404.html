@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Bluegrass Cybersecurity Solutions</title>
+    <link rel="icon" type="image/png" href="/Images/logo-new.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital@1&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary-blue: #1e3a5f;
+            --accent-blue:  #2c5f8d;
+            --light-green:  #5a7d3d;
+            --green:        #2d5016;
+            --gray:         #333;
+            --light-gray:   #f8f9fa;
+            --white:        #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header a { display: inline-block; }
+        header img { height: 60px; width: auto; }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .error-content {
+            max-width: 520px;
+        }
+
+        .error-code {
+            font-size: 7rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0.15;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--light-green);
+            color: var(--white);
+        }
+        .btn-primary:hover { background: var(--green); }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        .btn-secondary:hover { background: var(--primary-blue); color: var(--white); }
+
+        footer {
+            background: var(--primary-blue);
+            color: rgba(255,255,255,0.75);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/"><img src="/Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
+    </header>
+
+    <main>
+        <div class="error-content">
+            <div class="error-code" aria-hidden="true">404</div>
+            <h1>Page Not Found</h1>
+            <p>The page you're looking for doesn't exist or may have moved. Let's get you back on track.</p>
+            <div class="btn-group">
+                <a href="/" class="btn btn-primary">Go to Homepage</a>
+                <a href="/blog.html" class="btn btn-secondary">Visit the Blog</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

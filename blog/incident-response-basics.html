@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Incident Response: What Every Institution Needs Before an Incident Happens | Bluegrass Cybersecurity Solutions</title>
+    <meta name="description" content="An incident response plan that exists only on paper will cost you at the worst possible moment. Here's what regulators expect — and how to build a program that holds up under pressure.">
+    <link rel="canonical" href="https://www.bluegrasscompliancesolutions.com/blog/incident-response-basics.html">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
+    <meta property="og:title"       content="Incident Response: What Every Institution Needs Before an Incident Happens | Bluegrass Cybersecurity Solutions">
+    <meta property="og:description" content="An incident response plan that exists only on paper will cost you at the worst possible moment. Here's what regulators expect — and how to build a program that holds up under pressure.">
+    <meta property="og:url"         content="https://www.bluegrasscompliancesolutions.com/blog/incident-response-basics.html">
+    <meta property="og:image"       content="https://www.bluegrasscompliancesolutions.com/Images/logo-new.png">
+
+    <link rel="icon" type="image/png" href="/Images/logo-new.png">
+    <link rel="apple-touch-icon" href="/Images/logo-new.png">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Incident Response: What Every Institution Needs Before an Incident Happens",
+      "description": "An incident response plan that exists only on paper will cost you at the worst possible moment. Here's what regulators expect — and how to build a program that holds up under pressure.",
+      "url": "https://www.bluegrasscompliancesolutions.com/blog/incident-response-basics.html",
+      "datePublished": "2026-03-24",
+      "dateModified": "2026-03-24",
+      "image": "https://www.bluegrasscompliancesolutions.com/Images/logo-new.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jared Luyster",
+        "jobTitle": "Founder & Principal Consultant",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Bluegrass Cybersecurity Solutions",
+          "url": "https://www.bluegrasscompliancesolutions.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bluegrass Cybersecurity Solutions",
+        "url": "https://www.bluegrasscompliancesolutions.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.bluegrasscompliancesolutions.com/Images/logo-new.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.bluegrasscompliancesolutions.com/blog/incident-response-basics.html"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital@1&display=swap" rel="stylesheet">
+    <style>
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--green) 100%);
+            color: var(--white);
+            padding: 9rem 2rem 3.5rem;
+            text-align: center;
+        }
+        .page-banner h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3; }
+        .page-banner p { font-size: 1.05rem; opacity: 0.9; max-width: 580px; margin: 0 auto; }
+
+        .post-wrapper { max-width: 760px; margin: 0 auto; padding: 6rem 2rem 5rem; }
+
+        .back-link { display: block; margin-bottom: 2rem; }
+        .back-link a { color: var(--accent-blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .back-link a:hover { text-decoration: underline; }
+
+        .post-title { font-size: 2rem; font-weight: 700; color: var(--primary-blue); line-height: 1.3; margin-bottom: 0.6rem; }
+        .post-meta { font-style: italic; color: #777; font-size: 0.9rem; margin-bottom: 2.25rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e5eaf0; }
+
+        .post-body section { margin-bottom: 2rem; }
+        .post-body h2 { font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.65rem; padding-bottom: 0.35rem; border-bottom: 2px solid var(--light-blue); }
+        .post-body h3 { font-size: 1.05rem; font-weight: 600; color: var(--accent-blue); margin: 1rem 0 0.4rem; }
+        .post-body p { margin-bottom: 1rem; }
+        .post-body ul, .post-body ol { margin: 0.5rem 0 1rem 1.5rem; }
+        .post-body li { margin-bottom: 0.4rem; }
+
+        .checklist { list-style: none; margin-left: 0; }
+        .checklist li { padding-left: 1.6rem; position: relative; margin-bottom: 0.5rem; }
+        .checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+        .cta-block { margin-top: 2.5rem; background: var(--light-gray); border-left: 4px solid var(--gold); border-radius: 0 6px 6px 0; padding: 1.4rem 1.75rem; }
+        .cta-block p { margin: 0; font-size: 1.05rem; font-weight: 500; color: var(--primary-blue); }
+        .cta-block a { color: var(--accent-blue); font-weight: 700; text-decoration: none; }
+        .cta-block a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) { .post-title { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/index.html"><img src="/Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/index.html#about">What We Do</a></li>
+                <li><a href="/index.html#services">Services</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/blog.html" aria-current="page">Blog</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="post-wrapper">
+
+            <span class="back-link"><a href="/blog.html">&#8592; Back to Blog</a></span>
+
+            <h1 class="post-title">Incident Response: What Every Institution Needs Before an Incident Happens</h1>
+            <p class="post-meta">Published March 24, 2026</p>
+
+            <article class="post-body">
+
+                <section>
+                    <h2>The Problem</h2>
+                    <p>Every regulated institution is required to have an incident response plan. Most have one. Fewer have actually tested it. And a significant number discover its gaps at the worst possible time &mdash; in the middle of an actual incident, when staff are under pressure, decisions need to be made quickly, and the regulators may be watching closely.</p>
+                    <p>An incident response plan is not a form you fill out to satisfy an examiner. It is an operational playbook that determines how fast you contain a breach, how clearly you communicate with affected parties, and whether you meet your regulatory notification obligations on time. The institutions that handle incidents well almost always have plans that are specific, tested, and practiced. The ones that handle incidents poorly almost always have plans that are generic, outdated, or untested.</p>
+                </section>
+
+                <section>
+                    <h2>What Regulators Require</h2>
+                    <p>The GLBA Safeguards Rule requires covered financial institutions to have a written incident response plan as part of the information security program. The 2021 Safeguards Rule update added specific requirements: the plan must address the goals of the response program, internal processes for responding to a security event, clear roles and decision-making authority, communications and information sharing, remediation of system weaknesses, and documentation and reporting.</p>
+                    <p>In addition, the bank regulators&rsquo; 36-hour notification rule (effective May 2022 for OCC, FDIC, and Federal Reserve-supervised institutions) requires notification to the primary federal regulator within 36 hours of determining that a &ldquo;computer-security incident&rdquo; has occurred that rises to the level of a &ldquo;notification incident.&rdquo; NCUA has parallel notification requirements. Meeting a 36-hour notification deadline requires a plan that has been thought through in advance &mdash; not one you are reading for the first time during the incident.</p>
+                </section>
+
+                <section>
+                    <h2>What an Effective IRP Looks Like</h2>
+
+                    <h3>Clear Incident Classification</h3>
+                    <p>The plan should define what constitutes a security event, a security incident, and a notification incident &mdash; and provide examples specific to your environment. Without clear definitions, staff will spend critical time during an actual event debating whether something needs to be escalated. Classification criteria should be specific enough to guide decision-making, not just state that &ldquo;significant incidents&rdquo; should be reported.</p>
+
+                    <h3>Defined Roles and Decision Authority</h3>
+                    <p>During an incident, people need to know who is in charge, who makes containment decisions, who authorizes external communications, and who notifies the board. Ambiguity about authority causes delays. The plan should name roles (not just titles), with backups identified for each role in case the primary contact is unavailable. This is especially important at smaller institutions where a single person may wear multiple hats.</p>
+
+                    <h3>Specific Notification Timelines</h3>
+                    <p>Regulatory notification timelines are unforgiving. The 36-hour rule leaves very little room for internal deliberation. Your plan should document the notification chain explicitly: who determines that a notification incident has occurred, who prepares the notification, who submits it, and through what channel. The same applies to customer notification obligations under state data breach laws, which vary by state and can be as short as 30 days from discovery.</p>
+
+                    <h3>Containment and Eradication Procedures</h3>
+                    <p>Generic plans describe containment at a high level. Effective plans include specific steps for common incident scenarios relevant to your environment &mdash; ransomware, business email compromise, core system outage, unauthorized data access. These scenario-specific playbooks don&rsquo;t need to anticipate every possibility, but they should give responding staff a starting point rather than a blank page.</p>
+
+                    <h3>Evidence Preservation</h3>
+                    <p>Many institutions inadvertently destroy forensic evidence during incident response by reimaging systems before logs are preserved or by failing to capture network traffic data. The plan should include explicit steps for evidence preservation &mdash; particularly if the incident may result in litigation, regulatory action, or insurance claims. Coordinate with legal counsel and, if applicable, cyber insurance carriers on what evidence they will need.</p>
+
+                    <h3>Post-Incident Review</h3>
+                    <p>A post-incident review (sometimes called a lessons-learned process) is required by the GLBA Safeguards Rule and is a standard examiner expectation. After every significant incident &mdash; and ideally after exercises as well &mdash; the response should be reviewed for gaps, and the plan updated accordingly. Examiners will ask whether prior incidents resulted in plan improvements. An institution that experienced a phishing compromise two years ago and has not updated its plan or controls since will have difficulty explaining why not.</p>
+                </section>
+
+                <section>
+                    <h2>Testing Your Plan</h2>
+                    <p>A plan that has never been tested is an untested hypothesis. At minimum, conduct an annual tabletop exercise that walks key staff through a realistic incident scenario. The scenario should be specific enough to force real decisions: Who do you call first? At what point do you notify the board? When does the 36-hour clock start? What do you say to customers?</p>
+                    <p>Document the exercise &mdash; the scenario, the participants, the decisions made, and any gaps identified. Then update the plan to address those gaps. This documentation is what examiners want to see, and it demonstrates that your program is functional and improving, not static.</p>
+                </section>
+
+                <section>
+                    <h2>Practical Checklist</h2>
+                    <ul class="checklist">
+                        <li>Written incident response plan reviewed and approved within the last 12 months</li>
+                        <li>Incident classification definitions are specific and include examples relevant to your environment</li>
+                        <li>Roles, responsibilities, and decision authority documented with named individuals and backups</li>
+                        <li>Regulatory notification timelines and procedures explicitly documented (36-hour rule, state breach laws)</li>
+                        <li>Customer and stakeholder communication templates prepared in advance</li>
+                        <li>Scenario-specific playbooks for common incident types (ransomware, BEC, data breach)</li>
+                        <li>Evidence preservation procedures included in the plan</li>
+                        <li>Cyber insurance carrier and legal counsel contact information documented and current</li>
+                        <li>Annual tabletop exercise conducted with results and identified gaps documented</li>
+                        <li>Post-incident review process defined and followed for any significant security events</li>
+                        <li>Board notification procedure defined and reflected in board meeting minutes when applicable</li>
+                    </ul>
+                </section>
+
+            </article>
+
+            <div class="cta-block">
+                <p>Need help building or testing your incident response plan? <a href="/index.html#contact">Let&rsquo;s talk.</a></p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+        <p>Bridging the gap between findings and fixes</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
