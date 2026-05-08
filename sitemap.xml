@@ -12,12 +12,79 @@
   </url>
   <url>
     <loc>https://www.bluegrasscompliancesolutions.com/blog.html</loc>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/ffiec-cat-sunset.html</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/kev-driven-vulnerability-management.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/logging-and-monitoring.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/it-exam-prep.html</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/glba-safeguards-rule.html</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/patch-management.html</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/incident-response-basics.html</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/business-continuity-planning.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/access-control-user-management.html</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/security-awareness-training.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscompliancesolutions.com/blog/annual-risk-assessment.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.bluegrasscompliancesolutions.com/blog/ffiec-vendor-management.html</loc>
-    <lastmod>2026-02-20</lastmod>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>never</changefreq>
     <priority>0.7</priority>
   </url>

@@ -13,9 +13,9 @@
     <meta property="og:description" content="Helping organizations strengthen their security posture — risk assessments, security policy development, and MSP oversight. Bridging the gap between findings and fixes.">
     <meta property="og:url"         content="https://www.bluegrasscompliancesolutions.com/">
 
-    <link rel="icon" type="image/png" href="/Images/logo-new.png">
-    <link rel="apple-touch-icon" href="/Images/logo-new.png">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="Images/logo-new.png">
+    <link rel="apple-touch-icon" href="Images/logo-new.png">
+    <link rel="stylesheet" href="css/style.css">
 
     <script type="application/ld+json">
     {
@@ -70,6 +70,30 @@
                   "@type": "Service",
                   "name": "MSP Oversight",
                   "description": "Independent oversight of managed service providers to ensure contract compliance, governance, and appropriate spend."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Exam Prep",
+                  "description": "Exam readiness support that organizes policies, risk documentation, evidence, and remediation plans before regulators or auditors arrive."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Vendor Management",
+                  "description": "Practical vendor governance support for due diligence, risk tiering, contract review, ongoing monitoring, and board-ready reporting."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Incident Response",
+                  "description": "Incident response planning, tabletop preparation, communications structure, and post-incident remediation support."
                 }
               }
             ]
@@ -300,10 +324,28 @@
             line-height: 1;
         }
 
+        .service-icon-frame {
+            width: 190px;
+            height: 170px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon-frame img {
+            width: 190px;
+            height: 170px;
+            max-width: none;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+
         .service-card h3 {
             color: var(--primary-blue);
             font-size: 1.15rem;
             font-weight: 700;
+            text-align: center;
             margin-bottom: 0.75rem;
         }
 
@@ -320,7 +362,7 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -456,6 +498,12 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 900px) {
+            .values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-subtitle {
                 letter-spacing: 0.06em;
@@ -494,8 +542,8 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="/">
-                    <img src="/Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions">
+                <a href="index.html">
+                    <img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions">
                 </a>
             </div>
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
@@ -503,9 +551,9 @@
                 <li><a href="#home" aria-current="page">Home</a></li>
                 <li><a href="#about">What We Do</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="/products.html">Products</a></li>
-                <li><a href="/blog.html">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#contact">Email List</a></li>
             </ul>
         </nav>
     </header>
@@ -547,7 +595,7 @@
                 <!-- PHOTO: Upload your headshot to IONOS root folder,
                      then update the src below to match your filename. -->
                 <img
-                    src="/Images/circular_cropped_image.png"
+                    src="Images/circular_cropped_image.png"
                     alt="Jared Luyster"
                     class="team-photo-circle"
                     loading="lazy">
@@ -568,27 +616,50 @@
             
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>
-                        <img src="/Images/Risk Assessment.png" alt="Risk Assessments" loading="lazy" style="height:60px;width:auto;">
-                        Risk Assessments
-                    </h3>
+                    <div class="service-icon-frame">
+                        <img src="Images/risk-assessment-clean.png" alt="" loading="lazy">
+                    </div>
+                    <h3>Risk Assessments</h3>
                     <p>We conduct targeted risk assessments to help your organization identify, prioritize, and address real vulnerabilities across IT, operations, and vendors. Whether you're responding to a finding, building out a new security program, or just trying to understand where you actually stand — we'll give you a clear, actionable risk profile your team can execute on. Compliance documentation comes with it.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>
-                        <img src="/Images/Policy Writing.png" alt="Policy Development" loading="lazy" style="height:60px;width:auto;">
-                        Policy Development
-                    </h3>
+                    <div class="service-icon-frame">
+                        <img src="Images/policy-writing-clean.png" alt="" loading="lazy">
+                    </div>
+                    <h3>Policy Development</h3>
                     <p>We build security policies that reflect how your organization actually operates — not just what the templates say. Whether you need an Information Security Policy, Incident Response Plan, Business Continuity Plan, or Vendor Management framework, we write controls-focused documents grounded in your real environment. They align with NIST, FFIEC, and Federal Reserve Board standards, so they hold up during audits too.</p>
                 </div>
 
                 <div class="service-card">
-                    <h3>
-                        <img src="/Images/MSP Oversight Icon.png" alt="MSP Oversight" loading="lazy" style="height:60px;width:auto;">
-                        MSP Oversight
-                    </h3>
+                    <div class="service-icon-frame">
+                        <img src="Images/msp-oversight-clean.png" alt="" loading="lazy">
+                    </div>
+                    <h3>MSP Oversight</h3>
                     <p>We act as an independent security layer between your organization and your managed service providers. From reviewing SLAs and access controls to flagging security gaps, shadow tools, and overpriced add-ons — we make sure your MSP is working for you, not around you. No tech jargon, no sales pressure — just clarity and control over your own environment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-frame">
+                        <img src="Images/exam-prep-clean.png" alt="" loading="lazy">
+                    </div>
+                    <h3>Exam Prep</h3>
+                    <p>We help you get ready before examiners, auditors, or oversight teams start asking for evidence. That means reviewing prior findings, organizing policies and board approvals, checking risk assessments and BCP testing, building a defensible document request package, and closing obvious gaps before they become repeat findings.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-frame">
+                        <img src="Images/vendor-management-clean.png" alt="" loading="lazy">
+                    </div>
+                    <h3>Vendor Management</h3>
+                    <p>We bring structure to third-party oversight by helping you identify critical vendors, tier risk, review contracts and SOC reports, track due diligence, and document ongoing monitoring. The goal is a vendor program that supports real decisions, not just a folder of certificates and annual questionnaires.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-frame">
+                        <img src="Images/incident-response-clean.png" alt="" loading="lazy">
+                    </div>
+                    <h3>Incident Response</h3>
+                    <p>We help build incident response plans your team can actually use under pressure. That includes roles and escalation paths, communications steps, regulatory notification considerations, tabletop exercises, evidence preservation, lessons learned, and remediation tracking after an event or exercise.</p>
                 </div>
             </div>
         </div>
@@ -632,8 +703,8 @@
     <section id="contact">
         <div class="container">
             <div class="contact-content">
-                <h2>Ready to Get Started?</h2>
-                <p>Let's discuss how we can help your organization get ahead of threats, close real gaps, and stay secure — whatever comes next.</p>
+                <h2>Stay Ahead of the Next Finding</h2>
+                <p>Join the Bluegrass Cybersecurity Solutions email list for practical guidance on cybersecurity, compliance, vendor oversight, exam prep, and incident response.</p>
 
                 <!-- ╔══════════════════════════════════════════════════════════╗
                      ║  FORMSPREE SETUP (one-time):                            ║
@@ -642,6 +713,8 @@
                      ║  3. Replace YOUR_FORM_ID below with your actual ID      ║
                      ╚══════════════════════════════════════════════════════════╝ -->
                 <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="hidden" name="form_type" value="email_signup">
+                    <input type="hidden" name="subject" value="New BCS email list signup">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -657,22 +730,11 @@
                         <input type="text" id="contact-org" name="organization" placeholder="Your organization name">
                     </div>
                     <div class="form-group">
-                        <label for="contact-service">I'm interested in…</label>
-                        <select id="contact-service" name="service">
-                            <option value="">— Select a service —</option>
-                            <option value="Risk Assessment">Risk Assessment</option>
-                            <option value="Policy Development">Policy Development</option>
-                            <option value="MSP Oversight">MSP Oversight</option>
-                            <option value="Policy Templates">Policy Templates / Bundles</option>
-                            <option value="Other">Other / Not sure yet</option>
-                        </select>
+                        <label for="signup-interests">Topics of Interest</label>
+                        <input type="text" id="signup-interests" name="interests" placeholder="Risk assessments, exam prep, vendor management...">
                     </div>
-                    <div class="form-group">
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" name="message" placeholder="Tell us a bit about your situation…"></textarea>
-                    </div>
-                    <button type="submit" class="contact-button">Send Message</button>
-                    <p class="form-footer-note">No spam. We'll respond within one business day.</p>
+                    <button type="submit" class="contact-button">Join the List</button>
+                    <p class="form-footer-note">No spam. Practical updates only. Unsubscribe anytime.</p>
                 </form>
             </div>
         </div>
@@ -686,4 +748,4 @@
         <p>Bridging the gap between findings and fixes</p>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
