@@ -5,110 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cybersecurity Insights &amp; Resources | Bluegrass Cybersecurity Solutions</title>
-    <meta name="description" content="Practical cybersecurity guidance for organizations — written by practitioners who understand both the threat landscape and the regulatory environment.">
-    <link rel="canonical" href="https://www.bluegrasscompliancesolutions.com/blog.html">
+    <meta name="description" content="Practical cybersecurity guidance for organizations â€” written by practitioners who understand both the threat landscape and the regulatory environment.">
+    <link rel="canonical" href="https://www.bluegrasscybersecurity.com/blog.html">
 
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
     <meta property="og:title"       content="Cybersecurity Insights &amp; Resources | Bluegrass Cybersecurity Solutions">
-    <meta property="og:description" content="Practical cybersecurity guidance for organizations — written by practitioners who understand both the threat landscape and the regulatory environment.">
-    <meta property="og:url"         content="https://www.bluegrasscompliancesolutions.com/blog.html">
+    <meta property="og:description" content="Practical cybersecurity guidance for organizations â€” written by practitioners who understand both the threat landscape and the regulatory environment.">
+    <meta property="og:url"         content="https://www.bluegrasscybersecurity.com/blog.html">
 
     <link rel="icon" type="image/png" href="Images/logo-new.png">
     <link rel="apple-touch-icon" href="Images/logo-new.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital@1&display=swap" rel="stylesheet">
-    <style>
-        /* Page banner */
-        .page-banner {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--green) 100%);
-            color: var(--white);
-            padding: 9rem 2rem 3.5rem;
-            text-align: center;
-        }
-        .page-banner h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .page-banner p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            max-width: 580px;
-            margin: 0 auto;
-        }
-
-        /* Blog section */
-        .blog-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem 5rem;
-        }
-
-        /* Blog grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            border: 1px solid #dde3ea;
-            border-radius: 6px;
-            overflow: hidden;
-            background: var(--white);
-            transition: box-shadow 0.25s ease, transform 0.25s ease;
-        }
-        .blog-card:hover {
-            box-shadow: 0 6px 24px rgba(30,58,95,0.12);
-            transform: translateY(-2px);
-        }
-
-        .blog-card-header {
-            background: var(--primary-blue);
-            padding: 1.25rem 1.5rem;
-        }
-        .blog-card-header .card-date {
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.65);
-            margin-bottom: 0.4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .blog-card-header h2 {
-            font-size: 1.05rem;
-            line-height: 1.4;
-        }
-        .blog-card-header h2 a {
-            color: var(--white);
-            text-decoration: none;
-        }
-        .blog-card-header h2 a:hover { text-decoration: underline; }
-
-        .blog-card-body { padding: 1.25rem 1.5rem; }
-        .blog-card-body p {
-            font-size: 0.92rem;
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: var(--accent-blue);
-            font-weight: 600;
-            font-size: 0.88rem;
-            text-decoration: none;
-        }
-        .read-more::after { content: ' \2192'; }
-        .read-more:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            .blog-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/pages.css">
 </head>
 <body>
 
@@ -117,14 +26,14 @@
             <div class="logo">
                 <a href="index.html"><img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
             </div>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#about">What We Do</a></li>
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="blog.html" aria-current="page">Blog</a></li>
-                <li><a href="index.html#contact">Email List</a></li>
+                <li><a href="contact.html">Consultation</a></li>
             </ul>
         </nav>
     </header>
@@ -136,12 +45,21 @@
 
     <main>
         <div class="blog-section">
+            <div class="blog-lead-card">
+                <div>
+                    <span class="eyebrow">Free Resource</span>
+                    <h2>Preparing for an IT exam?</h2>
+                    <p>Request the IT Exam Prep Checklist and get practical guidance for organizing policies, evidence, vendor files, and remediation tracking.</p>
+                </div>
+                <a href="index.html#resources" class="cta-button">Get the Checklist</a>
+            </div>
+
             <div class="blog-grid">
 
-                <!-- ══════════════════════════════════════════════════════
-                     ADD NEW POSTS HERE — NEWEST FIRST
+                <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                     ADD NEW POSTS HERE â€” NEWEST FIRST
                      Copy one <article class="blog-card"> block per post.
-                     ══════════════════════════════════════════════════════ -->
+                     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 
                 <article class="blog-card">
                     <div class="blog-card-header">
@@ -275,9 +193,9 @@
                     </div>
                 </article>
 
-                <!-- ══════════════════════════════════════════════════════
+                <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                      END OF POSTS
-                     ══════════════════════════════════════════════════════ -->
+                     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 
             </div>
         </div>

@@ -115,6 +115,16 @@ This website works on:
 - Safari (latest)
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
+## Deployment Security Checklist
+
+- Confirm the production domain serves this repository, not a registrar or parking page.
+- Force HTTP to HTTPS at the host or CDN layer.
+- Deploy the `_headers` file, or translate those headers into the equivalent host/CDN configuration.
+- Verify these headers after deployment: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `Referrer-Policy`, and `Permissions-Policy`.
+- Replace the placeholder email signup endpoint before collecting form submissions.
+- Smoke test `index.html`, `products.html`, `blog.html`, `style-bible.html`, and a representative `blog/*.html` page after any CSP or header change.
+- Re-run structured data validation when blog JSON-LD content changes, because CSP hashes must stay in sync with inline JSON-LD.
+
 ## Need Help?
 
 Refer to BLOG-INSTRUCTIONS.md for blog management, or contact support if you need assistance with:
