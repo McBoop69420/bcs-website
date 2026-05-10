@@ -14,7 +14,7 @@
             --white:        #ffffff;
         }
 
-        body {
+        body.error-page {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light-gray);
             color: var(--gray);
@@ -23,16 +23,16 @@
             flex-direction: column;
         }
 
-        header {
+        .error-page header {
             background: var(--white);
             padding: 1rem 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        header a { display: inline-block; }
-        header img { height: 60px; width: auto; }
+        .error-page header a { display: inline-block; }
+        .error-page header img { height: 60px; width: auto; }
 
-        main {
+        .error-page main {
             flex: 1;
             display: flex;
             align-items: center;
@@ -54,13 +54,13 @@
             opacity: 0.15;
         }
 
-        h1 {
+        .error-page h1 {
             font-size: 1.8rem;
             color: var(--primary-blue);
             margin-bottom: 1rem;
         }
 
-        p {
+        .error-page p {
             font-size: 1.05rem;
             color: #555;
             margin-bottom: 2rem;
@@ -96,7 +96,7 @@
         }
         .btn-secondary:hover { background: var(--primary-blue); color: var(--white); }
 
-        footer {
+        .error-page footer {
             background: var(--primary-blue);
             color: rgba(255,255,255,0.75);
             text-align: center;
@@ -1360,7 +1360,7 @@
         }
 
         .product-features li:before {
-            content: "✓";
+            content: "\2713";
             color: var(--light-green);
             font-weight: bold;
             margin-right: 0.5rem;
