@@ -141,7 +141,7 @@
             <p class="hero-tagline">"Bridging the gap between<br>findings and fixes"</p>
             <div class="hero-actions" aria-label="Primary actions">
                 <a href="contact.html" class="cta-button">Book a Consultation</a>
-                <a href="#resources" class="cta-button cta-button-secondary">Start a Readiness Check</a>
+                <a href="#resources" class="cta-button cta-button-secondary">Improve Board Reporting</a>
             </div>
         </div>
     </section>
@@ -342,24 +342,24 @@
     <!-- Resource Signup Section -->
     <section id="resources">
         <div class="container">
-            <div class="readiness-content">
-                <div class="readiness-copy">
-                    <span class="eyebrow">Exam Readiness</span>
-                    <h2>Turn exam anxiety into an organized next step.</h2>
-                    <p>If an IT exam, audit, or board update is on the horizon, send a quick snapshot of what you are trying to organize. We will respond with practical direction on where to start and what evidence usually needs attention first.</p>
-                    <ul class="readiness-list" aria-label="Readiness focus areas">
-                        <li>Policies, approvals, and review history</li>
-                        <li>Risk assessments and open remediation items</li>
-                        <li>Vendor files, contracts, and monitoring evidence</li>
-                        <li>Board reporting and management accountability</li>
+            <div class="reporting-content">
+                <div class="reporting-copy">
+                    <span class="eyebrow">Board &amp; Regulatory Reporting</span>
+                    <h2>Make security reporting easier to defend.</h2>
+                    <p>Boards, regulators, and examiners do not need noise. They need a clear picture of risk, progress, accountability, and unresolved issues. Send a quick snapshot of what you are reporting now, and we will help identify where the story needs structure.</p>
+                    <ul class="reporting-list" aria-label="Reporting focus areas">
+                        <li>Board-ready summaries that connect risk to action</li>
+                        <li>Regulatory evidence organized around expectations</li>
+                        <li>Remediation tracking with owners, dates, and status</li>
+                        <li>Vendor, MSP, and control reporting leadership can use</li>
                     </ul>
                 </div>
 
                 <!-- Temporary mailto fallback. Replace with a controlled email-list provider
                      endpoint before collecting production signups at scale. -->
-                <form class="contact-form readiness-form" action="mailto:info@bluegrasscybersecurity.com?subject=New BCS readiness check request" method="POST" enctype="text/plain">
-                    <input type="hidden" name="form_type" value="readiness_check">
-                    <input type="hidden" name="subject" value="New BCS readiness check request">
+                <form class="contact-form reporting-form" action="mailto:info@bluegrasscybersecurity.com?subject=New BCS board and regulatory reporting request" method="POST" enctype="text/plain">
+                    <input type="hidden" name="form_type" value="board_regulatory_reporting">
+                    <input type="hidden" name="subject" value="New BCS board and regulatory reporting request">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -375,14 +375,14 @@
                         <input type="text" id="contact-org" name="organization" placeholder="Your organization name">
                     </div>
                     <div class="form-group">
-                        <label for="readiness-timeline">Timeline</label>
-                        <input type="text" id="readiness-timeline" name="timeline" placeholder="Exam scheduled, expected this year, board request...">
+                        <label for="reporting-audience">Reporting audience</label>
+                        <input type="text" id="reporting-audience" name="reporting_audience" placeholder="Board, regulator, examiner, audit committee...">
                     </div>
                     <div class="form-group">
-                        <label for="readiness-focus">What feels least organized?</label>
-                        <textarea id="readiness-focus" name="readiness_focus" placeholder="Policies, evidence, vendor files, remediation tracking, board reports..."></textarea>
+                        <label for="reporting-focus">What needs to be clearer?</label>
+                        <textarea id="reporting-focus" name="reporting_focus" placeholder="Risk summaries, open findings, vendor oversight, remediation status, evidence packages..."></textarea>
                     </div>
-                    <button type="submit" class="contact-button">Send My Readiness Notes</button>
+                    <button type="submit" class="contact-button">Send Reporting Notes</button>
                     <p class="form-footer-note">Practical response only. No spam, no list-padding, and no pressure.</p>
                 </form>
             </div>
