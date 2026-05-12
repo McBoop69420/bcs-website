@@ -1,156 +1,139 @@
-# Bluegrass Compliance Solutions Website - Complete Package
+# Bluegrass Cybersecurity Solutions Website
 
-## Website Files Included
+Static website for Bluegrass Cybersecurity Solutions, a cybersecurity consulting practice focused on risk assessments, policy development, exam prep, vendor management, MSP oversight, incident response, and board/regulatory reporting support.
 
-### Main Pages
-- **index.html** - Homepage with hero section, services, values, and contact
-- **products.html** - Policy templates and bundle packages page
-- **blog.html** - Blog listing page (dynamically loads blog posts)
-- **services-ad.html** - Policy implementation services and BCS Certified program landing page
+The site is plain HTML, CSS, and JavaScript. There is no build step or package manager dependency.
+
+## Current Site
+
+- Production domain: `https://www.bluegrasscybersecurity.com`
+- Canonical host is controlled by `CNAME`
+- Shared styling lives in `css/style.css` and `css/pages.css`
+- Shared navigation behavior lives in `js/main.js`
+- Security headers are documented for supported hosts in `_headers`
+- Search indexing is guided by `robots.txt` and `sitemap.xml`
+
+## Page Inventory
+
+### Core Pages
+
+- `index.html` - Homepage, service overview, trust proof, board/regulatory reporting CTA, and contact-style reporting form.
+- `products.html` - Security policy templates and framework product page.
+- `blog.html` - Blog index, newest first, with the current reporting CTA.
+- `contact.html` - Consultation request page.
+- `style-bible.html` - Brand, style, and component reference.
+- `404.html` - Custom not-found page.
+
+### Service Pages
+
+- `risk-assessments.html`
+- `exam-prep.html`
+- `vendor-management.html`
+- `msp-oversight.html`
+- `policy-development.html`
+- `incident-response.html`
 
 ### Blog Posts
-- **post-1.html** - Business Continuity Planning: Beyond the Checkbox
-- **post-2.html** - 5 Common Policy Documentation Mistakes and How to Avoid Them
-- **post-3.html** - Questions to Ask Your MSP About Their Security Practices
-- **post-4.html** - GLBA Privacy Rule: What Changed in 2025
-- **post-5.html** - Building a Risk Assessment Program That Works
-- **post-6.html** - Understanding FFIEC Cybersecurity Assessment Tool Updates
 
-### Templates & Documentation
-- **blog-post-template.html** - Blank template for creating new blog posts
-- **BLOG-INSTRUCTIONS.md** - Complete instructions for managing your blog
-- **blog-posts.json** - JSON data file (reference - not needed if using embedded JS version)
+Blog articles live in `blog/` as standalone HTML pages. Current posts include:
 
-## Getting Started
+- `blog/ffiec-cat-sunset.html`
+- `blog/kev-driven-vulnerability-management.html`
+- `blog/logging-and-monitoring.html`
+- `blog/it-exam-prep.html`
+- `blog/glba-safeguards-rule.html`
+- `blog/patch-management.html`
+- `blog/incident-response-basics.html`
+- `blog/business-continuity-planning.html`
+- `blog/access-control-user-management.html`
+- `blog/security-awareness-training.html`
+- `blog/annual-risk-assessment.html`
+- `blog/ffiec-vendor-management.html`
 
-### 1. Upload Files to Your Web Host
-Upload all HTML files to your web hosting server. Most hosting providers use:
-- cPanel File Manager
-- FTP/SFTP client (like FileZilla)
-- Direct upload through hosting dashboard
+## Local Preview
 
-### 2. Replace Placeholder Logo
-All pages currently use a placeholder logo. Replace this line in each HTML file:
+Because this is a static site, most pages can be opened directly in a browser from the filesystem. For a closer production-style check, serve the folder locally:
+
+```powershell
+py -m http.server 8080 --bind 127.0.0.1
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8080/index.html
+```
+
+Stop the server with `Ctrl+C` in the terminal that started it.
+
+## Blog Maintenance
+
+This repository follows the local `AGENTS.md` maintenance rule:
+
+- Check whether the blog is current whenever beginning work in this repo.
+- `blog.html` should remain newest first.
+- If the latest post is more than 7 days old, add current placeholder/post scaffolding as needed.
+- Keep these surfaces in sync when adding or updating posts:
+  - `blog.html`
+  - `blog/*.html`
+  - `sitemap.xml`
+
+When adding a post, copy the structure from an existing `blog/*.html` article, update title/meta/JSON-LD/canonical fields, add a new card near the top of `blog.html`, and add the URL to `sitemap.xml` with the correct `lastmod`.
+
+## Forms And CTAs
+
+The homepage reporting form currently uses a `mailto:` fallback:
+
 ```html
-<img src="https://via.placeholder.com/200x60/1e3a5f/ffffff?text=BCS+Logo" alt="Bluegrass Compliance Solutions">
+mailto:info@bluegrasscybersecurity.com
 ```
 
-With your actual logo:
-```html
-<img src="your-logo.png" alt="Bluegrass Compliance Solutions">
+Before collecting production submissions at scale, replace this with a controlled form endpoint, CRM workflow, or email-list provider. If the endpoint changes, update the `form-action` directive in `_headers` so the Content Security Policy still permits submissions.
+
+Current homepage framing is board and regulatory reporting: board-ready summaries, regulatory evidence, open findings, remediation tracking, and vendor/MSP reporting.
+
+## Assets
+
+- Logo and service images are in `Images/`.
+- The active logo reference is `Images/logo-new.png`.
+- Main service-card images use the `*-clean.png` files.
+- Keep image filenames stable unless all HTML references are updated.
+
+## Styling
+
+Primary design tokens are defined in `css/style.css`:
+
+- Primary blue: `#1e3a5f`
+- Accent blue: `#2c5f8d`
+- Light blue: `#4a90c7`
+- Green: `#2d5016`
+- Light green: `#5a7d3d`
+- Gold: `#d4a017`
+
+Most page-specific layout rules are in `css/pages.css`. The file includes styles extracted from individual pages as part of CSP hardening, so check for existing selectors before adding new ones.
+
+## Deployment Checklist
+
+Before publishing meaningful changes:
+
+- Open or locally serve `index.html`, `blog.html`, `products.html`, `contact.html`, and one representative `blog/*.html` page.
+- Confirm navigation links work from both root pages and nested blog pages.
+- Confirm forms still have valid labels, required fields, and allowed `form-action` targets.
+- If blog content changed, update `blog.html`, the article page, and `sitemap.xml`.
+- If inline JSON-LD scripts changed, verify `_headers` CSP hashes still match the deployed content.
+- Confirm production serves HTTPS and the expected security headers:
+  - `Content-Security-Policy`
+  - `Strict-Transport-Security`
+  - `X-Content-Type-Options`
+  - `Referrer-Policy`
+  - `Permissions-Policy`
+
+## Git Notes
+
+The primary branch is `main`, tracking `origin/main` at:
+
+```text
+https://github.com/McBoop69420/bcs-website
 ```
 
-### 3. Update Contact Email
-Find and replace all instances of:
-```
-index.html#contact
-```
-
-With your actual contact email or form URL if needed.
-
-### 4. Update Product Links
-In products.html, update the email links in the "Purchase" buttons to go to your actual order/contact system.
-
-## Website Structure
-
-```
-your-website-root/
-├── index.html              (Homepage)
-├── products.html           (Products/Templates page)
-├── blog.html              (Blog listing)
-├── services-ad.html       (Services advertisement)
-├── post-1.html            (Blog post)
-├── post-2.html            (Blog post)
-├── post-3.html            (Blog post)
-├── post-4.html            (Blog post)
-├── post-5.html            (Blog post)
-├── post-6.html            (Blog post)
-└── blog-post-template.html (Template for new posts)
-```
-
-## Adding New Blog Posts
-
-See **BLOG-INSTRUCTIONS.md** for complete details. Quick summary:
-
-1. Copy `blog-post-template.html`
-2. Rename it to `post-7.html` (or next number)
-3. Edit the content between the marked sections
-4. Open `blog.html` and add entry to the `blogPosts` array
-5. Upload both files to your server
-
-## Color Scheme
-
-Your website uses these Kentucky bluegrass-inspired colors:
-- Primary Blue: #1e3a5f
-- Accent Blue: #2c5f8d
-- Light Blue: #4a90c7
-- Green: #2d5016
-- Light Green: #5a7d3d
-- Gold: #d4a017
-
-## Features
-
-✅ Fully responsive design (mobile-friendly)
-✅ Fixed navigation header
-✅ Mobile hamburger menu
-✅ All pages have consistent styling
-✅ Blog system with individual post pages
-✅ Service offerings clearly displayed
-✅ Product templates with pricing
-✅ Call-to-action sections throughout
-✅ Professional footer
-
-## Customization
-
-All styling is contained within `<style>` tags in each HTML file. To change:
-- **Colors**: Edit the `:root` CSS variables at the top
-- **Fonts**: Change the `font-family` in the `body` selector
-- **Layout widths**: Adjust `max-width` values in `.container` classes
-
-## Browser Compatibility
-
-This website works on:
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Deployment Security Checklist
-
-- Confirm the production domain serves this repository, not a registrar or parking page.
-- Force HTTP to HTTPS at the host or CDN layer.
-- Deploy the `_headers` file, or translate those headers into the equivalent host/CDN configuration.
-- Verify these headers after deployment: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `Referrer-Policy`, and `Permissions-Policy`.
-- Replace the placeholder email signup endpoint before collecting form submissions.
-- Smoke test `index.html`, `products.html`, `blog.html`, `style-bible.html`, and a representative `blog/*.html` page after any CSP or header change.
-- Re-run structured data validation when blog JSON-LD content changes, because CSP hashes must stay in sync with inline JSON-LD.
-
-## Need Help?
-
-Refer to BLOG-INSTRUCTIONS.md for blog management, or contact support if you need assistance with:
-- Custom modifications
-- Additional pages
-- Integration with other systems
-- SEO optimization
-
-## File Size Reference
-
-- Homepage: ~1.2MB (includes full content)
-- Products page: ~125KB
-- Blog listing: ~12KB
-- Individual blog posts: ~11-12KB each
-- Services ad page: ~19KB
-
-## Next Steps
-
-1. Upload all files to your web server
-2. Replace placeholder logo with your actual logo
-3. Update contact information
-4. Test all links and navigation
-5. Add your domain's SSL certificate for HTTPS
-6. Submit to Google Search Console
-7. Start writing new blog posts!
-
----
-
-© 2025 Bluegrass Compliance Solutions. All rights reserved.
+Keep commits focused by surface: content/copy changes, blog additions, styling changes, and deployment/security updates are easier to review when separated.
