@@ -141,7 +141,7 @@
             <p class="hero-tagline">"Bridging the gap between<br>findings and fixes"</p>
             <div class="hero-actions" aria-label="Primary actions">
                 <a href="contact.html" class="cta-button">Book a Consultation</a>
-                <a href="#resources" class="cta-button cta-button-secondary">Get the Readiness Guide</a>
+                <a href="#resources" class="cta-button cta-button-secondary">Start a Readiness Check</a>
             </div>
         </div>
     </section>
@@ -342,15 +342,24 @@
     <!-- Resource Signup Section -->
     <section id="resources">
         <div class="container">
-            <div class="contact-content">
-                <h2>Get the IT Exam Readiness Guide</h2>
-                <p>Join the Bluegrass Cybersecurity Solutions email list and request practical guidance for organizing policies, board approvals, risk assessments, vendor evidence, and remediation tracking before examiners ask.</p>
+            <div class="readiness-content">
+                <div class="readiness-copy">
+                    <span class="eyebrow">Exam Readiness</span>
+                    <h2>Turn exam anxiety into an organized next step.</h2>
+                    <p>If an IT exam, audit, or board update is on the horizon, send a quick snapshot of what you are trying to organize. We will respond with practical direction on where to start and what evidence usually needs attention first.</p>
+                    <ul class="readiness-list" aria-label="Readiness focus areas">
+                        <li>Policies, approvals, and review history</li>
+                        <li>Risk assessments and open remediation items</li>
+                        <li>Vendor files, contracts, and monitoring evidence</li>
+                        <li>Board reporting and management accountability</li>
+                    </ul>
+                </div>
 
                 <!-- Temporary mailto fallback. Replace with a controlled email-list provider
                      endpoint before collecting production signups at scale. -->
-                <form class="contact-form" action="mailto:info@bluegrasscybersecurity.com?subject=New BCS email list signup" method="POST" enctype="text/plain">
-                    <input type="hidden" name="form_type" value="email_signup">
-                    <input type="hidden" name="subject" value="New BCS email list signup">
+                <form class="contact-form readiness-form" action="mailto:info@bluegrasscybersecurity.com?subject=New BCS readiness check request" method="POST" enctype="text/plain">
+                    <input type="hidden" name="form_type" value="readiness_check">
+                    <input type="hidden" name="subject" value="New BCS readiness check request">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -366,11 +375,15 @@
                         <input type="text" id="contact-org" name="organization" placeholder="Your organization name">
                     </div>
                     <div class="form-group">
-                        <label for="signup-interests">Topics of Interest</label>
-                        <input type="text" id="signup-interests" name="interests" placeholder="Risk assessments, exam prep, vendor management...">
+                        <label for="readiness-timeline">Timeline</label>
+                        <input type="text" id="readiness-timeline" name="timeline" placeholder="Exam scheduled, expected this year, board request...">
                     </div>
-                    <button type="submit" class="contact-button">Request the Guide</button>
-                    <p class="form-footer-note">No spam. Practical updates only. Unsubscribe anytime. For consulting help, use the consultation form.</p>
+                    <div class="form-group">
+                        <label for="readiness-focus">What feels least organized?</label>
+                        <textarea id="readiness-focus" name="readiness_focus" placeholder="Policies, evidence, vendor files, remediation tracking, board reports..."></textarea>
+                    </div>
+                    <button type="submit" class="contact-button">Send My Readiness Notes</button>
+                    <p class="form-footer-note">Practical response only. No spam, no list-padding, and no pressure.</p>
                 </form>
             </div>
         </div>
