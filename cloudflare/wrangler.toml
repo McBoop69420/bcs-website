@@ -1,0 +1,22 @@
+# Cloudflare Worker config for the BCS signup/lead collector.
+# Deploy with:  wrangler deploy
+# Requires:     wrangler secret put TURNSTILE_SECRET
+#               wrangler secret put EXPORT_SECRET
+# KV namespace: create once with `wrangler kv namespace create LEADS`,
+#               then paste the returned id into binding.id below.
+
+name = "bcs-signup-worker"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# Route this worker on the production zone. With this, /api/signup and
+# /api/leads/export resolve on https://www.bluegrasscybersecurity.com.
+routes = [
+  { pattern = "bluegrasscybersecurity.com/api/*", zone_name = "bluegrasscybersecurity.com" },
+  { pattern = "www.bluegrasscybersecurity.com/api/*", zone_name = "bluegrasscybersecurity.com" },
+]
+
+# Workers KV namespace that stores submitted leads.
+[[kv_namespaces]]
+binding = "LEADS"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"

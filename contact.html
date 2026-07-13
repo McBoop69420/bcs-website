@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <form class="consultation-form" action="mailto:info@bluegrasscybersecurity.com?subject=New BCS consultation request" method="POST" enctype="text/plain">
+                <form class="consultation-form" data-bcs-signup action="/api/signup" method="POST">
                     <input type="hidden" name="form_type" value="consultation_request">
                     <input type="hidden" name="subject" value="New BCS consultation request">
                     <div class="form-row">
@@ -99,8 +99,15 @@
                         <label for="message">What are you trying to solve?</label>
                         <textarea id="message" name="message" placeholder="Briefly describe the finding, exam date, vendor concern, policy need, or security gap."></textarea>
                     </div>
+                    <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITEKEY__"></div>
+                    <div class="form-group consent-group">
+                        <label class="consent-label">
+                            <input type="checkbox" name="consent" value="yes" required>
+                            <span>I agree to be contacted by Bluegrass Cybersecurity Solutions about this request, and understand my information is used only to respond to it. You can withdraw consent by emailing info@bluegrasscybersecurity.com.</span>
+                        </label>
+                    </div>
                     <button type="submit" class="contact-button">Request Consultation</button>
-                    <p class="form-footer-note dark-note">This temporary form opens your email client. Replace it with a controlled form endpoint before collecting production leads at scale.</p>
+                    <p class="form-footer-note dark-note">This form is protected by Cloudflare Turnstile. Your details are stored only so we can follow up on your request — no lists, no resale.</p>
                 </form>
             </div>
         </section>
@@ -112,5 +119,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="js/signup.js"></script>
 </body>
 </html>
