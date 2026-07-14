@@ -58,27 +58,33 @@ proxies in front of it.)
   `wrangler kv namespace create LEADS`
 - Copy the returned **id** into `cloudflare/wrangler.toml` as `binding.id`.
 
-### 7. Security headers — Transform Rule
-- **Rules** > **Transform Rules** > **Modify Response Header** > **Create rule**.
-- Rule name: `BCS security headers`.
-- **When incoming requests match:** `Hostname equals www.bluegrasscybersecurity.com` (and add a
-  second OR condition for `bluegrasscybersecurity.com` if you serve the apex too).
-- **Set the following response headers** (one row each; "Set" if absent, "Overwrite" if present):
-  - `Content-Security-Policy` ← paste the full value from `cloudflare/csp.txt`
-  - `Strict-Transport-Security` ← `max-age=31536000; includeSubDomains; preload`
-  - `X-Content-Type-Options` ← `nosniff`
-  - `Referrer-Policy` ← `strict-origin-when-cross-origin`
-  - `Permissions-Policy` ← `accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()`
-- Deploy. After a minute, verify with `curl -I https://www.bluegrasscybersecurity.com` — the headers
-  above should appear (they did NOT before Cloudflare).
+### 7. Security headers — injected by the Worker (not a Transform Rule)
+Cloudflare **Free** does not expose the "Modify Response Header" Transform Rule for
+programmatic (or, in this account, even dashboard-visible) creation. Instead the whole
+site is routed through the Worker (`/*`), which proxies GitHub Pages and injects the 5
+security headers on every response. This is handled entirely by `cloudflare/worker.js` —
+**no dashboard Transform Rule to create.** The canonical header values live in
+`cloudflare/csp.txt` and are mirrored in `worker.js` (`SECURITY_HEADERS` / `CSP`).
+
+Verify live after deploy:
+`curl -sI https://www.bluegrasscybersecurity.com` should show:
+`Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`,
+`Referrer-Policy`, `Permissions-Policy`.
 
 ### 8. Deploy the signup Worker (Part B) — or hand me a token
-The Worker in `cloudflare/worker.js` receives form posts at `/api/signup` and stores leads in KV.
-Either:
-  - You run the commands in Part B, or
-  - You generate a Cloudflare **API token** (Account: `Workers Scripts` + `Account Filter Lists`
-    + `Zone: DNS:Edit` for the zone) and give it to me — I'll create the KV namespace, set the
-    secrets, and `wrangler deploy`, then `curl` the live headers and `/api/signup` to prove it works.
+The Worker in `cloudflare/worker.js` does two jobs on the `/*` route:
+- proxies all static pages and injects the security headers, and
+- handles `/api/signup` (Turnstile verify + KV store) and `/api/leads/export`
+  (CSV export, gated by `EXPORT_SECRET`).
+
+Either you run Part B, or you generate a Cloudflare **API token** with these scopes:
+- Zone: DNS:Edit, SSL and Certificates:Edit, Transform Rules:Edit, **Workers Routes:Edit**
+- Account: Turnstile:Edit, Workers Scripts:Edit, Workers KV Storage:Edit
+
+(Email Routing could NOT be set via token — it was done in the dashboard. The token
+above does not include Email Routing and is not needed for it.) Give me the token and
+I'll create the KV namespace, set the secrets, `wrangler deploy --env production`, bind
+the `/*` routes, then `curl` the live headers and `/api/signup` to prove it works.
 
 ---
 
@@ -97,18 +103,47 @@ wrangler kv namespace create LEADS
 wrangler secret put TURNSTILE_SECRET
 wrangler secret put EXPORT_SECRET      # any long random string; used to download CSV
 
-# 3) deploy
-wrangler deploy
+# 3) deploy to the production env (routes are bound to bcs-signup-worker-production)
+wrangler deploy --env production
 ```
 
-After deploy, the Worker is on the route `www.bluegrasscybersecurity.com/api/*` (and apex).
-Test locally (without a real Turnstile token) by temporarily allowing posts, or test live after
-Cloudflare is active: a real browser submit that passes Turnstile will write a KV entry.
+The Worker is bound to the **`/*`** route on both `bluegrasscybersecurity.com` and
+`www.bluegrasscybersecurity.com`, so it serves the entire site and injects headers.
+Test live after Cloudflare is active: a real browser submit that passes Turnstile writes
+a KV entry; `POST /api/signup` without a token returns `403`; `GET /api/leads/export`
+without `?secret=` returns `401`.
 
 ### Download leads
 The Worker exposes a CSV export (protected by EXPORT_SECRET):
 `https://www.bluegrasscybersecurity.com/api/leads/export?secret=YOUR_EXPORT_SECRET`
 Open in a browser or `curl` it to get `bcs-leads.csv`.
+
+---
+
+## Part C — Email Routing (`info@` → your inbox)
+
+Cloudflare **Email Routing** forwards `info@bluegrasscybersecurity.com` to a verified
+Gmail address. It is configured **in the dashboard only** (the API token used for the
+Worker does not have Email Routing permission).
+
+### Setup (done — recorded here for reference)
+1. **Email** > **Email Routing** > **Onboard Domain** → `bluegrasscybersecurity.com`.
+2. **Destination address:** `jared.luyster@gmail.com` → verify via the link Cloudflare
+   emails to that inbox. (Status shows **Verified**.)
+3. **Routing rule:** `info@bluegrasscybersecurity.com` → **Send to** `jared.luyster@gmail.com`.
+4. **Activate** → Cloudflare adds its own DNS records and **removes** the old Namecheap
+   `eforward*.registrar-servers.com` MX records. Resulting records:
+   - MX `bluegrasscybersecurity.com` → `route1/2/3.mx.cloudflare.net`
+   - TXT `bluegrasscybersecurity.com` → `v=spf1 include:_spf.mx.cloudflare.net ~all`
+   - TXT `cf2024-1._domainkey.bluegrasscybersecurity.com` → DKIM
+
+### Verify live
+`dig +short MX bluegrasscybersecurity.com` (or `nslookup -type=MX bluegrasscybersecurity.com`)
+should return the three `route*.mx.cloudflare.net` hosts. Send a test email to
+`info@bluegrasscybersecurity.com` and confirm it lands in `jared.luyster@gmail.com`.
+
+> To change the destination later: **Email** > **Email Routing** > **Destination Addresses**
+> → add the new address, verify it, then edit the routing rule to target it.
 
 ---
 
@@ -119,6 +154,6 @@ Open in a browser or `curl` it to get `bcs-leads.csv`.
 - `css/pages.css`: styles for consent label, Turnstile widget, and submission status.
 - `cloudflare/worker.js` (new): the signup endpoint (Turnstile verify + KV store + CSV export).
 - `cloudflare/wrangler.toml` (new): Worker deploy config (KV id placeholder to fill).
-- `cloudflare/csp.txt` (new): canonical CSP (matches the Cloudflare Transform Rule).
+- `cloudflare/csp.txt` (new): canonical CSP (mirrored in `worker.js` `SECURITY_HEADERS`/`CSP`).
 - `cloudflare/CLOUDFLARE-SETUP.md` (new): this file.
 - `_headers`: now documents that GitHub Pages ignores it; CSP updated to mirror csp.txt.
