@@ -22,11 +22,6 @@
 
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-// GitHub Pages origin that actually hosts the static site. The zone's
-// DNS is orange-clouded, but with a /* Worker route Cloudflare sends
-// requests here instead of proxying, so we fetch the real origin directly.
-const ORIGIN_HOST = "mcboop69420.github.io";
-
 // Canonical CSP — single source of truth mirrors cloudflare/csp.txt.
 const CSP = `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://www.bluegrasscybersecurity.com; script-src 'self' https://challenges.cloudflare.com 'sha256-884w7bl91WYQj7mzuYBmwGY+y40qiioQcCegSdtt5z0=' 'sha256-Bjl/8HxUcB39yaYTvwVKApeUn/QwOP+gYAzho+ZBY0U=' 'sha256-HgDoNSa9QyCvVTpsEFBR0F/+CBLxvv7jpxmHbmoILPg=' 'sha256-Krsjpsjk0uGiul/SV1pZC4sIow/RlnUf4GqvpCJ4xU0=' 'sha256-LBo6nt183Hhh5MsyaRpDm+/skSTmIna5aK6slCExJZo=' 'sha256-LzVCBVm/40hGGRIWGz8U6WErJNeedCC0zHGyJsvNCWw=' 'sha256-n2JHBBnaPEetNPbqdy+CnC/IN6ro5j8+F7XkeppVCe0=' 'sha256-oub/SoTSmysjXHMKjzorq7JA8ScQLNe3sWhy/lyRsS0=' 'sha256-pbhGiE1An+LL9b9GavH6U9eZx49LOFcPkHBvqdYRPwc=' 'sha256-Pgl2iI1Z6NoWO2bYVmv1VfcUxPj3nOfNANlrnZlTxqE=' 'sha256-SbU7se08/XStXg943bPijHP0V57BHGvL0d51xlEhVPQ=' 'sha256-t33qVoidhyx7etkxyoAHuGCMVvpEnDJqLLOLIsP0Vtc=' 'sha256-ZL2zxjTyYKDPKIXEHrNXLKR/KW45hlukZAvGJZbsRNY='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; child-src https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests; block-all-mixed-content`;
 
