@@ -1,38 +1,67 @@
 /**
- * BCS signup/lead collector worker.
+ * BCS edge worker.
  *
- * Deployed to Cloudflare (workers.dev for testing, then on the
- * bluegrasscybersecurity.com zone route /api/*). It receives a JSON
- * POST from the static site's js/signup.js, verifies the Cloudflare
- * Turnstile token, and appends the lead to a Workers KV namespace.
+ * Serves the whole site (route /*) by proxying GitHub Pages and injecting
+ * the canonical security headers on every response. It also handles the
+ * signup/lead-collection API (route /api/*) — Turnstile verification +
+ * KV storage + a protected CSV export.
  *
- * Secrets (set with `wrangler secret put`):
- *   TURNSTILE_SECRET   - the Turnstile widget secret (from Cloudflare dashboard)
- *   EXPORT_SECRET      - shared secret required to download the CSV export
+ * Why proxy instead of a Cloudflare Transform Rule:
+ *   The Free plan does not expose the "Modify Response Header" Transform
+ *   Rule for programmatic (or, in this account's dashboard, visible)
+ *   creation, so we inject the headers at the edge from the Worker. Same
+ *   outcome, fully automatable.
  *
- * Bindings (set in wrangler.toml):
- *   LEADS  - a Workers KV namespace (created with `wrangler kv namespace create LEADS`)
+ * Secrets (wrangler secret put):
+ *   TURNSTILE_SECRET  - Turnstile widget secret
+ *   EXPORT_SECRET     - shared secret required to download the CSV export
  *
- * The site's CSP sets form-action 'self' and connect-src 'self', so the
- * browser can only POST to this same-origin /api path. Turnstile is
- * verified server-side, so a spoofed client can't skip the challenge.
+ * Bindings (wrangler.toml):
+ *   LEADS  - Workers KV namespace
  */
 
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
+// GitHub Pages origin that actually hosts the static site. The zone's
+// DNS is orange-clouded, but with a /* Worker route Cloudflare sends
+// requests here instead of proxying, so we fetch the real origin directly.
+const ORIGIN_HOST = "mcboop69420.github.io";
+
+// Canonical CSP — single source of truth mirrors cloudflare/csp.txt.
+const CSP = `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://www.bluegrasscybersecurity.com; script-src 'self' https://challenges.cloudflare.com 'sha256-884w7bl91WYQj7mzuYBmwGY+y40qiioQcCegSdtt5z0=' 'sha256-Bjl/8HxUcB39yaYTvwVKApeUn/QwOP+gYAzho+ZBY0U=' 'sha256-HgDoNSa9QyCvVTpsEFBR0F/+CBLxvv7jpxmHbmoILPg=' 'sha256-Krsjpsjk0uGiul/SV1pZC4sIow/RlnUf4GqvpCJ4xU0=' 'sha256-LBo6nt183Hhh5MsyaRpDm+/skSTmIna5aK6slCExJZo=' 'sha256-LzVCBVm/40hGGRIWGz8U6WErJNeedCC0zHGyJsvNCWw=' 'sha256-n2JHBBnaPEetNPbqdy+CnC/IN6ro5j8+F7XkeppVCe0=' 'sha256-oub/SoTSmysjXHMKjzorq7JA8ScQLNe3sWhy/lyRsS0=' 'sha256-pbhGiE1An+LL9b9GavH6U9eZx49LOFcPkHBvqdYRPwc=' 'sha256-Pgl2iI1Z6NoWO2bYVmv1VfcUxPj3nOfNANlrnZlTxqE=' 'sha256-SbU7se08/XStXg943bPijHP0V57BHGvL0d51xlEhVPQ=' 'sha256-t33qVoidhyx7etkxyoAHuGCMVvpEnDJqLLOLIsP0Vtc=' 'sha256-ZL2zxjTyYKDPKIXEHrNXLKR/KW45hlukZAvGJZbsRNY='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; child-src https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests; block-all-mixed-content`;
+
+const SECURITY_HEADERS = {
+  "Content-Security-Policy": CSP,
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy":
+    "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+};
+
+function addSecurityHeaders(response) {
+  const headers = new Headers(response.headers);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) headers.set(k, v);
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 function jsonResponse(body, status = 200) {
-  return new Response(JSON.stringify(body), {
+  const base = new Response(JSON.stringify(body), {
     status,
     headers: {
       "content-type": "application/json; charset=utf-8",
       "cache-control": "no-store",
     },
   });
+  return addSecurityHeaders(base);
 }
 
 function isValidEmail(email) {
-  // Pragmatic RFC-5322-lite check; Turnstile + KV are the real safeguards.
-  return typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return typeof email === "string" && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
 
 async function verifyTurnstile(token, secret, ip) {
@@ -56,7 +85,6 @@ async function handleSignup(request, env) {
   if (request.method !== "POST") {
     return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
   }
-
   let payload;
   try {
     payload = await request.json();
@@ -78,14 +106,12 @@ async function handleSignup(request, env) {
     return jsonResponse({ ok: false, error: "Human verification failed" }, 403);
   }
 
-  // Only store what the form actually sent, plus server-side metadata.
   const record = {
     received_at: new Date().toISOString(),
     form_type: payload.form_type || "unknown",
     name: (payload.name || "").slice(0, 200),
     email,
     organization: (payload.organization || "").slice(0, 200),
-    // Carry optional extra fields for the consultation form.
     extra: payload.extra || {},
     ip_country: request.cf && request.cf.country ? request.cf.country : "",
   };
@@ -123,20 +149,38 @@ async function handleExport(request, env) {
     ...rows.map((r) => header.map((h) => esc(r[h])).join(",")),
   ].join("\n");
 
-  return new Response(csv, {
+  const base = new Response(csv, {
     headers: {
       "content-type": "text/csv; charset=utf-8",
       "content-disposition": 'attachment; filename="bcs-leads.csv"',
       "cache-control": "no-store",
     },
   });
+  return addSecurityHeaders(base);
+}
+
+async function proxyToOrigin(request) {
+  // The zone is orange-clouded with A records pointing at GitHub Pages, so a
+  // normal subrequest to the same URL is proxied by Cloudflare to the origin
+  // (same path that served the site before the Worker existed). This avoids
+  // hand-crafting the origin request, which GitHub Pages rejected from
+  // Cloudflare egress IPs when targeted directly at *.github.io.
+  const resp = await fetch(request);
+  return addSecurityHeaders(resp);
 }
 
 export default {
   async fetch(request, env) {
+    // Force HTTPS (covers Flexible SSL mode where the browser may arrive on http).
+    const proto = request.headers.get("x-forwarded-proto");
+    if (proto === "http") {
+      const u = new URL(request.url);
+      return Response.redirect(`https://${u.host}${u.pathname}${u.search}`, 301);
+    }
+
     const url = new URL(request.url);
     if (url.pathname === "/api/signup") return handleSignup(request, env);
     if (url.pathname === "/api/leads/export") return handleExport(request, env);
-    return jsonResponse({ ok: false, error: "Not found" }, 404);
+    return proxyToOrigin(request);
   },
 };

@@ -9,14 +9,30 @@ name = "bcs-signup-worker"
 main = "worker.js"
 compatibility_date = "2024-09-23"
 
-# Route this worker on the production zone. With this, /api/signup and
-# /api/leads/export resolve on https://www.bluegrasscybersecurity.com.
+# Route the WHOLE site through the worker so it can inject security headers
+# on every response (Free plan has no programmatic/visible Transform Rule for
+# response headers). The /api/* route is kept as a redundant kill-switch.
 routes = [
-  { pattern = "bluegrasscybersecurity.com/api/*", zone_name = "bluegrasscybersecurity.com" },
-  { pattern = "www.bluegrasscybersecurity.com/api/*", zone_name = "bluegrasscybersecurity.com" },
+  { pattern = "bluegrasscybersecurity.com/*", zone_name = "bluegrasscybersecurity.com" },
+  { pattern = "www.bluegrasscybersecurity.com/*", zone_name = "bluegrasscybersecurity.com" },
 ]
 
 # Workers KV namespace that stores submitted leads.
 [[kv_namespaces]]
 binding = "LEADS"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "9e2c4fcadcf24adf96e0ed9ec8fa6c68"
+
+# The routes in the dashboard are bound to the "production" environment of
+# this worker (deployed once with --env production). Keep deploying there so
+# wrangler updates the already-bound script instead of creating a second one.
+[env.production]
+name = "bcs-signup-worker-production"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+routes = [
+  { pattern = "bluegrasscybersecurity.com/*", zone_name = "bluegrasscybersecurity.com" },
+  { pattern = "www.bluegrasscybersecurity.com/*", zone_name = "bluegrasscybersecurity.com" },
+]
+[[env.production.kv_namespaces]]
+binding = "LEADS"
+id = "9e2c4fcadcf24adf96e0ed9ec8fa6c68"
