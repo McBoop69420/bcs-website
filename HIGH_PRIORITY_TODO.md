@@ -9,7 +9,7 @@ These items track the high-priority findings from the security audit.
 
 - [x] Configure DNS for `bluegrasscybersecurity.com`.
   - Apex and `www` both resolve through Cloudflare and serve the production site.
-  - Domain lock is active per WHOIS above. MFA, domain privacy, and auto-renew live in the registrar account UI and can't be checked remotely — confirm these directly in the Namecheap dashboard.
+  - Domain lock is active per WHOIS above. Confirmed 2026-07-31 in the Namecheap dashboard: WithheldforPrivacy (domain privacy) is ON, auto-renew is ON for both the domain and privacy protection, and account Two-Factor Authentication (TOTP + backup codes) is now enabled.
 
 - [x] Deploy this site to the new domain.
   - Confirmed 2026-07-31: `https://bluegrasscybersecurity.com/` and `https://www.bluegrasscybersecurity.com/` both serve this repository.
