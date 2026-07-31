@@ -122,10 +122,43 @@ function buildExportMetadata(record) {
   return meta;
 }
 
+// Cheap per-IP abuse guard for /api/signup. Turnstile stops bots but doesn't
+// cap request *rate* — a solved token can be replayed to script rapid
+// submissions. Reuses the LEADS KV binding rather than adding a new one.
+// Each hit both increments the counter and refreshes its TTL, so sustained
+// abuse stays capped instead of the window quietly resetting mid-flood; the
+// tradeoff is a legit user retrying inside the window keeps the block alive
+// too, which is an acceptable cost for a low-volume B2B contact form.
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_SECONDS = 600;
+
+async function checkRateLimit(env, ip) {
+  if (!ip) return true; // nothing to key on — fail open rather than block everyone behind it
+  const key = `ratelimit:${ip}`;
+  const current = await env.LEADS.get(key);
+  const count = current ? parseInt(current, 10) || 0 : 0;
+  if (count >= RATE_LIMIT_MAX) return false;
+  await env.LEADS.put(key, String(count + 1), { expirationTtl: RATE_LIMIT_WINDOW_SECONDS });
+  return true;
+}
+
 async function handleSignup(request, env) {
   if (request.method !== "POST") {
     return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
   }
+
+  const ip =
+    request.headers.get("cf-connecting-ip") ||
+    request.headers.get("x-forwarded-for") ||
+    "";
+
+  if (!(await checkRateLimit(env, ip))) {
+    return jsonResponse(
+      { ok: false, error: "Too many requests — please try again later." },
+      429
+    );
+  }
+
   let payload;
   try {
     payload = await parseSignupPayload(request);
@@ -139,10 +172,6 @@ async function handleSignup(request, env) {
     return jsonResponse({ ok: false, error: "A valid email is required" }, 422);
   }
 
-  const ip =
-    request.headers.get("cf-connecting-ip") ||
-    request.headers.get("x-forwarded-for") ||
-    "";
   const ok = await verifyTurnstile(payload.turnstileToken, env.TURNSTILE_SECRET, ip);
   if (!ok) {
     return jsonResponse({ ok: false, error: "Human verification failed" }, 403);

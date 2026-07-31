@@ -4,18 +4,17 @@ These items track the high-priority findings from the security audit.
 
 ## Domain Ownership and Hosting
 
-- [ ] Register `bluegrasscybersecurity.com`.
-  - Local DNS checks on May 9, 2026 found no NS or A records, so the domain appears likely available.
-  - Final availability and price must be confirmed at registrar checkout.
+- [x] Register `bluegrasscybersecurity.com`.
+  - Confirmed via WHOIS on 2026-07-31: registered through Namecheap, created 2026-05-12, `clientTransferProhibited` (transfer lock active).
 
-- [ ] Configure DNS for `bluegrasscybersecurity.com`.
-  - Point apex and `www` records to the production host.
-  - Enable registrar account MFA, domain privacy, auto-renew, and domain lock.
+- [x] Configure DNS for `bluegrasscybersecurity.com`.
+  - Apex and `www` both resolve through Cloudflare and serve the production site.
+  - Domain lock is active per WHOIS above. MFA, domain privacy, and auto-renew live in the registrar account UI and can't be checked remotely — confirm these directly in the Namecheap dashboard.
 
-- [ ] Deploy this site to the new domain.
-  - Confirm `https://bluegrasscybersecurity.com/` and `https://www.bluegrasscybersecurity.com/` serve this repository.
-  - Redirect HTTP to HTTPS.
-  - Redirect the non-canonical hostname to the canonical hostname.
+- [x] Deploy this site to the new domain.
+  - Confirmed 2026-07-31: `https://bluegrasscybersecurity.com/` and `https://www.bluegrasscybersecurity.com/` both serve this repository.
+  - `http://` redirects to `https://` (301) on both apex and `www`.
+  - Apex redirects to the canonical `www` host (301).
 
 - [x] Prepare repository metadata for the new domain.
   - Canonical URLs, Open Graph URLs, JSON-LD, `robots.txt`, `sitemap.xml`, CSP image source, and email links now reference `bluegrasscybersecurity.com`.
@@ -25,16 +24,16 @@ These items track the high-priority findings from the security audit.
 - [x] Remove the placeholder Formspree endpoint.
   - The email signup form now uses a controlled `mailto:` fallback instead of posting to an unconfigured third-party placeholder.
 
-- [ ] Replace the temporary signup fallback with a real email-list provider or controlled form endpoint.
-  - Add spam protection and rate limiting.
-  - Add consent/privacy copy before collecting production signups at scale.
-  - Update CSP `form-action` when the production endpoint is selected.
+- [x] Replace the temporary signup fallback with a real email-list provider or controlled form endpoint.
+  - Forms now POST to the Cloudflare Worker (`/api/signup`), which verifies Turnstile and stores leads in KV — this is the controlled endpoint, not a third-party placeholder.
+  - Consent copy is present and required (`consent` checkbox) before submission.
+  - CSP `form-action` is already scoped to `'self'`.
+  - Rate limiting added 2026-07-31: `/api/signup` caps each IP at 5 requests per rolling 10-minute window via a KV-backed counter (`cloudflare/worker.js`), returning `429` past the cap.
 
 ## Post-Deploy Verification
 
-- [ ] Verify production response headers.
-  - Confirm CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy`, and `Permissions-Policy` are present.
+- [x] Verify production response headers.
+  - Confirmed 2026-07-31: CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy`, and `Permissions-Policy` are all present on the live response.
 
-- [ ] Verify live domain is no longer parked.
-  - Check the homepage, products page, blog index, and one blog article.
-  - Confirm no third-party parking/ad scripts are served.
+- [x] Verify live domain is no longer parked.
+  - Confirmed 2026-07-31: homepage, products page, blog index, and one blog article all return 200 with real content; no parking/ad script signatures found.
