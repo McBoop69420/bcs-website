@@ -76,18 +76,65 @@ async function verifyTurnstile(token, secret, ip) {
   }
 }
 
+// Fields captured explicitly on the record; everything else the client
+// submits is preserved under `extra` instead of being silently dropped.
+const KNOWN_SIGNUP_FIELDS = new Set([
+  "email",
+  "turnstileToken",
+  "form_type",
+  "subject",
+  "name",
+  "organization",
+]);
+
+async function parseSignupPayload(request) {
+  const contentType = request.headers.get("content-type") || "";
+  if (contentType.includes("application/x-www-form-urlencoded")) {
+    const form = await request.formData();
+    return Object.fromEntries(form.entries());
+  }
+  // Default to JSON (the JS-driven path); this also covers browsers that
+  // omit a content-type on a plain-text body.
+  return request.json();
+}
+
+function buildExtraFields(payload) {
+  const extra = {};
+  for (const [k, v] of Object.entries(payload)) {
+    if (KNOWN_SIGNUP_FIELDS.has(k)) continue;
+    if (typeof v === "string" && v) extra[k] = v.slice(0, 2000);
+  }
+  return extra;
+}
+
+// KV metadata is capped at 1024 bytes serialized. The export reads leads
+// straight from list() metadata (see handleExport) so it never needs a
+// get() per key; keep this payload well under the cap, shrinking `details`
+// first since it's the only unbounded field.
+const MAX_METADATA_BYTES = 1000;
+
+function buildExportMetadata(record) {
+  const meta = { ...record, details: JSON.stringify(record.extra || {}) };
+  delete meta.extra;
+  while (JSON.stringify(meta).length > MAX_METADATA_BYTES && meta.details.length > 0) {
+    meta.details = meta.details.slice(0, Math.max(0, meta.details.length - 100));
+  }
+  return meta;
+}
+
 async function handleSignup(request, env) {
   if (request.method !== "POST") {
     return jsonResponse({ ok: false, error: "Method not allowed" }, 405);
   }
   let payload;
   try {
-    payload = await request.json();
+    payload = await parseSignupPayload(request);
   } catch {
-    return jsonResponse({ ok: false, error: "Invalid JSON body" }, 400);
+    return jsonResponse({ ok: false, error: "Invalid request body" }, 400);
   }
 
-  const email = (payload.email || "").trim();
+  const rawEmail = typeof payload.email === "string" ? payload.email : "";
+  const email = rawEmail.trim();
   if (!isValidEmail(email)) {
     return jsonResponse({ ok: false, error: "A valid email is required" }, 422);
   }
@@ -103,42 +150,58 @@ async function handleSignup(request, env) {
 
   const record = {
     received_at: new Date().toISOString(),
-    form_type: payload.form_type || "unknown",
-    name: (payload.name || "").slice(0, 200),
+    form_type: typeof payload.form_type === "string" ? payload.form_type : "unknown",
+    name: (typeof payload.name === "string" ? payload.name : "").slice(0, 200),
     email,
-    organization: (payload.organization || "").slice(0, 200),
-    extra: payload.extra || {},
+    organization: (typeof payload.organization === "string" ? payload.organization : "").slice(0, 200),
+    extra: buildExtraFields(payload),
     ip_country: request.cf && request.cf.country ? request.cf.country : "",
   };
 
   const key = `lead:${Date.now()}:${crypto.randomUUID()}`;
-  await env.LEADS.put(key, JSON.stringify(record));
+  await env.LEADS.put(key, JSON.stringify(record), {
+    metadata: buildExportMetadata(record),
+  });
 
   return jsonResponse({ ok: true, message: "Thanks — we'll be in touch." });
 }
 
+function isAuthorizedExport(request, env) {
+  const auth = request.headers.get("authorization") || "";
+  const [scheme, token] = auth.split(" ");
+  return scheme === "Bearer" && !!token && token === env.EXPORT_SECRET;
+}
+
 async function handleExport(request, env) {
-  const url = new URL(request.url);
-  const provided = url.searchParams.get("secret");
-  if (!provided || provided !== env.EXPORT_SECRET) {
+  if (!isAuthorizedExport(request, env)) {
     return jsonResponse({ ok: false, error: "Unauthorized" }, 401);
   }
-  const { keys } = await env.LEADS.list();
+
+  // Leads are read straight from list() metadata (written at signup time),
+  // never via a per-key get() — that keeps this to one KV operation per
+  // page of up to 1000 keys no matter how many leads exist, instead of an
+  // N+1 get() pattern that blows past the per-invocation subrequest limit.
   const rows = [];
-  for (const k of keys) {
-    const v = await env.LEADS.get(k.name);
-    if (v) {
-      try {
-        rows.push(JSON.parse(v));
-      } catch {
-        /* skip malformed */
-      }
+  let cursor;
+  do {
+    const page = await env.LEADS.list(cursor ? { cursor } : {});
+    for (const k of page.keys) {
+      if (k.metadata) rows.push(k.metadata);
     }
-  }
+    cursor = page.list_complete ? undefined : page.cursor;
+  } while (cursor);
+
   rows.sort((a, b) => (a.received_at < b.received_at ? 1 : -1));
 
-  const header = ["received_at", "form_type", "name", "email", "organization", "ip_country"];
-  const esc = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
+  const header = ["received_at", "form_type", "name", "email", "organization", "ip_country", "details"];
+  // Neutralize spreadsheet formula injection: a cell beginning with
+  // = + - @ is executed as a formula by Excel/Sheets on open.
+  // https://owasp.org/www-community/attacks/CSV_Injection
+  const esc = (s) => {
+    let str = String(s ?? "");
+    if (/^[=+\-@\t\r]/.test(str)) str = "'" + str;
+    return `"${str.replace(/"/g, '""')}"`;
+  };
   const csv = [
     header.join(","),
     ...rows.map((r) => header.map((h) => esc(r[h])).join(",")),

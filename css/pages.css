@@ -1112,9 +1112,22 @@
 
         .reporting-content {
             display: grid;
-            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
             gap: 3rem;
             align-items: center;
+        }
+
+        /* Grid items default to min-width: auto, which lets their
+           content's intrinsic min-content size (e.g. the 300px Turnstile
+           widget) push the track wider than minmax(0, ...) alone allows. */
+        .reporting-content > * {
+            min-width: 0;
+        }
+
+        @media (min-width: 640px) {
+            .reporting-content {
+                grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+            }
         }
 
         .reporting-copy h2 {
@@ -1261,7 +1274,12 @@
             margin-top: 0.2rem;
             flex: 0 0 auto;
         }
-        .cf-turnstile { margin: 1rem 0 0.25rem; }
+        .cf-turnstile {
+            margin: 1rem 0 0.25rem;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .cf-turnstile iframe { max-width: 100%; }
         .form-status {
             font-size: 0.88rem;
             font-weight: 600;
@@ -1289,9 +1307,9 @@
         }
 
         @media (max-width: 768px) {
-            .form-row { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: minmax(0, 1fr); }
             .reporting-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
                 gap: 2rem;
             }
             .reporting-copy h2 {
@@ -2158,6 +2176,13 @@
     align-items: start;
 }
 
+/* Grid items default to min-width: auto, which lets content (e.g. the
+   300px-wide Turnstile widget) push the track wider than the container. */
+.service-detail-grid > *,
+.contact-page-grid > * {
+    min-width: 0;
+}
+
 .service-main-copy,
 .consultation-copy,
 .consultation-form {
@@ -2241,7 +2266,7 @@
     .service-detail-grid,
     .contact-page-grid,
     .blog-lead-card {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .blog-lead-card {

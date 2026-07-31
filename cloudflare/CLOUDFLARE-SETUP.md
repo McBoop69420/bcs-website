@@ -111,12 +111,15 @@ The Worker is bound to the **`/*`** route on both `bluegrasscybersecurity.com` a
 `www.bluegrasscybersecurity.com`, so it serves the entire site and injects headers.
 Test live after Cloudflare is active: a real browser submit that passes Turnstile writes
 a KV entry; `POST /api/signup` without a token returns `403`; `GET /api/leads/export`
-without `?secret=` returns `401`.
+without an `Authorization` header returns `401`.
 
 ### Download leads
-The Worker exposes a CSV export (protected by EXPORT_SECRET):
-`https://www.bluegrasscybersecurity.com/api/leads/export?secret=YOUR_EXPORT_SECRET`
-Open in a browser or `curl` it to get `bcs-leads.csv`.
+The Worker exposes a CSV export (protected by EXPORT_SECRET). The secret is sent as a
+Bearer token, not a URL query param, so it never lands in browser history or server logs:
+```
+curl -H "Authorization: Bearer YOUR_EXPORT_SECRET" \
+  https://www.bluegrasscybersecurity.com/api/leads/export -o bcs-leads.csv
+```
 
 ---
 

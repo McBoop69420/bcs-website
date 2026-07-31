@@ -81,12 +81,24 @@
 
       var token = getTurnstileToken(widget);
       if (widget && !token) {
+        if (typeof window.turnstile === "undefined") {
+          // The Turnstile script itself never loaded (blocked, offline,
+          // etc.) — there is no checkbox to complete, so degrade instead
+          // of blocking the user forever.
+          setStatus(
+            form,
+            "Verification unavailable — opening your email instead.",
+            "error"
+          );
+          degradeToMailto(form, data);
+          return;
+        }
         setStatus(
           form,
           "Please complete the human verification checkbox.",
           "error"
         );
-        if (window.turnstile && widget.dataset.widgetId) {
+        if (widget.dataset.widgetId) {
           window.turnstile.reset(widget.dataset.widgetId);
         }
         return;
