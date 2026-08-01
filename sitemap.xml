@@ -54,9 +54,15 @@
   </url>
   <url>
     <loc>https://www.bluegrasscybersecurity.com/blog.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscybersecurity.com/blog/change-management-documentation.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.bluegrasscybersecurity.com/blog/exam-evidence-folder.html</loc>
