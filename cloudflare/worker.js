@@ -81,11 +81,24 @@ async function verifyTurnstile(token, secret, ip) {
 const KNOWN_SIGNUP_FIELDS = new Set([
   "email",
   "turnstileToken",
+  "cf-turnstile-response",
   "form_type",
   "subject",
   "name",
   "organization",
 ]);
+
+// Turnstile's own widget posts the token as `cf-turnstile-response` (native
+// <form> submission, no JS); the fetch()-driven path sends `turnstileToken`.
+function extractTurnstileToken(payload) {
+  if (typeof payload.turnstileToken === "string" && payload.turnstileToken) {
+    return payload.turnstileToken;
+  }
+  if (typeof payload["cf-turnstile-response"] === "string") {
+    return payload["cf-turnstile-response"];
+  }
+  return "";
+}
 
 async function parseSignupPayload(request) {
   const contentType = request.headers.get("content-type") || "";
@@ -107,17 +120,22 @@ function buildExtraFields(payload) {
   return extra;
 }
 
-// KV metadata is capped at 1024 bytes serialized. The export reads leads
-// straight from list() metadata (see handleExport) so it never needs a
-// get() per key; keep this payload well under the cap, shrinking `details`
-// first since it's the only unbounded field.
+// KV metadata is capped at 1024 bytes serialized, and that cap is on UTF-8
+// bytes, not JS string length — multi-byte characters (CJK, emoji, etc.)
+// make those diverge. Shrink `details` first since it's the only unbounded
+// field, then fall back to `organization`/`name` for pathological cases
+// where free-text fields alone exceed the cap.
 const MAX_METADATA_BYTES = 1000;
+const SHRINKABLE_METADATA_FIELDS = ["details", "organization", "name"];
+const byteLength = (str) => new TextEncoder().encode(str).length;
 
 function buildExportMetadata(record) {
   const meta = { ...record, details: JSON.stringify(record.extra || {}) };
   delete meta.extra;
-  while (JSON.stringify(meta).length > MAX_METADATA_BYTES && meta.details.length > 0) {
-    meta.details = meta.details.slice(0, Math.max(0, meta.details.length - 100));
+  for (const field of SHRINKABLE_METADATA_FIELDS) {
+    while (byteLength(JSON.stringify(meta)) > MAX_METADATA_BYTES && meta[field].length > 0) {
+      meta[field] = meta[field].slice(0, Math.max(0, meta[field].length - 100));
+    }
   }
   return meta;
 }
@@ -138,7 +156,15 @@ async function checkRateLimit(env, ip) {
   const current = await env.LEADS.get(key);
   const count = current ? parseInt(current, 10) || 0 : 0;
   if (count >= RATE_LIMIT_MAX) return false;
-  await env.LEADS.put(key, String(count + 1), { expirationTtl: RATE_LIMIT_WINDOW_SECONDS });
+  try {
+    await env.LEADS.put(key, String(count + 1), { expirationTtl: RATE_LIMIT_WINDOW_SECONDS });
+  } catch {
+    // KV rejects more than one write/sec to the same key, so two requests
+    // from the same IP inside one second can land here. The read above
+    // already confirmed the request is under the cap — losing this
+    // particular increment just means the counter undercounts slightly,
+    // which is a better failure mode than a 500 on a legitimate submission.
+  }
   return true;
 }
 
@@ -172,7 +198,7 @@ async function handleSignup(request, env) {
     return jsonResponse({ ok: false, error: "A valid email is required" }, 422);
   }
 
-  const ok = await verifyTurnstile(payload.turnstileToken, env.TURNSTILE_SECRET, ip);
+  const ok = await verifyTurnstile(extractTurnstileToken(payload), env.TURNSTILE_SECRET, ip);
   if (!ok) {
     return jsonResponse({ ok: false, error: "Human verification failed" }, 403);
   }
@@ -215,7 +241,18 @@ async function handleExport(request, env) {
   do {
     const page = await env.LEADS.list(cursor ? { cursor } : {});
     for (const k of page.keys) {
-      if (k.metadata) rows.push(k.metadata);
+      if (k.metadata) {
+        rows.push(k.metadata);
+        continue;
+      }
+      // Leads written before metadata existed have none, and would
+      // otherwise be silently dropped from the export. This get() is
+      // bounded to that legacy backlog — current writes always carry
+      // metadata, so steady-state export stays at one list() per page.
+      const raw = await env.LEADS.get(k.name);
+      if (!raw) continue;
+      const record = JSON.parse(raw);
+      rows.push({ ...record, details: JSON.stringify(record.extra || {}) });
     }
     cursor = page.list_complete ? undefined : page.cursor;
   } while (cursor);
@@ -228,7 +265,7 @@ async function handleExport(request, env) {
   // https://owasp.org/www-community/attacks/CSV_Injection
   const esc = (s) => {
     let str = String(s ?? "");
-    if (/^[=+\-@\t\r]/.test(str)) str = "'" + str;
+    if (/^[=+\-@\t\r\n]/.test(str)) str = "'" + str;
     return `"${str.replace(/"/g, '""')}"`;
   };
   const csv = [
