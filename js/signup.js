@@ -98,8 +98,11 @@
           "Please complete the human verification checkbox.",
           "error"
         );
-        if (widget.dataset.widgetId) {
-          window.turnstile.reset(widget.dataset.widgetId);
+        // The widget is implicitly rendered (no explicit turnstile.render()
+        // call), so there's no widget id on the element — reset() also
+        // accepts the container node itself for that case.
+        if (window.turnstile) {
+          window.turnstile.reset(widget);
         }
         return;
       }
@@ -132,8 +135,8 @@
               r.body.message || "Thanks — we'll be in touch shortly.",
               "success"
             );
-            if (window.turnstile && widget && widget.dataset.widgetId) {
-              window.turnstile.reset(widget.dataset.widgetId);
+            if (window.turnstile && widget) {
+              window.turnstile.reset(widget);
             }
           } else {
             // Server rejected (e.g. bad email / token). Degrade so the lead
