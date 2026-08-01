@@ -2,7 +2,7 @@
 
 Static website for Bluegrass Cybersecurity Solutions, a cybersecurity consulting practice focused on risk assessments, policy development, exam prep, vendor management, MSP oversight, incident response, and board/regulatory reporting support.
 
-The site is plain HTML, CSS, and JavaScript. There is no build step or package manager dependency.
+The site is plain HTML, CSS, and JavaScript. There is no runtime build step or package dependency.
 
 ## Current Site
 
@@ -66,6 +66,19 @@ http://127.0.0.1:8080/index.html
 
 Stop the server with `Ctrl+C` in the terminal that started it.
 
+## Tests
+
+The test suite uses Node's built-in test runner and has no third-party dependencies. Run it with:
+
+```bash
+npm test
+```
+
+Use `npm run test:watch` while developing. The suite covers Worker routing, signup validation,
+Turnstile verification, KV writes and export pagination, CSV safety, security headers, form
+integration, and CSP synchronization. Known review findings remain as executable `TODO` tests
+until their production fixes land. GitHub Actions runs the same suite on pushes and pull requests.
+
 ## Blog Maintenance
 
 This repository follows the local `AGENTS.md` maintenance rule:
@@ -82,13 +95,10 @@ When adding a post, copy the structure from an existing `blog/*.html` article, u
 
 ## Forms And CTAs
 
-The homepage reporting form currently uses a `mailto:` fallback:
-
-```html
-mailto:info@bluegrasscybersecurity.com
-```
-
-Before collecting production submissions at scale, replace this with a controlled form endpoint, CRM workflow, or email-list provider. If the endpoint changes, update the `form-action` directive in `_headers` so the Content Security Policy still permits submissions.
+The homepage and contact forms submit to the Cloudflare Worker at `/api/signup`, with Turnstile
+verification and KV-backed lead storage. Client-side failures degrade to a pre-populated email to
+`info@bluegrasscybersecurity.com`. If the endpoint changes, update the `form-action` directive in
+the canonical CSP so submissions remain permitted.
 
 Current homepage framing is board and regulatory reporting: board-ready summaries, regulatory evidence, open findings, remediation tracking, and vendor/MSP reporting.
 
