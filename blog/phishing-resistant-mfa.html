@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Phishing-Resistant MFA: What Examiners Expect Now | Bluegrass Cybersecurity Solutions</title>
+    <meta name="description" content="SMS and push-based MFA are no longer enough on their own. Here's why examiners are pushing toward phishing-resistant authentication and how to get there without a forklift upgrade.">
+    <link rel="canonical" href="https://www.bluegrasscybersecurity.com/blog/phishing-resistant-mfa.html">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
+    <meta property="og:title"       content="Phishing-Resistant MFA: What Examiners Expect Now | Bluegrass Cybersecurity Solutions">
+    <meta property="og:description" content="SMS and push-based MFA are no longer enough on their own. Here's why examiners are pushing toward phishing-resistant authentication and how to get there without a forklift upgrade.">
+    <meta property="og:url"         content="https://www.bluegrasscybersecurity.com/blog/phishing-resistant-mfa.html">
+    <meta property="og:image"       content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
+
+    <link rel="icon" type="image/png" href="../Images/logo-new.png">
+    <link rel="apple-touch-icon" href="../Images/logo-new.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Phishing-Resistant MFA: What Examiners Expect Now",
+      "description": "SMS and push-based MFA are no longer enough on their own. Here's why examiners are pushing toward phishing-resistant authentication and how to get there without a forklift upgrade.",
+      "url": "https://www.bluegrasscybersecurity.com/blog/phishing-resistant-mfa.html",
+      "datePublished": "2026-08-16",
+      "dateModified": "2026-08-16",
+      "image": "https://www.bluegrasscybersecurity.com/Images/logo-new.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jared Luyster",
+        "jobTitle": "Principal Consultant",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Bluegrass Cybersecurity Solutions",
+          "url": "https://www.bluegrasscybersecurity.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bluegrass Cybersecurity Solutions",
+        "url": "https://www.bluegrasscybersecurity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.bluegrasscybersecurity.com/Images/logo-new.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.bluegrasscybersecurity.com/blog/phishing-resistant-mfa.html"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html"><img src="../Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">What We Do</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../products.html">Products</a></li>
+                <li><a href="../blog.html" aria-current="page">Blog</a></li>
+                <li><a href="../contact.html">Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="post-wrapper">
+
+            <span class="back-link"><a href="../blog.html">&#8592; Back to Blog</a></span>
+
+            <h1 class="post-title">Phishing-Resistant MFA: What Examiners Expect Now</h1>
+            <p class="post-meta">Published August 16, 2026</p>
+
+            <article class="post-body">
+
+                <section>
+                    <h2>"We Have MFA" Isn't the Answer It Used To Be</h2>
+                    <p>For years, enabling any form of multi-factor authentication was enough to satisfy an exam question. That's no longer true. SMS codes and simple push approvals are both vulnerable to real-world attacks &mdash; SIM swapping, push fatigue, and adversary-in-the-middle proxies that harvest a session token the moment a user approves a prompt. Examiners increasingly ask not just whether MFA exists, but what kind, and where.</p>
+                </section>
+
+                <section>
+                    <h2>What "Phishing-Resistant" Actually Means</h2>
+                    <ul>
+                        <li><strong>Phishing-resistant:</strong> FIDO2/WebAuthn security keys or platform passkeys, and PIV/CAC-style certificate-based authentication. These bind the credential to the specific site, so a fake login page can't capture a usable factor.</li>
+                        <li><strong>Not phishing-resistant:</strong> SMS one-time codes, voice calls, and basic push-to-approve without number matching. All three can be relayed or approved under pressure by a user who doesn't realize they're being targeted.</li>
+                    </ul>
+                    <p>Push notifications with number matching and geographic context are a meaningful improvement over plain push, but they're still a step below phishing-resistant methods for your highest-risk accounts.</p>
+                </section>
+
+                <section>
+                    <h2>Where to Prioritize First</h2>
+                    <p>A full passkey rollout across every employee is a big lift. Start where the risk is concentrated:</p>
+                    <ul>
+                        <li>Domain admin and privileged IT accounts.</li>
+                        <li>Anyone with standing access to wire or ACH origination systems.</li>
+                        <li>VPN and remote access used by IT and executives.</li>
+                        <li>Email admin accounts &mdash; a common pivot point for business email compromise.</li>
+                    </ul>
+                    <p>Broader staff rollout can follow once the highest-risk accounts are covered, rather than waiting on a single all-at-once cutover.</p>
+                </section>
+
+                <section>
+                    <h2>Documenting It for an Exam</h2>
+                    <p>Keep a simple inventory: which systems require MFA, which factor type is in use per system, and the date it was enforced. If any privileged account is still on SMS or basic push, note it as a tracked exception with a remediation date rather than leaving it silent &mdash; examiners react far better to a documented gap with a plan than an undocumented one they find themselves.</p>
+                </section>
+
+                <section>
+                    <h2>Need Help Prioritizing the Rollout?</h2>
+                    <p>If you're not sure which accounts to move first or how to phase the transition, <a href="../contact.html">reach out</a>. We can help you build a rollout plan that fits your environment and your exam timeline.</p>
+                </section>
+
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+
+</body>
+</html>
