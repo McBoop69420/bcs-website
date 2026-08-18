@@ -13,6 +13,21 @@ The site is plain HTML, CSS, and JavaScript. There is no runtime build step or p
 - Security headers are documented for supported hosts in `_headers`
 - Search indexing is guided by `robots.txt` and `sitemap.xml`
 
+## Staging
+
+`https://bcs.jaredluyster.com` is a Cloudflare Pages project connected directly to
+this repo (Git integration, root output directory, no build step) — it auto-deploys
+whatever is on `main` here, ahead of/alongside what's live on production. It's
+separate infrastructure from the `jaredluyster.com` repo; only the custom domain
+lives under that zone.
+
+- `_headers`' `X-Robots-Tag: noindex, nofollow` rule takes effect there (Cloudflare
+  Pages reads `_headers` natively) even though production ignores the same file.
+- **Known gap:** the `cloudflare/worker.js` signup Worker only binds routes on the
+  `bluegrasscybersecurity.com` zone, so `/api/signup` (used by the homepage and
+  `contact.html` forms) 404s on staging. Staging is for visual/content review, not
+  end-to-end form testing.
+
 ## Page Inventory
 
 ### Core Pages

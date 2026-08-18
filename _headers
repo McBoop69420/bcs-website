@@ -5,6 +5,11 @@
 # injected by a Cloudflare "Modify Response Header" Transform Rule — see
 # cloudflare/CLOUDFLARE-SETUP.md and cloudflare/csp.txt for the source of truth.
 # (The site sits behind Cloudflare in front of GitHub Pages.)
+#
+# This file DOES take effect on the Cloudflare Pages STAGING deployment at
+# bcs.jaredluyster.com (Pages reads _headers natively), which is why the
+# X-Robots-Tag noindex rule below exists — it keeps the staging preview out
+# of search indexes without touching anything production sees.
 # ============================================================================
 
 /*
@@ -13,6 +18,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  X-Robots-Tag: noindex, nofollow
 
 /style-bible.html
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; upgrade-insecure-requests; block-all-mixed-content
