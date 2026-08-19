@@ -44,6 +44,23 @@
     el.className = "form-status " + (kind || "info");
   }
 
+  function revealDownload(form, url) {
+    // Forms that request a gated file (e.g. free template downloads) carry
+    // data-download-url. On a successful submit, open the file directly and
+    // also leave a persistent link in case the popup was blocked.
+    window.open(url, "_blank");
+    var link = form.querySelector(".form-download-link");
+    if (!link) {
+      link = document.createElement("a");
+      link.className = "form-download-link product-button";
+      form.appendChild(link);
+    }
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Download now";
+  }
+
   function degradeToMailto(form, data) {
     var subject = encodeURIComponent(data.subject || "BCS inquiry");
     var bodyLines = [];
@@ -129,12 +146,19 @@
         })
         .then(function (r) {
           if (r.ok) {
+            var downloadUrl = form.dataset.downloadUrl;
             form.reset();
             setStatus(
               form,
-              r.body.message || "Thanks — we'll be in touch shortly.",
+              r.body.message ||
+                (downloadUrl
+                  ? "Thanks — your download is opening in a new tab."
+                  : "Thanks — we'll be in touch shortly."),
               "success"
             );
+            if (downloadUrl) {
+              revealDownload(form, downloadUrl);
+            }
             if (window.turnstile && widget) {
               window.turnstile.reset(widget);
             }

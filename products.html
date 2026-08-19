@@ -34,6 +34,7 @@
                 <li><a href="index.html#about">What We Do</a></li>
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="products.html" aria-current="page">Products</a></li>
+                <li><a href="policy-finder.html">Policy Finder</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Consultation</a></li>
             </ul>
@@ -53,6 +54,108 @@
 
     <!-- Individual Templates -->
     <div class="container">
+
+        <div class="blog-lead-card">
+            <div>
+                <span class="eyebrow">Free Tool</span>
+                <h2>Not sure which policies you actually need?</h2>
+                <p>Take the free Policy Finder &mdash; answer a few quick questions, see free examples of real policy language, and find out what a version filled out for your organization would look like.</p>
+            </div>
+            <a href="policy-finder.html" class="cta-button">Take the Policy Finder</a>
+        </div>
+
+        <!-- Free Templates -->
+        <section class="product-section" id="free-templates">
+            <h2>Free Policy Templates</h2>
+            <p>Get a real, usable template in your inbox &mdash; no credit card, no sales call required.</p>
+
+            <div class="product-grid">
+                <!-- Password Standard (free) -->
+                <div class="product-card" id="tpl-password-standard">
+                    <div class="product-header">
+                        <div class="product-icon">&#128273;</div>
+                        <h3>Password Standard</h3>
+                        <div class="product-price">Free</div>
+                        <div class="product-price-note">PDF download</div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">Minimum length, storage, and breach-response requirements aligned with current NIST guidance &mdash; ready to adapt for your organization.</p>
+
+                        <!-- Submits to the Cloudflare Worker at /api/signup (see cloudflare/worker.js).
+                             Turnstile + consent gate the lead. data-download-url triggers the file
+                             once js/signup.js gets a successful response. Degrades to mailto: if
+                             JS/Turnstile fails. -->
+                        <form class="contact-form" data-bcs-signup data-download-url="/downloads/password-standard.pdf" action="/api/signup" method="POST">
+                            <input type="hidden" name="form_type" value="free_template_download">
+                            <input type="hidden" name="subject" value="Free template download: Password Standard">
+                            <input type="hidden" name="template_name" value="Password Standard">
+                            <div class="form-group">
+                                <label for="pw-tpl-name">Name</label>
+                                <input type="text" id="pw-tpl-name" name="name" placeholder="Jane Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pw-tpl-email">Email</label>
+                                <input type="email" id="pw-tpl-email" name="email" placeholder="jane@yourbank.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pw-tpl-org">Organization</label>
+                                <input type="text" id="pw-tpl-org" name="organization" placeholder="Your organization name">
+                            </div>
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAD1VpZjDFdK7P_Fm"></div>
+                            <div class="form-group consent-group">
+                                <label class="consent-label">
+                                    <input type="checkbox" name="consent" value="yes" required>
+                                    <span>I agree to be contacted by Bluegrass Cybersecurity Solutions about this request, and understand my information is used only to respond to it. You can withdraw consent by emailing info@bluegrasscybersecurity.com.</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="contact-button">Get the Free Template</button>
+                            <p class="form-footer-note">This form is protected by Cloudflare Turnstile; your email is stored only to send this template and relevant follow-up.</p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Acceptable Use Policy (free) -->
+                <div class="product-card" id="tpl-acceptable-use">
+                    <div class="product-header">
+                        <div class="product-icon">&#128203;</div>
+                        <h3>Acceptable Use Policy</h3>
+                        <div class="product-price">Free</div>
+                        <div class="product-price-note">PDF download</div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">Defines permitted and prohibited use of organizational systems, monitoring expectations, and personnel acknowledgment &mdash; ready to adapt for your organization.</p>
+
+                        <form class="contact-form" data-bcs-signup data-download-url="/downloads/acceptable-use-policy.pdf" action="/api/signup" method="POST">
+                            <input type="hidden" name="form_type" value="free_template_download">
+                            <input type="hidden" name="subject" value="Free template download: Acceptable Use Policy">
+                            <input type="hidden" name="template_name" value="Acceptable Use Policy">
+                            <div class="form-group">
+                                <label for="aup-tpl-name">Name</label>
+                                <input type="text" id="aup-tpl-name" name="name" placeholder="Jane Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="aup-tpl-email">Email</label>
+                                <input type="email" id="aup-tpl-email" name="email" placeholder="jane@yourbank.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="aup-tpl-org">Organization</label>
+                                <input type="text" id="aup-tpl-org" name="organization" placeholder="Your organization name">
+                            </div>
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAD1VpZjDFdK7P_Fm"></div>
+                            <div class="form-group consent-group">
+                                <label class="consent-label">
+                                    <input type="checkbox" name="consent" value="yes" required>
+                                    <span>I agree to be contacted by Bluegrass Cybersecurity Solutions about this request, and understand my information is used only to respond to it. You can withdraw consent by emailing info@bluegrasscybersecurity.com.</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="contact-button">Get the Free Template</button>
+                            <p class="form-footer-note">This form is protected by Cloudflare Turnstile; your email is stored only to send this template and relevant follow-up.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="product-section product-preview-section">
             <h2>What You Get Before You Customize</h2>
             <p>Each template is built to shorten the distance between document, control owner, evidence, and board approval.</p>
@@ -78,7 +181,7 @@
             
             <div class="product-grid">
                 <!-- Information Security Policy -->
-                <div class="product-card">
+                <div class="product-card" id="tpl-infosec">
                     <div class="product-header">
                         <div class="product-icon">&#128274;</div>
                         <h3>Information Security Policy</h3>
@@ -99,7 +202,7 @@
                 </div>
 
                 <!-- Business Continuity Plan -->
-                <div class="product-card">
+                <div class="product-card" id="tpl-bcp">
                     <div class="product-header">
                         <div class="product-icon">&#128260;</div>
                         <h3>Business Continuity Plan</h3>
@@ -120,7 +223,7 @@
                 </div>
 
                 <!-- Vendor Management Policy -->
-                <div class="product-card">
+                <div class="product-card" id="tpl-vendor">
                     <div class="product-header">
                         <div class="product-icon">&#129309;</div>
                         <h3>Vendor Management Policy</h3>
@@ -141,7 +244,7 @@
                 </div>
 
                 <!-- Incident Response Plan -->
-                <div class="product-card">
+                <div class="product-card" id="tpl-ir">
                     <div class="product-header">
                         <div class="product-icon">&#128680;</div>
                         <h3>Incident Response Plan</h3>
@@ -164,7 +267,7 @@
         </section>
 
         <!-- Bundle Packages -->
-        <section class="product-section">
+        <section class="product-section" id="bundles">
             <h2>Bundle Packages</h2>
             <p>Save money with our comprehensive policy bundles - everything you need in one package</p>
             
@@ -236,6 +339,30 @@
             </div>
         </section>
 
+        <!-- Done-For-You -->
+        <section class="product-section" id="done-for-you">
+            <div class="dfy-card">
+                <div class="dfy-badge">DONE FOR YOU</div>
+                <div class="dfy-copy">
+                    <span class="eyebrow">Skip the blank page</span>
+                    <h2>Done-For-You Policy Package</h2>
+                    <p>Every template above is easier to start than to finish. Take the free <a href="policy-finder.html">Policy Finder</a> (or a short intake call) and we pre-fill your actual policy set &mdash; your organization's name, control owners, vendors, and systems already in place. You review, adjust, and approve. You are not staring at a blank Word document.</p>
+                    <ul class="product-features">
+                        <li>Policies pre-filled with your organization's specifics</li>
+                        <li>Built from your Policy Finder answers or a short intake call</li>
+                        <li>One review call to walk through edits</li>
+                        <li>Same NIST, FFIEC &amp; FRB-aligned frameworks</li>
+                        <li>Delivered ready to approve, not just a blank template</li>
+                    </ul>
+                </div>
+                <div class="dfy-price-block">
+                    <div class="product-price">Starting at $1,499</div>
+                    <div class="product-price-note">Scoped from your Policy Finder answers</div>
+                    <a href="policy-finder.html" class="product-button">Start My Policy Finder</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Additional Info -->
         <section class="product-section">
             <h2>Why Choose Our Templates?</h2>
@@ -281,5 +408,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="js/signup.js"></script>
 </body>
 </html>
