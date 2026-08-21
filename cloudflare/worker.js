@@ -86,6 +86,7 @@ const KNOWN_SIGNUP_FIELDS = new Set([
   "subject",
   "name",
   "organization",
+  "consent",
 ]);
 
 // Turnstile's own widget posts the token as `cf-turnstile-response` (native

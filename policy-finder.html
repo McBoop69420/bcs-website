@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Policy Finder &mdash; Which Security Policies Do You Need? | Bluegrass Cybersecurity Solutions</title>
+    <meta name="description" content="Answer a few quick questions to find out which security policies your organization needs, see free examples of real policy language, and get a version that's already filled out for you.">
+    <link rel="canonical" href="https://www.bluegrasscybersecurity.com/policy-finder.html">
+    <meta property="og:type"        content="website">
+    <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
+    <meta property="og:title"       content="Free Policy Finder &mdash; Which Security Policies Do You Need?">
+    <meta property="og:description" content="Answer a few quick questions to find out which security policies your organization needs, see free examples, and get a version that's already filled out for you.">
+    <meta property="og:url"         content="https://www.bluegrasscybersecurity.com/policy-finder.html">
+    <meta property="og:image"       content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
+    <link rel="icon" type="image/png" href="Images/logo-new.png">
+    <link rel="apple-touch-icon" href="Images/logo-new.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions">
+                </a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">What We Do</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="policy-finder.html" aria-current="page">Policy Finder</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Find Out Which Policies You Need</h1>
+        <p>Answer a few quick questions, see free examples of real policy language, and find out what a version filled out for your organization would look like. Takes about 90 seconds &mdash; no signup required to see your results.</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Interactive Finder -->
+        <section class="finder-section" aria-label="Policy Finder">
+            <noscript>
+                <p>This tool needs JavaScript enabled. In the meantime, <a href="contact.html">book a quick call</a> and we'll walk through what you need.</p>
+            </noscript>
+
+            <div class="finder-app" data-finder-app>
+                <p class="finder-progress" data-finder-progress>Question 1 of 6</p>
+                <div class="finder-progress-track" aria-hidden="true">
+                    <div class="finder-progress-bar" data-finder-progress-bar></div>
+                </div>
+
+                <form data-finder-form novalidate>
+                    <fieldset class="finder-step" data-step="1">
+                        <legend>What type of organization are you?</legend>
+                        <label class="finder-option"><input type="radio" name="q1" value="bank" required><span>Community bank or credit union</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="lender"><span>Non-bank lender or fintech</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="other"><span>Other regulated or small business</span></label>
+                    </fieldset>
+
+                    <fieldset class="finder-step" data-step="2" hidden>
+                        <legend>Do you rely on a managed service provider (MSP) or outside IT vendor for day-to-day technology?</legend>
+                        <label class="finder-option"><input type="radio" name="q2" value="yes" required><span>Yes</span></label>
+                        <label class="finder-option"><input type="radio" name="q2" value="no"><span>No, mostly in-house</span></label>
+                        <label class="finder-option"><input type="radio" name="q2" value="unsure"><span>Not sure</span></label>
+                    </fieldset>
+
+                    <fieldset class="finder-step" data-step="3" hidden>
+                        <legend>Has your Information Security Policy been reviewed or approved by your board or leadership in the last 12 months?</legend>
+                        <label class="finder-option"><input type="radio" name="q3" value="yes" required><span>Yes, reviewed within the last year</span></label>
+                        <label class="finder-option"><input type="radio" name="q3" value="stale"><span>We have one, but it's overdue for review</span></label>
+                        <label class="finder-option"><input type="radio" name="q3" value="none"><span>We don't have a written policy</span></label>
+                    </fieldset>
+
+                    <fieldset class="finder-step" data-step="4" hidden>
+                        <legend>If a critical system went down tomorrow, do you have a tested, documented recovery plan?</legend>
+                        <label class="finder-option"><input type="radio" name="q4" value="tested" required><span>Yes, documented and tested</span></label>
+                        <label class="finder-option"><input type="radio" name="q4" value="untested"><span>We have one, but haven't tested it</span></label>
+                        <label class="finder-option"><input type="radio" name="q4" value="none"><span>No documented plan</span></label>
+                    </fieldset>
+
+                    <fieldset class="finder-step" data-step="5" hidden>
+                        <legend>Do you have a documented process for onboarding and monitoring third-party vendors?</legend>
+                        <label class="finder-option"><input type="radio" name="q5" value="yes" required><span>Yes, documented and followed</span></label>
+                        <label class="finder-option"><input type="radio" name="q5" value="informal"><span>Informally, nothing written down</span></label>
+                        <label class="finder-option"><input type="radio" name="q5" value="none"><span>No real process</span></label>
+                    </fieldset>
+
+                    <fieldset class="finder-step" data-step="6" hidden>
+                        <legend>Do you have a written incident response plan with defined roles and notification steps?</legend>
+                        <label class="finder-option"><input type="radio" name="q6" value="yes" required><span>Yes</span></label>
+                        <label class="finder-option"><input type="radio" name="q6" value="no"><span>No</span></label>
+                        <label class="finder-option"><input type="radio" name="q6" value="unsure"><span>Not sure</span></label>
+                    </fieldset>
+
+                    <div class="finder-nav">
+                        <button type="button" class="finder-back" data-finder-back hidden>Back</button>
+                        <button type="button" class="finder-next" data-finder-next disabled>Next</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Results (revealed by js/policy-finder.js once the form is complete) -->
+        <section class="finder-results" data-finder-results hidden aria-live="polite">
+            <span class="eyebrow">Your Results</span>
+            <h2 data-finder-results-heading>Here's what we'd recommend</h2>
+            <div class="finder-results-summary" data-finder-results-summary></div>
+
+            <div class="product-grid finder-results-grid">
+                <article class="product-card finder-result-card" data-policy="infosec" hidden>
+                    <div class="product-header">
+                        <div class="product-icon">&#128274;</div>
+                        <h3>Information Security Policy</h3>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">Sets the ground rules for access control, data handling, and accountability &mdash; the document examiners ask for first.</p>
+                        <details class="finder-example">
+                            <summary>See a free example</summary>
+                            <p><strong>3.4 Access Control</strong> &mdash; Access to systems containing nonpublic customer information is granted on a least-privilege, role-based basis and reviewed at least quarterly. All privileged and administrative accounts require multi-factor authentication. Access is revoked within one business day of termination or role change.</p>
+                        </details>
+                        <a href="products.html#tpl-infosec" class="product-button">See This Template</a>
+                    </div>
+                </article>
+
+                <article class="product-card finder-result-card" data-policy="bcp" hidden>
+                    <div class="product-header">
+                        <div class="product-icon">&#128260;</div>
+                        <h3>Business Continuity Plan</h3>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">Documents recovery objectives and testing so an outage doesn't turn into a repeat exam finding.</p>
+                        <details class="finder-example">
+                            <summary>See a free example</summary>
+                            <p><strong>5.1 Recovery Time Objectives</strong> &mdash; Critical systems are assigned a maximum tolerable downtime and a recovery time objective (RTO), reviewed annually and validated through a documented BCP test. Deviations identified during testing are logged and tracked to remediation.</p>
+                        </details>
+                        <a href="products.html#tpl-bcp" class="product-button">See This Template</a>
+                    </div>
+                </article>
+
+                <article class="product-card finder-result-card" data-policy="vendor" hidden>
+                    <div class="product-header">
+                        <div class="product-icon">&#129309;</div>
+                        <h3>Vendor Management Policy</h3>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">Brings structure to third-party risk &mdash; tiering, due diligence, and ongoing monitoring, including your MSP.</p>
+                        <details class="finder-example">
+                            <summary>See a free example</summary>
+                            <p><strong>4.2 Vendor Risk Tiering</strong> &mdash; Vendors are tiered as Critical, Significant, or Standard based on data access, system integration, and business impact. Critical and Significant vendors require an annual SOC 2 Type II (or equivalent) review and a documented risk reassessment.</p>
+                        </details>
+                        <a href="products.html#tpl-vendor" class="product-button">See This Template</a>
+                    </div>
+                </article>
+
+                <article class="product-card finder-result-card" data-policy="ir" hidden>
+                    <div class="product-header">
+                        <div class="product-icon">&#128680;</div>
+                        <h3>Incident Response Plan</h3>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-description">Defines roles, escalation, and regulatory notification steps before an incident forces you to improvise.</p>
+                        <details class="finder-example">
+                            <summary>See a free example</summary>
+                            <p><strong>2.3 Escalation &amp; Notification</strong> &mdash; Suspected incidents are reported to the Incident Response Lead within one hour of detection. Incidents involving nonpublic customer information trigger the regulatory notification checklist, including applicable state and federal timelines.</p>
+                        </details>
+                        <a href="products.html#tpl-ir" class="product-button">See This Template</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Done-For-You upsell -->
+            <div class="finder-upsell">
+                <span class="eyebrow">Skip the blank page</span>
+                <h2>Want it mostly filled out for you?</h2>
+                <p>Every template above is easier to start than to finish. Send us your results and we'll pre-fill your policy set with your organization's name, control owners, vendors, and systems already in place &mdash; you review and approve instead of writing from scratch.</p>
+
+                <!-- Submits to the Cloudflare Worker at /api/signup (see cloudflare/worker.js).
+                     Turnstile + consent gate the lead. Degrades to mailto: if JS/Turnstile fails. -->
+                <form class="contact-form finder-upsell-form" data-bcs-signup action="/api/signup" method="POST">
+                    <input type="hidden" name="form_type" value="policy_finder_done_for_you">
+                    <input type="hidden" name="subject" value="Done-For-You policy package request (Policy Finder)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="finder-name">Name</label>
+                            <input type="text" id="finder-name" name="name" placeholder="Jane Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="finder-email">Email</label>
+                            <input type="email" id="finder-email" name="email" placeholder="jane@yourbank.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="finder-org">Organization</label>
+                        <input type="text" id="finder-org" name="organization" placeholder="Your organization name">
+                    </div>
+                    <div class="form-group">
+                        <label for="finder-summary">Your recommended policies</label>
+                        <textarea id="finder-summary" name="recommended_policies" readonly data-finder-summary-field></textarea>
+                    </div>
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAD1VpZjDFdK7P_Fm"></div>
+                    <div class="form-group consent-group">
+                        <label class="consent-label">
+                            <input type="checkbox" name="consent" value="yes" required>
+                            <span>I agree to be contacted by Bluegrass Cybersecurity Solutions about this request, and understand my information is used only to respond to it. You can withdraw consent by emailing info@bluegrasscybersecurity.com.</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="contact-button">Get My Done-For-You Quote</button>
+                    <p class="form-footer-note">Practical response only. No spam, no list-padding, and no pressure. This form is protected by Cloudflare Turnstile; your email is stored only to follow up on your request.</p>
+                </form>
+            </div>
+
+            <p class="finder-restart"><button type="button" class="finder-restart-link" data-finder-restart>Start over</button></p>
+        </section>
+
+    </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+        <p>Bridging the gap between findings and fixes</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="js/signup.js"></script>
+    <script src="js/policy-finder.js"></script>
+
+</body>
+</html>
