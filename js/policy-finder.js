@@ -23,6 +23,68 @@
     ir: "Incident Response Plan",
   };
 
+  // Industry does not change which policies get recommended (that's Q3-Q6
+  // only) — there's no industry-specific SKU on products.html yet. It only
+  // personalizes the results copy and gets captured on the lead record.
+  var INDUSTRY_COPY = {
+    bank: {
+      label: "Bank",
+      blurb: "Banks are typically driven by FFIEC guidance and GLBA Safeguards requirements — examiners expect these policies to be current, approved, and evidenced.",
+    },
+    creditunion: {
+      label: "Credit union",
+      blurb: "Credit unions face similar oversight to banks (NCUA, GLBA Safeguards) — examiners expect the same board-approved, evidenced documentation.",
+    },
+    msp: {
+      label: "MSP / IT service provider",
+      blurb: "MSPs increasingly face CMMC/NIST 800-171 flow-down requirements from clients with federal contracts, plus general vendor due diligence expectations from the businesses you serve.",
+    },
+    medical: {
+      label: "Medical or healthcare practice",
+      blurb: "Healthcare practices are governed by HIPAA's Security and Privacy Rules — these policies map directly to what a HIPAA risk assessment or OCR audit expects to see.",
+    },
+    lawfirm: {
+      label: "Law firm",
+      blurb: "Law firms carry client confidentiality obligations under state bar ethics rules, plus increasing client-driven security requirements in engagement letters and RFPs.",
+    },
+    cpa: {
+      label: "CPA or accounting firm",
+      blurb: "CPA and accounting firms are subject to state board data-security expectations and the FTC Safeguards Rule when handling client tax and financial data.",
+    },
+    construction: {
+      label: "Construction company",
+      blurb: "Construction firms increasingly face security prequalification from GCs and public-sector clients, plus general obligations around project and client data.",
+    },
+    manufacturing: {
+      label: "Manufacturer",
+      blurb: "Manufacturers with defense or federal supply chain exposure face CMMC/NIST 800-171 requirements; others still need baseline protection for IP and operational systems.",
+    },
+    insurance: {
+      label: "Insurance agency",
+      blurb: "Insurance agencies are typically governed by state NAIC Insurance Data Security Model Law requirements for written information security programs.",
+    },
+    retail: {
+      label: "Retail business",
+      blurb: "Retail businesses handling card payments fall under PCI DSS requirements for protecting cardholder data.",
+    },
+    restaurant: {
+      label: "Restaurant",
+      blurb: "Restaurants processing card payments fall under PCI DSS requirements, with added exposure from POS systems and third-party delivery integrations.",
+    },
+    municipality: {
+      label: "Municipality or local government",
+      blurb: "Municipalities and local governments face public records obligations alongside state and local cybersecurity requirements, often with board/council reporting expectations.",
+    },
+    lender: {
+      label: "Non-bank lender or fintech",
+      blurb: "Non-bank lenders and fintechs are typically governed by GLBA and the FTC Safeguards Rule, with state-specific licensing requirements layered on top.",
+    },
+    other: {
+      label: "Other regulated or small business",
+      blurb: null,
+    },
+  };
+
   function byData(root, attr) {
     return root.querySelector("[data-" + attr + "]");
   }
@@ -130,6 +192,8 @@
         results.querySelectorAll(".finder-result-card")
       );
       var summaryField = results.querySelector("[data-finder-summary-field]");
+      var industryField = results.querySelector("[data-finder-industry-field]");
+      var industry = INDUSTRY_COPY[answers.q1];
 
       cards.forEach(function (card) {
         var key = card.getAttribute("data-policy");
@@ -173,6 +237,10 @@
         }
       }
 
+      if (industry && industry.blurb) {
+        addSummaryLine(summary, industry.blurb);
+      }
+
       if (answers.q2 === "yes") {
         var p = document.createElement("p");
         p.appendChild(
@@ -196,6 +264,10 @@
           names.length > 0
             ? "Recommended from the Policy Finder: " + names.join(", ") + "."
             : "Policy Finder result: core policies already in place — requesting a review.";
+      }
+
+      if (industryField) {
+        industryField.value = industry ? industry.label : answers.q1 || "";
       }
     }
 

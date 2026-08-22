@@ -66,7 +66,18 @@
                 <form data-finder-form novalidate>
                     <fieldset class="finder-step" data-step="1">
                         <legend>What type of organization are you?</legend>
-                        <label class="finder-option"><input type="radio" name="q1" value="bank" required><span>Community bank or credit union</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="bank" required><span>Bank</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="creditunion"><span>Credit union</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="msp"><span>MSP / IT service provider</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="medical"><span>Medical or healthcare practice</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="lawfirm"><span>Law firm</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="cpa"><span>CPA or accounting firm</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="construction"><span>Construction company</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="manufacturing"><span>Manufacturer</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="insurance"><span>Insurance agency</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="retail"><span>Retail business</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="restaurant"><span>Restaurant</span></label>
+                        <label class="finder-option"><input type="radio" name="q1" value="municipality"><span>Municipality or local government</span></label>
                         <label class="finder-option"><input type="radio" name="q1" value="lender"><span>Non-bank lender or fintech</span></label>
                         <label class="finder-option"><input type="radio" name="q1" value="other"><span>Other regulated or small business</span></label>
                     </fieldset>
@@ -193,6 +204,7 @@
                 <form class="contact-form finder-upsell-form" data-bcs-signup action="/api/signup" method="POST">
                     <input type="hidden" name="form_type" value="policy_finder_done_for_you">
                     <input type="hidden" name="subject" value="Done-For-You policy package request (Policy Finder)">
+                    <input type="hidden" name="industry" data-finder-industry-field>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="finder-name">Name</label>
