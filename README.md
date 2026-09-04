@@ -17,9 +17,14 @@ The site is plain HTML, CSS, and JavaScript. There is no runtime build step or p
 
 `https://bcs.jaredluyster.com` is a Cloudflare Pages project connected directly to
 this repo (Git integration, root output directory, no build step) — it auto-deploys
-whatever is on `main` here, ahead of/alongside what's live on production. It's
-separate infrastructure from the `jaredluyster.com` repo; only the custom domain
-lives under that zone.
+whatever is on the `staging` branch here, not `main`. It's separate infrastructure
+from the `jaredluyster.com` repo; only the custom domain lives under that zone.
+
+- **`staging` and `main` have diverged** — they are not kept in sync automatically.
+  Changes made on `main` (including production content) only reach
+  `bcs.jaredluyster.com` once they're also applied to `staging`, and `staging` may
+  carry work-in-progress features (e.g. `policy-finder.html`) not yet on `main`.
+  If a change needs to be visible on staging, push it to `staging` explicitly.
 
 - `_headers`' `X-Robots-Tag: noindex, nofollow` rule takes effect there (Cloudflare
   Pages reads `_headers` natively) even though production ignores the same file.
