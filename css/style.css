@@ -15,24 +15,44 @@ html {
 
 /* Design tokens */
 :root {
-    --primary-blue: #1e3a5f;
-    --accent-blue:  #2c5f8d;
-    --light-blue:   #4a90c7;
-    --green:        #2d5016;
-    --light-green:  #5a7d3d;
-    --gold:         #d4a017;
-    --gray:         #333;
-    --light-gray:   #f8f9fa;
+    --ink:          #131C2E;
+    --slate:        #3D5A80;
+    --body-text:    #2B3242;
+    --paper:        #FAFAF9;
+    --mist:         #EEF1F6;
+    --line:         #DDE3EC;
+    --amber:        #B8722E;
+    --sage:         #5B7A63;
     --white:        #ffffff;
+
+    /* legacy token aliases so nothing left unconverted still breaks */
+    --primary-blue: var(--ink);
+    --accent-blue:  var(--slate);
+    --light-blue:   var(--slate);
+    --green:        var(--sage);
+    --light-green:  var(--amber);
+    --gold:         var(--amber);
+    --gray:         var(--body-text);
+    --light-gray:   var(--paper);
 }
 
 /* Base */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--gray);
-    background-color: var(--light-gray);
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.65;
+    color: var(--body-text);
+    background-color: var(--paper);
     overflow-x: hidden;
+}
+
+h1, h2, h3, h4,
+.hero-headline,
+.cta-button,
+.eyebrow,
+.nav-links a,
+.logo,
+section h2 {
+    font-family: 'Sora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ── Skip to content ── */
