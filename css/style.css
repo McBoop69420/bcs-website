@@ -96,16 +96,19 @@ nav {
 
 .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .nav-links a {
+    display: inline-block;
+    white-space: nowrap;
     color: var(--primary-blue);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover,
@@ -130,7 +133,7 @@ footer {
 footer p { margin-bottom: 0.3rem; font-size: 0.9rem; }
 
 /* ── Mobile nav ── */
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
     .menu-toggle { display: block; }
 
     .nav-links {
