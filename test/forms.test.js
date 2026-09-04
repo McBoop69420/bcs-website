@@ -4,7 +4,7 @@ import test from "node:test";
 import vm from "node:vm";
 
 const root = new URL("../", import.meta.url);
-const pageNames = ["index.html", "contact.html"];
+const pageNames = ["contact.html", "ai-risk-governance.html"];
 const pages = new Map(
   await Promise.all(pageNames.map(async (name) => [
     name,

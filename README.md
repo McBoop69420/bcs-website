@@ -30,13 +30,25 @@ lives under that zone.
 
 ## Page Inventory
 
+Navigation IA (as of the AI-risk/GRC redesign): `Home | AI Risk & Governance |
+Cybersecurity GRC | Services | Resources | About | Contact`. The positioning is
+"AI gets their attention. GRC solves the problem." — AI risk is the marketing hook,
+GRC is the long-term solution. `products.html`, `policy-finder.html`, and `blog.html`
+are intentionally off the primary nav (kept short per the redesign brief) but stay
+live and are reachable from `resources.html` and the footer link row on every page.
+
 ### Core Pages
 
-- `index.html` - Homepage, service overview, trust proof, board/regulatory reporting CTA, and contact-style reporting form.
+- `index.html` - Homepage: AI-risk hook, GRC framework diagram, findings-to-fixes differentiator, and the AI assessment as the flagship entry offer.
+- `ai-risk-governance.html` - AI risk explainer + the AI Cyber Risk & Governance Assessment offer and lead form (`form_type=ai_risk_assessment`).
+- `cybersecurity-grc.html` - The long-term GRC approach (Govern → Identify → Assess → Prioritize → Control → Monitor) and the ongoing service catalog.
+- `services.html` - Services hub linking the AI assessment plus the 6 service pages below.
+- `resources.html` - Resources hub linking `blog.html`, `policy-finder.html`, and `products.html`.
+- `about.html` - Company philosophy (Findings → Decisions → Action → Improvement), team bio, and values.
+- `contact.html` - Focused conversion page: primary CTA into the AI assessment, secondary general consultation form.
 - `products.html` - Security policy templates and framework product page.
-- `blog.html` - Blog index, newest first, with the current reporting CTA.
-- `contact.html` - Consultation request page.
-- `style-bible.html` - Brand, style, and component reference.
+- `blog.html` - Blog index, newest first.
+- `style-bible.html` - Brand, style, and component reference (not part of the redesign pass).
 - `404.html` - Custom not-found page.
 
 ### Service Pages
@@ -110,12 +122,16 @@ When adding a post, copy the structure from an existing `blog/*.html` article, u
 
 ## Forms And CTAs
 
-The homepage and contact forms submit to the Cloudflare Worker at `/api/signup`, with Turnstile
-verification and KV-backed lead storage. Client-side failures degrade to a pre-populated email to
-`info@bluegrasscybersecurity.com`. If the endpoint changes, update the `form-action` directive in
-the canonical CSP so submissions remain permitted.
+Lead forms (`contact.html` and `ai-risk-governance.html#assessment`) submit to the Cloudflare
+Worker at `/api/signup`, with Turnstile verification and KV-backed lead storage. Client-side
+failures degrade to a pre-populated email to `info@bluegrasscybersecurity.com`. If the endpoint
+changes, update the `form-action` directive in the canonical CSP so submissions remain permitted.
+`form_type` is stored as freeform text by the Worker (no allowlist), so new lead-gen forms can use
+a new `form_type` value without any Worker changes — current values include
+`ai_risk_assessment` and `consultation_request`.
 
-Current homepage framing is board and regulatory reporting: board-ready summaries, regulatory evidence, open findings, remediation tracking, and vendor/MSP reporting.
+The homepage itself has no lead form by design — it ends in a CTA banner into `contact.html` /
+`ai-risk-governance.html` so the 6-section AI-risk/GRC narrative stays scannable.
 
 ## Assets
 

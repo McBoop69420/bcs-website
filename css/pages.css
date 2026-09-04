@@ -2612,4 +2612,170 @@
     }
 }
 
+/* ============================================================
+   AI-risk / GRC redesign additions
+   ============================================================ */
+
+/* Message-first hero (replaces the wordmark treatment on marketing pages) */
+.hero-kicker {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 1.25rem;
+}
+
+.hero-headline {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 3vw + 1.2rem, 3.4rem);
+    line-height: 1.2;
+    color: var(--white);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    margin-bottom: 1.25rem;
+}
+
+.hero-supporting {
+    font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.3rem);
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.35);
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+}
+
+/* Centered transition / reframe statements between sections */
+.section-lead {
+    text-align: center;
+    max-width: 760px;
+    margin: 2.5rem auto 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    line-height: 1.6;
+}
+
+/* Reusable process/flow diagram — used for the GRC cycle, the
+   findings-to-fixes chain, and the About page philosophy chain */
+.flow-diagram {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    max-width: 1100px;
+    margin: 3rem auto 0;
+}
+
+.flow-step {
+    background: var(--white);
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0 3px 14px rgba(30,58,95,0.08);
+    flex: 1 1 150px;
+    min-width: 150px;
+    text-align: center;
+}
+
+.flow-step-number {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin: 0 auto 0.75rem;
+}
+
+.flow-step h3 {
+    color: var(--primary-blue);
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.flow-step p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin: 0;
+    line-height: 1.55;
+}
+
+.flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-blue);
+    font-size: 1.5rem;
+    flex: 0 0 auto;
+    padding: 0 0.35rem;
+}
+
+.flow-diagram--vertical {
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+}
+
+.flow-diagram--vertical .flow-step {
+    width: 100%;
+}
+
+.flow-diagram--vertical .flow-arrow {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 900px) {
+    .flow-diagram:not(.flow-diagram--vertical) {
+        flex-direction: column;
+        max-width: 480px;
+    }
+    .flow-diagram:not(.flow-diagram--vertical) .flow-step {
+        width: 100%;
+    }
+    .flow-diagram:not(.flow-diagram--vertical) .flow-arrow {
+        transform: rotate(90deg);
+    }
+}
+
+/* Hub grids (Services / Resources) reuse .services-grid / .service-card
+   but sometimes need 2 or 4 columns instead of 3 */
+.hub-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.hub-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 900px) {
+    .hub-grid-2,
+    .hub-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer utility links */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
 
