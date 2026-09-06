@@ -1341,11 +1341,11 @@
             margin: 0 auto;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        /* Extra vertical breathing room for products.html's single top-level
+           container (it isn't wrapped in a <section>, unlike other pages) */
+        .page-container {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
         }
 
         /* Product Section */
