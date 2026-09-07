@@ -882,11 +882,6 @@
             margin: 0 auto 3rem;
         }
 
-        /* About Section */
-        #about {
-            background: var(--light-gray);
-        }
-
         .about-content {
             max-width: 900px;
             margin: 0 auto;
@@ -1012,11 +1007,6 @@
             color: var(--gray);
             line-height: 1.7;
             font-size: 0.95rem;
-        }
-
-        /* Values Section */
-        #values {
-            background: var(--light-gray);
         }
 
         .values-grid {
@@ -1350,7 +1340,7 @@
 
         /* Product Section */
         .product-section {
-            margin-bottom: 4rem;
+            margin-bottom: 0;
         }
 
         .product-section h2 {
@@ -1940,7 +1930,10 @@
         }
         .sb-toc a:hover { background: var(--light-gray); color: var(--light-green); }
 
-        .bg-light-gray { background: var(--light-gray); }
+        /* The tinted band in the section alternation. This used to resolve to
+           var(--paper) -- the same colour as the body -- so runs of "alternating"
+           sections all painted identically. */
+        .bg-light-gray { background: var(--mist); }
 
         /* ── Responsive tweaks ── */
         @media (max-width: 768px) {
@@ -2193,11 +2186,6 @@
 
 .service-page-header {
     background: linear-gradient(135deg, var(--ink) 0%, var(--slate) 100%);
-}
-
-.service-detail-section,
-.contact-page-section {
-    background: var(--light-gray);
 }
 
 .service-detail-grid,

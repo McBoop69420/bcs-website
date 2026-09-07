@@ -55,6 +55,13 @@ section h2 {
     font-family: 'Sora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Sections alternate: white by default, tinted where .bg-light-gray is set.
+   The body's paper ground only shows through on pages shorter than the
+   viewport. Any section with its own background class overrides this. */
+section {
+    background: var(--white);
+}
+
 /* ── Skip to content ── */
 .skip-link {
     position: absolute;
