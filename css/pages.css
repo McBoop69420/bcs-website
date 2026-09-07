@@ -1959,6 +1959,7 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .cta-button-secondary {
@@ -2025,6 +2026,19 @@
 .detail-list,
 .service-side-card ul {
     list-style: none;
+}
+
+/* Centered, narrower list for full-width question/answer sections
+   (replaces CSP-blocked inline styles). */
+.audience-list--centered {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* A second eyebrow further down a page needs to clear the block above it. */
+.eyebrow--spaced {
+    display: block;
+    margin-top: 3rem;
 }
 
 .audience-list li,
@@ -2693,6 +2707,11 @@
     flex: 1 1 150px;
     min-width: 150px;
     text-align: center;
+    /* Steps stretch to the tallest label, so centre the contents rather than
+       leaving short steps top-heavy. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .flow-step-number {
@@ -2732,29 +2751,16 @@
     padding: 0 0.35rem;
 }
 
-.flow-diagram--vertical {
-    flex-direction: column;
-    align-items: center;
-    max-width: 480px;
-}
-
-.flow-diagram--vertical .flow-step {
-    width: 100%;
-}
-
-.flow-diagram--vertical .flow-arrow {
-    transform: rotate(90deg);
-}
-
 @media (max-width: 900px) {
-    .flow-diagram:not(.flow-diagram--vertical) {
+    .flow-diagram {
         flex-direction: column;
         max-width: 480px;
     }
-    .flow-diagram:not(.flow-diagram--vertical) .flow-step {
+    .flow-diagram .flow-step {
         width: 100%;
+        flex: 0 0 auto;
     }
-    .flow-diagram:not(.flow-diagram--vertical) .flow-arrow {
+    .flow-diagram .flow-arrow {
         transform: rotate(90deg);
     }
 }
