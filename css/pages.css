@@ -2229,7 +2229,7 @@
     top: 130px;
 }
 
-#assessment .service-detail-grid {
+.service-detail-grid:not(:has(.service-side-card)) {
     grid-template-columns: minmax(0, 1fr);
 }
 
