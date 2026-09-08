@@ -2229,6 +2229,10 @@
     top: 130px;
 }
 
+#assessment .service-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+}
+
 .service-side-card .product-button {
     width: 100%;
     margin-top: 1.5rem;
