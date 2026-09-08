@@ -142,7 +142,7 @@ The homepage itself has no lead form by design — it ends in a CTA banner into 
 
 - Logo and service images are in `Images/`.
 - The active logo reference is `Images/logo-new.png`.
-- Main service-card images use the `*-clean.png` files.
+- Unreferenced images live in `Images/deprecated/` — see that folder's README.
 - Keep image filenames stable unless all HTML references are updated.
 
 ## Styling
