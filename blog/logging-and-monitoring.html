@@ -98,39 +98,39 @@
                 <section>
                     <h2>What Regulators Require</h2>
                     <p>The FFIEC Information Security Booklet requires institutions to implement audit logging sufficient to detect, investigate, and recover from security events. The NIST Cybersecurity Framework identifies logging and monitoring as a core component of the Detect function. The updated GLBA Safeguards Rule requires covered institutions to monitor and test the effectiveness of their information security program &mdash; which regulators increasingly interpret to include active log monitoring, not just passive collection.</p>
-                    <h3>What This Looks Like in Practice</h3>
+                    <h3>What this looks like in practice</h3>
                     <p>There is no universal standard for how long logs must be retained, but examiners typically expect a minimum of 90 days of immediately accessible log data with at least 12 months of total retention. Institutions that have experienced a security incident are held to a higher standard: if you cannot produce logs from the relevant period, the assumption is unfavorable.</p>
                 </section>
 
                 <section>
                     <h2>What Good Logging Looks Like</h2>
 
-                    <h3>What You Are Logging</h3>
+                    <h3>What you are logging</h3>
                     <p>Comprehensive logging starts with knowing what sources matter: authentication events (successful and failed logins), privileged account activity, changes to user access and system configurations, firewall and network traffic anomalies, and endpoint security alerts. Gaps in any of these categories &mdash; particularly around privileged access and authentication failures &mdash; are common findings. Keep a log source inventory and check it against your asset inventory to identify what is and isn&rsquo;t being captured.</p>
 
-                    <h3>Centralized Log Management</h3>
+                    <h3>Centralized log management</h3>
                     <p>Logs scattered across individual systems &mdash; firewall logs on one appliance, Active Directory logs on a domain controller, core banking logs in a separate system &mdash; are difficult to correlate and easy to miss. Centralized log management, whether through a SIEM (Security Information and Event Management) platform or a simpler log aggregation solution, solves that. Centralization also supports log integrity: logs stored only on the systems they describe can be altered by a compromised account on that system.</p>
 
-                    <h3>Active Review and Alerting</h3>
+                    <h3>Active review and alerting</h3>
                     <p>Collecting logs without reviewing them is a common gap, and one worth being able to answer for directly: who reviews logs, how often, and what they are looking for. A documented log review process &mdash; daily review of critical alerts, weekly review of authentication anomalies, monthly summary reporting to management &mdash; demonstrates an operational program rather than a passive collection exercise. Automated alerting on high-priority events reduces the burden on staff and makes the review process more sustainable.</p>
 
-                    <h3>Retention Policy and Enforcement</h3>
+                    <h3>Retention policy and enforcement</h3>
                     <p>Your log retention policy should specify how long different log types are retained, where they are stored, and who is responsible for ensuring retention requirements are met. Keep the policy on hand and confirm actual retention matches it. Logs that are overwritten before the retention period has elapsed &mdash; often because storage wasn&rsquo;t sized appropriately for the volume being generated &mdash; are a straightforward finding with a clear remediation path.</p>
 
-                    <h3>Log Integrity</h3>
+                    <h3>Log integrity</h3>
                     <p>Logs are only useful as evidence if they haven&rsquo;t been tampered with. Protect logs from modification, particularly by the accounts whose activity they record. At minimum, administrative access to logging systems should be restricted, logged separately, and reviewed. More mature programs use write-once storage or cryptographic integrity verification for critical log data.</p>
                 </section>
 
                 <section>
                     <h2>Where to Start If Your Program Needs Work</h2>
 
-                    <h3>Build a Log Source Inventory</h3>
+                    <h3>Build a log source inventory</h3>
                     <p>List every system in your environment and document whether it is configured to generate logs, where those logs go, and how long they are retained. This inventory will immediately surface gaps &mdash; systems that aren&rsquo;t logging at all, logs that are stored locally with no retention policy, or critical systems whose logs aren&rsquo;t being reviewed. The inventory itself is useful documentation for examiners.</p>
 
-                    <h3>Establish a Documented Review Process</h3>
+                    <h3>Establish a documented review process</h3>
                     <p>Define who reviews logs, at what frequency, and what they are looking for. Even a basic daily review of authentication failures and privileged account activity &mdash; documented in a simple log review form or spreadsheet &mdash; is far better than no review process at all. Document anomalies investigated and the conclusions reached. The goal is a review process that&rsquo;s actually happening, not just described in a policy.</p>
 
-                    <h3>Set a Retention Standard and Enforce It</h3>
+                    <h3>Set a retention standard and enforce it</h3>
                     <p>Choose a retention period (90 days accessible, 12 months total is a reasonable baseline), document it in your information security policy, and verify that your current storage configuration actually meets it. If you are using cloud-based systems, confirm with your vendors that log data is being retained according to your policy, not just theirs.</p>
                 </section>
 
