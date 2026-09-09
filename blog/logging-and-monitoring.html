@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Logging and Monitoring: The Control Examiners Keep Coming Back To | Bluegrass Cybersecurity Solutions</title>
-    <meta name="description" content="Logging and monitoring is one of the most consistently cited gaps at smaller institutions. Here's what a defensible program looks like &mdash; and why it matters beyond just satisfying examiners.">
+    <meta name="description" content="Logging and monitoring is one of the most consistently cited gaps at smaller institutions. Here's what a defensible program looks like, and why it matters beyond just satisfying examiners.">
     <link rel="canonical" href="https://www.bluegrasscybersecurity.com/blog/logging-and-monitoring.html">
 
     <meta property="og:type"        content="article">
     <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
     <meta property="og:title"       content="Logging and Monitoring: The Control Examiners Keep Coming Back To | Bluegrass Cybersecurity Solutions">
-    <meta property="og:description" content="Logging and monitoring is one of the most consistently cited gaps at smaller institutions. Here's what a defensible program looks like &mdash; and why it matters beyond just satisfying examiners.">
+    <meta property="og:description" content="Logging and monitoring is one of the most consistently cited gaps at smaller institutions. Here's what a defensible program looks like, and why it matters beyond just satisfying examiners.">
     <meta property="og:url"         content="https://www.bluegrasscybersecurity.com/blog/logging-and-monitoring.html">
     <meta property="og:image"       content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
 
@@ -25,7 +25,7 @@
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": "Logging and Monitoring: The Control Examiners Keep Coming Back To",
-      "description": "Logging and monitoring is one of the most consistently cited gaps at smaller institutions. Here's what a defensible program looks like &mdash; and why it matters beyond just satisfying examiners.",
+      "description": "Logging and monitoring is one of the most consistently cited gaps at smaller institutions. Here's what a defensible program looks like, and why it matters beyond just satisfying examiners.",
       "url": "https://www.bluegrasscybersecurity.com/blog/logging-and-monitoring.html",
       "datePublished": "2026-06-30",
       "dateModified": "2026-06-30",
@@ -89,13 +89,13 @@
 
                 <section>
                     <h2>The Problem</h2>
-                    <p>Ask most institutions whether they have logging in place and the answer is yes. Ask them what they are logging, how long they retain it, who reviews it, and what happens when something suspicious appears &mdash; and the answers become much less consistent. That gap between having logging and having a logging program is exactly what examiners are probing for, and it is one of the most reliably cited weaknesses across institution sizes and charter types.</p>
-                    <p>The practical stakes are high. Logs are how you detect unauthorized access, investigate incidents, and demonstrate to regulators that your controls are actually functioning. An institution that experiences a breach and cannot reconstruct what happened &mdash; because logs weren&rsquo;t retained long enough, weren&rsquo;t comprehensive enough, or were never reviewed &mdash; faces a much more difficult conversation with both examiners and counsel than one that can produce a clear timeline.</p>
+                    <p>Ask most institutions whether they have logging in place and the answer is yes. Ask them what they are logging, how long they retain it, who reviews it, and what happens when something suspicious appears, and the answers become much less consistent. That gap between having logging and having a logging program is exactly what examiners are probing for, and it is one of the most reliably cited weaknesses across institution sizes and charter types.</p>
+                    <p>The practical stakes are high. Logs are how you detect unauthorized access, investigate incidents, and demonstrate to regulators that your controls are actually functioning. An institution that experiences a breach and cannot reconstruct what happened, because logs weren&rsquo;t retained long enough, weren&rsquo;t comprehensive enough, or were never reviewed, faces a much more difficult conversation with both examiners and counsel than one that can produce a clear timeline.</p>
                 </section>
 
                 <section>
                     <h2>What Regulators Require</h2>
-                    <p>The FFIEC Information Security Booklet requires institutions to implement audit logging sufficient to detect, investigate, and recover from security events. The NIST Cybersecurity Framework identifies logging and monitoring as a core component of the Detect function. The updated GLBA Safeguards Rule requires covered institutions to monitor and test the effectiveness of their information security program &mdash; which regulators increasingly interpret to include active log monitoring, not just passive collection.</p>
+                    <p>The FFIEC Information Security Booklet requires institutions to implement audit logging sufficient to detect, investigate, and recover from security events. The NIST Cybersecurity Framework identifies logging and monitoring as a core component of the Detect function. The updated GLBA Safeguards Rule requires covered institutions to monitor and test the effectiveness of their information security program, which regulators increasingly interpret to include active log monitoring, not just passive collection.</p>
                     <h3>What this looks like in practice</h3>
                     <p>There is no universal standard for how long logs must be retained, but examiners typically expect a minimum of 90 days of immediately accessible log data with at least 12 months of total retention. Institutions that have experienced a security incident are held to a higher standard: if you cannot produce logs from the relevant period, the assumption is unfavorable.</p>
                 </section>
@@ -104,16 +104,16 @@
                     <h2>What Good Logging Looks Like</h2>
 
                     <h3>What you are logging</h3>
-                    <p>Comprehensive logging starts with knowing what sources matter: authentication events (successful and failed logins), privileged account activity, changes to user access and system configurations, firewall and network traffic anomalies, and endpoint security alerts. Gaps in any of these categories &mdash; particularly around privileged access and authentication failures &mdash; are common findings. Keep a log source inventory and check it against your asset inventory to identify what is and isn&rsquo;t being captured.</p>
+                    <p>Comprehensive logging starts with knowing what sources matter: authentication events (successful and failed logins), privileged account activity, changes to user access and system configurations, firewall and network traffic anomalies, and endpoint security alerts. Gaps in any of these categories, particularly around privileged access and authentication failures, are common findings. Keep a log source inventory and check it against your asset inventory to identify what is and isn&rsquo;t being captured.</p>
 
                     <h3>Centralized log management</h3>
-                    <p>Logs scattered across individual systems &mdash; firewall logs on one appliance, Active Directory logs on a domain controller, core banking logs in a separate system &mdash; are difficult to correlate and easy to miss. Centralized log management, whether through a SIEM (Security Information and Event Management) platform or a simpler log aggregation solution, solves that. Centralization also supports log integrity: logs stored only on the systems they describe can be altered by a compromised account on that system.</p>
+                    <p>Logs scattered across individual systems (firewall logs on one appliance, Active Directory logs on a domain controller, core banking logs in a separate system) are difficult to correlate and easy to miss. Centralized log management, whether through a SIEM (Security Information and Event Management) platform or a simpler log aggregation solution, solves that. Centralization also supports log integrity: logs stored only on the systems they describe can be altered by a compromised account on that system.</p>
 
                     <h3>Active review and alerting</h3>
-                    <p>Collecting logs without reviewing them is a common gap, and one worth being able to answer for directly: who reviews logs, how often, and what they are looking for. A documented log review process &mdash; daily review of critical alerts, weekly review of authentication anomalies, monthly summary reporting to management &mdash; demonstrates an operational program rather than a passive collection exercise. Automated alerting on high-priority events reduces the burden on staff and makes the review process more sustainable.</p>
+                    <p>Collecting logs without reviewing them is a common gap, and one worth being able to answer for directly: who reviews logs, how often, and what they are looking for. A documented log review process (daily review of critical alerts, weekly review of authentication anomalies, monthly summary reporting to management) demonstrates an operational program rather than a passive collection exercise. Automated alerting on high-priority events reduces the burden on staff and makes the review process more sustainable.</p>
 
                     <h3>Retention policy and enforcement</h3>
-                    <p>Your log retention policy should specify how long different log types are retained, where they are stored, and who is responsible for ensuring retention requirements are met. Keep the policy on hand and confirm actual retention matches it. Logs that are overwritten before the retention period has elapsed &mdash; often because storage wasn&rsquo;t sized appropriately for the volume being generated &mdash; are a straightforward finding with a clear remediation path.</p>
+                    <p>Your log retention policy should specify how long different log types are retained, where they are stored, and who is responsible for ensuring retention requirements are met. Keep the policy on hand and confirm actual retention matches it. Logs that are overwritten before the retention period has elapsed, often because storage wasn&rsquo;t sized appropriately for the volume being generated, are a straightforward finding with a clear remediation path.</p>
 
                     <h3>Log integrity</h3>
                     <p>Logs are only useful as evidence if they haven&rsquo;t been tampered with. Protect logs from modification, particularly by the accounts whose activity they record. At minimum, administrative access to logging systems should be restricted, logged separately, and reviewed. More mature programs use write-once storage or cryptographic integrity verification for critical log data.</p>
@@ -123,10 +123,10 @@
                     <h2>Where to Start If Your Program Needs Work</h2>
 
                     <h3>Build a log source inventory</h3>
-                    <p>List every system in your environment and document whether it is configured to generate logs, where those logs go, and how long they are retained. This inventory will immediately surface gaps &mdash; systems that aren&rsquo;t logging at all, logs that are stored locally with no retention policy, or critical systems whose logs aren&rsquo;t being reviewed. The inventory itself is useful documentation for examiners.</p>
+                    <p>List every system in your environment and document whether it is configured to generate logs, where those logs go, and how long they are retained. This inventory will immediately surface gaps: systems that aren&rsquo;t logging at all, logs that are stored locally with no retention policy, or critical systems whose logs aren&rsquo;t being reviewed. The inventory itself is useful documentation for examiners.</p>
 
                     <h3>Establish a documented review process</h3>
-                    <p>Define who reviews logs, at what frequency, and what they are looking for. Even a basic daily review of authentication failures and privileged account activity &mdash; documented in a simple log review form or spreadsheet &mdash; is far better than no review process at all. Document anomalies investigated and the conclusions reached. The goal is a review process that&rsquo;s actually happening, not just described in a policy.</p>
+                    <p>Define who reviews logs, at what frequency, and what they are looking for. Even a basic daily review of authentication failures and privileged account activity, documented in a simple log review form or spreadsheet, is far better than no review process at all. Document anomalies investigated and the conclusions reached. The goal is a review process that&rsquo;s actually happening, not just described in a policy.</p>
 
                     <h3>Set a retention standard and enforce it</h3>
                     <p>Choose a retention period (90 days accessible, 12 months total is a reasonable baseline), document it in your information security policy, and verify that your current storage configuration actually meets it. If you are using cloud-based systems, confirm with your vendors that log data is being retained according to your policy, not just theirs.</p>
