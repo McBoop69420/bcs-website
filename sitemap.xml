@@ -91,9 +91,15 @@
   </url>
   <url>
     <loc>https://www.bluegrasscybersecurity.com/blog.html</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bluegrasscybersecurity.com/blog/ai-acceptable-use-policy.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.bluegrasscybersecurity.com/blog/phishing-resistant-mfa.html</loc>
