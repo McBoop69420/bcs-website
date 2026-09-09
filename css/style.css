@@ -38,7 +38,7 @@ html {
 
 /* Base */
 body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.65;
     color: var(--body-text);
     background-color: var(--paper);
@@ -52,7 +52,7 @@ h1, h2, h3, h4,
 .nav-links a,
 .logo,
 section h2 {
-    font-family: 'Sora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Sections alternate: white by default, tinted where .bg-light-gray is set.
