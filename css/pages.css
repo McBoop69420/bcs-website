@@ -2001,7 +2001,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
     gap: 2rem;
-    align-items: center;
+    align-items: start;
 }
 
 .audience-strip h2,
