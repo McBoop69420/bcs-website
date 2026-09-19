@@ -1991,16 +1991,8 @@
     margin-bottom: 0.6rem;
 }
 
-.section-label {
-    display: block;
-    color: var(--slate);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-}
-
-/* A second section-label further down a page needs to clear the block above it. */
-.section-label--spaced {
+/* A second heading further down a page needs to clear the block above it. */
+.section-heading--spaced {
     margin-top: 3rem;
 }
 

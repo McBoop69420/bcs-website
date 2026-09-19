@@ -127,7 +127,6 @@
 
         <!-- Results (revealed by js/policy-finder.js once the form is complete) -->
         <section class="finder-results" data-finder-results hidden aria-live="polite">
-            <p class="section-label">Your Results</p>
             <h2 data-finder-results-heading>Here's what we'd recommend</h2>
             <div class="finder-results-summary" data-finder-results-summary></div>
 
@@ -195,9 +194,8 @@
 
             <!-- Done-For-You upsell -->
             <div class="finder-upsell">
-                <p class="section-label">Skip the blank page</p>
                 <h2>Want it mostly filled out for you?</h2>
-                <p>Every template above is easier to start than to finish. Send us your results and we'll pre-fill your policy set with your organization's name, control owners, vendors, and systems already in place. You review and approve instead of writing from scratch.</p>
+                <p>Skip the blank page. Every template above is easier to start than to finish. Send us your results and we'll pre-fill your policy set with your organization's name, control owners, vendors, and systems already in place. You review and approve instead of writing from scratch.</p>
 
                 <!-- Submits to the Cloudflare Worker at /api/signup (see cloudflare/worker.js).
                      Turnstile + consent gate the lead. Degrades to mailto: if JS/Turnstile fails. -->

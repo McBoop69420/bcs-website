@@ -206,7 +206,7 @@
         heading.textContent = "You're already covering the basics";
         addSummaryLine(
           summary,
-          "Based on your answers, the core policies are already in place. A second set of eyes before an exam can still catch language that won't hold up under review."
+          "Here are your results. Based on your answers, the core policies are already in place. A second set of eyes before an exam can still catch language that won't hold up under review."
         );
       } else {
         heading.textContent =
@@ -215,7 +215,7 @@
             : "Here's what we'd recommend, in order";
         addSummaryLine(
           summary,
-          "Based on your answers, these are the templates most likely to close your gaps."
+          "Here are your results. Based on your answers, these are the templates most likely to close your gaps."
         );
         if (recommended.length >= 3) {
           var bundleP = document.createElement("p");
