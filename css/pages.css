@@ -1981,16 +1981,6 @@
     color: var(--ink);
 }
 
-.eyebrow {
-    display: inline-block;
-    color: var(--amber);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-}
-
 /* A second heading further down a page needs to clear the block above it. */
 .section-heading--spaced {
     margin-top: 3rem;
@@ -2580,10 +2570,6 @@
 .finder-upsell p {
     color: var(--white);
     text-align: left;
-}
-
-.finder-upsell .eyebrow {
-    color: #f4d78a;
 }
 
 .finder-upsell-form {
