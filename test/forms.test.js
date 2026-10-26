@@ -40,6 +40,7 @@ async function runSignupClient({ token = "", turnstile } = {}) {
       formListeners[event] = handler;
     },
     appendChild() {},
+    dataset: {},
     querySelector(selector) {
       if (selector === ".cf-turnstile") return widget;
       if (selector === ".form-status") return status;
@@ -139,5 +140,7 @@ test("successful submissions reset the implicit Turnstile widget", async () => {
   const result = await runSignupClient({ token: "valid-token", turnstile: true });
 
   assert.equal(result.fetchCalls, 1);
+  assert.equal(result.status.className, "form-status success");
+  assert.equal(result.window.location.href, "");
   assert.equal(result.resetCalls.length, 1);
 });
