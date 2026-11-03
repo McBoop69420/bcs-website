@@ -2537,6 +2537,11 @@
     margin-top: 2rem;
 }
 
+/* .product-card sets display: flex, which would otherwise beat [hidden]. */
+.finder-result-card[hidden] {
+    display: none;
+}
+
 .finder-example {
     border: 1px solid var(--line);
     border-radius: 6px;

@@ -217,21 +217,19 @@
           summary,
           "Here are your results. Based on your answers, these are the templates most likely to close your gaps."
         );
-        if (recommended.length >= 3) {
+        // The Complete bundle only beats list price with all four templates;
+        // any three cost less bought one at a time.
+        if (recommended.length === 4) {
           var bundleP = document.createElement("p");
           bundleP.appendChild(
-            document.createTextNode(
-              "With " +
-                recommended.length +
-                " templates on the list, the "
-            )
+            document.createTextNode("With all four templates on the list, the ")
           );
           var bundleLink = document.createElement("a");
           bundleLink.href = "products.html#bundles";
           bundleLink.textContent = "Complete Compliance Bundle";
           bundleP.appendChild(bundleLink);
           bundleP.appendChild(
-            document.createTextNode(" is usually cheaper than buying them one at a time.")
+            document.createTextNode(" is cheaper than buying them one at a time.")
           );
           summary.appendChild(bundleP);
         }

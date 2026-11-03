@@ -103,7 +103,6 @@
         'input[name], select[name], textarea[name]'
       );
       fields.forEach(function (f) {
-        if (f.type === "hidden") return;
         if (f.name === "cf-turnstile-response") return;
         data[f.name] = f.value.trim();
       });
