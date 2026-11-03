@@ -15,24 +15,50 @@ html {
 
 /* Design tokens */
 :root {
-    --primary-blue: #1e3a5f;
-    --accent-blue:  #2c5f8d;
-    --light-blue:   #4a90c7;
-    --green:        #2d5016;
-    --light-green:  #5a7d3d;
-    --gold:         #d4a017;
-    --gray:         #333;
-    --light-gray:   #f8f9fa;
+    --ink:          #131C2E;
+    --slate:        #3D5A80;
+    --body-text:    #2B3242;
+    --paper:        #FAFAF9;
+    --mist:         #EEF1F6;
+    --line:         #DDE3EC;
+    --amber:        #B8722E;
+    --sage:         #5B7A63;
     --white:        #ffffff;
+
+    /* legacy token aliases so nothing left unconverted still breaks */
+    --primary-blue: var(--ink);
+    --accent-blue:  var(--slate);
+    --light-blue:   var(--slate);
+    --green:        var(--sage);
+    --light-green:  var(--amber);
+    --gold:         var(--amber);
+    --gray:         var(--body-text);
+    --light-gray:   var(--paper);
 }
 
 /* Base */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--gray);
-    background-color: var(--light-gray);
+    line-height: 1.65;
+    color: var(--body-text);
+    background-color: var(--paper);
     overflow-x: hidden;
+}
+
+h1, h2, h3, h4,
+.hero-headline,
+.cta-button,
+.nav-links a,
+.logo,
+section h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sections alternate: white by default, tinted where .bg-light-gray is set.
+   The body's paper ground only shows through on pages shorter than the
+   viewport. Any section with its own background class overrides this. */
+section {
+    background: var(--white);
 }
 
 /* ── Skip to content ── */
@@ -76,16 +102,19 @@ nav {
 
 .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .nav-links a {
+    display: inline-block;
+    white-space: nowrap;
     color: var(--primary-blue);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover,
@@ -110,7 +139,7 @@ footer {
 footer p { margin-bottom: 0.3rem; font-size: 0.9rem; }
 
 /* ── Mobile nav ── */
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
     .menu-toggle { display: block; }
 
     .nav-links {

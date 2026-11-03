@@ -86,6 +86,7 @@ const KNOWN_SIGNUP_FIELDS = new Set([
   "subject",
   "name",
   "organization",
+  "consent",
 ]);
 
 // Turnstile's own widget posts the token as `cf-turnstile-response` (native
@@ -209,6 +210,7 @@ async function handleSignup(request, env) {
     name: (typeof payload.name === "string" ? payload.name : "").slice(0, 200),
     email,
     organization: (typeof payload.organization === "string" ? payload.organization : "").slice(0, 200),
+    consent: payload.consent === "yes" ? "yes" : "",
     extra: buildExtraFields(payload),
     ip_country: request.cf && request.cf.country ? request.cf.country : "",
   };
@@ -259,7 +261,7 @@ async function handleExport(request, env) {
 
   rows.sort((a, b) => (a.received_at < b.received_at ? 1 : -1));
 
-  const header = ["received_at", "form_type", "name", "email", "organization", "ip_country", "details"];
+  const header = ["received_at", "form_type", "name", "email", "organization", "ip_country", "details", "consent"];
   // Neutralize spreadsheet formula injection: a cell beginning with
   // = + - @ is executed as a formula by Excel/Sheets on open.
   // https://owasp.org/www-community/attacks/CSV_Injection

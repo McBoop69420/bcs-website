@@ -17,6 +17,18 @@
 (function () {
   "use strict";
 
+  // Cloudflare Turnstile calls this by name (see data-error-callback on each
+  // .cf-turnstile div) whenever a widget fails to validate — wrong site key,
+  // wrong domain, network trouble, etc. This only fires for validation
+  // failures on a widget that *did* load; a widget that never loaded at all
+  // is caught separately in wireForm() by checking window.turnstile.
+  // All widgets on a page share one site key, so a page-level flag is
+  // enough — there's no scenario where one widget on a page fails this way
+  // while another succeeds.
+  window.bcsTurnstileError = function () {
+    window.__bcsTurnstileErrored = true;
+  };
+
   function getTurnstileToken(widget) {
     // Returns the token string once the widget has solved, else "".
     if (!widget) return "";
@@ -42,6 +54,23 @@
     }
     el.textContent = message;
     el.className = "form-status " + (kind || "info");
+  }
+
+  function revealDownload(form, url) {
+    // Forms that request a gated file (e.g. free template downloads) carry
+    // data-download-url. On a successful submit, open the file directly and
+    // also leave a persistent link in case the popup was blocked.
+    window.open(url, "_blank");
+    var link = form.querySelector(".form-download-link");
+    if (!link) {
+      link = document.createElement("a");
+      link.className = "form-download-link product-button";
+      form.appendChild(link);
+    }
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Download now";
   }
 
   function degradeToMailto(form, data) {
@@ -74,17 +103,18 @@
         'input[name], select[name], textarea[name]'
       );
       fields.forEach(function (f) {
-        if (f.type === "hidden") return;
         if (f.name === "cf-turnstile-response") return;
         data[f.name] = f.value.trim();
       });
 
       var token = getTurnstileToken(widget);
       if (widget && !token) {
-        if (typeof window.turnstile === "undefined") {
-          // The Turnstile script itself never loaded (blocked, offline,
-          // etc.) — there is no checkbox to complete, so degrade instead
-          // of blocking the user forever.
+        if (typeof window.turnstile === "undefined" || window.__bcsTurnstileErrored) {
+          // Either the Turnstile script itself never loaded (blocked,
+          // offline, etc.) or it loaded but the widget failed to validate
+          // (e.g. a site key that doesn't match this domain — the exact
+          // situation on staging). Either way there's no checkbox the user
+          // can complete, so degrade instead of blocking them forever.
           setStatus(
             form,
             "Verification unavailable — opening your email instead.",
@@ -129,12 +159,19 @@
         })
         .then(function (r) {
           if (r.ok) {
+            var downloadUrl = form.dataset.downloadUrl;
             form.reset();
             setStatus(
               form,
-              r.body.message || "Thanks — we'll be in touch shortly.",
+              r.body.message ||
+                (downloadUrl
+                  ? "Thanks — your download is opening in a new tab."
+                  : "Thanks — we'll be in touch shortly."),
               "success"
             );
+            if (downloadUrl) {
+              revealDownload(form, downloadUrl);
+            }
             if (window.turnstile && widget) {
               window.turnstile.reset(widget);
             }

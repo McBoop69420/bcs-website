@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vendor SOC Reports: What to Read and What to Record | Bluegrass Cybersecurity Solutions</title>
+    <meta name="description" content="Filing a vendor's SOC report isn't the same as reviewing it. Here's what to check in scope, exceptions, and complementary user entity controls, and how to document the review for examiners.">
+    <link rel="canonical" href="https://www.bluegrasscybersecurity.com/blog/vendor-soc-report-review.html">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:site_name"   content="Bluegrass Cybersecurity Solutions">
+    <meta property="og:title"       content="Vendor SOC Reports: What to Read and What to Record | Bluegrass Cybersecurity Solutions">
+    <meta property="og:description" content="Filing a vendor's SOC report isn't the same as reviewing it. Here's what to check in scope, exceptions, and complementary user entity controls, and how to document the review for examiners.">
+    <meta property="og:url"         content="https://www.bluegrasscybersecurity.com/blog/vendor-soc-report-review.html">
+    <meta property="og:image"       content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
+
+    <link rel="icon" type="image/png" href="../Images/logo-new.png">
+    <link rel="apple-touch-icon" href="../Images/logo-new.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Vendor SOC Reports: What to Read and What to Record",
+      "description": "Filing a vendor's SOC report isn't the same as reviewing it. Here's what to check in scope, exceptions, and complementary user entity controls, and how to document the review for examiners.",
+      "url": "https://www.bluegrasscybersecurity.com/blog/vendor-soc-report-review.html",
+      "datePublished": "2026-09-15",
+      "dateModified": "2026-09-15",
+      "image": "https://www.bluegrasscybersecurity.com/Images/logo-new.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jared Luyster",
+        "jobTitle": "Principal Consultant",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Bluegrass Cybersecurity Solutions",
+          "url": "https://www.bluegrasscybersecurity.com"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bluegrass Cybersecurity Solutions",
+        "url": "https://www.bluegrasscybersecurity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.bluegrasscybersecurity.com/Images/logo-new.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.bluegrasscybersecurity.com/blog/vendor-soc-report-review.html"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html"><img src="../Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+                        <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../ai-risk-governance.html">AI Risk</a></li>
+                <li><a href="../cybersecurity-grc.html">GRC</a></li>
+                <li><a href="../services.html">Services</a></li>
+                <li><a href="../resources.html" aria-current="page">Resources</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="post-wrapper">
+
+            <span class="back-link"><a href="../blog.html">&#8592; Back to Blog</a></span>
+
+            <h1 class="post-title">Vendor SOC Reports: What to Read and What to Record</h1>
+            <p class="post-meta">Published September 15, 2026. Written for regulated institutions.</p>
+
+            <article class="post-body">
+
+                <section>
+                    <h2>Filing the PDF Isn't a Review</h2>
+                    <p>Most institutions collect SOC reports from their critical vendors every year. Far fewer can show what they concluded from them. Examiners know the difference. A folder of reports proves you asked for them. A short written review proves someone read them with your relationship in mind and decided whether anything needed follow-up.</p>
+                </section>
+
+                <section>
+                    <h2>What to Check in Every Report</h2>
+
+                    <h3>Does the scope match what you actually use?</h3>
+                    <p>Confirm the report covers the specific service, system, and locations your institution relies on. A SOC report on a vendor's hosting platform doesn't necessarily cover the application you license from them. Check the report type as well: a Type 2 report tests whether controls operated over a period, while a Type 1 only describes them at a single point in time.</p>
+
+                    <h3>What did the auditor find?</h3>
+                    <p>Read the opinion first. A qualified opinion means the auditor found a problem significant enough to call out. Then read the exceptions in the testing section, even under a clean opinion. A failed control around access removal or change management may matter a great deal depending on what you use the vendor for.</p>
+
+                    <h3>What are you responsible for?</h3>
+                    <p>Look for the complementary user entity controls. These are the controls the vendor assumes <em>you</em> are operating, such as reviewing your own users' access or protecting your credentials to their portal. If you aren't doing them, the vendor's controls don't fully protect you, regardless of what the report says.</p>
+
+                    <h3>Who else is involved?</h3>
+                    <p>Many vendors rely on subservice organizations such as data centers or cloud providers. If the report carves those out, you may need their reports too, at least for the ones that matter.</p>
+
+                    <h3>Does the period cover your review window?</h3>
+                    <p>If the report period ended months ago, request a bridge letter from the vendor stating that no material changes have occurred since.</p>
+                </section>
+
+                <section>
+                    <h2>Write a One-Page Memo</h2>
+                    <p>End every review with a short memo: which report you reviewed, whether scope matched your use, any exceptions and why they do or don't matter to you, the user controls you've confirmed you operate, follow-up items, and who signed off. During an exam, that memo is usually more useful than the report itself, because it shows judgment, not just collection.</p>
+                </section>
+
+                <section>
+                    <h2>Need Help With Vendor Reviews?</h2>
+                    <p>If SOC reports are piling up without clear conclusions, our <a href="../vendor-management.html">vendor management services</a> can build a review process that's fast, consistent, and defensible. Or <a href="../contact.html">reach out</a> to talk it through.</p>
+                </section>
+
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../blog.html">Blog</a>
+            <a href="../policy-finder.html">Policy Finder</a>
+            <a href="../products.html">Templates</a>
+        </div>
+        <p>Copyright &copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+
+</body>
+</html>

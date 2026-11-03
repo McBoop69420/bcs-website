@@ -171,6 +171,51 @@ test("valid signup verifies Turnstile and preserves additional form fields", asy
   assert.ok(Buffer.byteLength(JSON.stringify(entry.metadata), "utf8") <= 1024);
 });
 
+test("records consent on the lead and keeps it in the export when details are truncated", async (t) => {
+  stubTurnstile(t);
+  const kv = new MockKV();
+  const env = makeEnv(kv);
+
+  const response = await worker.fetch(
+    makeSignupRequest({
+      consent: "yes",
+      email: "person@example.com",
+      message: "x".repeat(2000),
+      template_name: "Password Standard",
+      turnstileToken: "valid-token",
+    }),
+    env
+  );
+
+  assert.equal(response.status, 200);
+  const entry = kv.entry(leadKeys(kv)[0]);
+  const record = JSON.parse(entry.value);
+  assert.equal(record.consent, "yes");
+  assert.equal(record.extra.template_name, "Password Standard");
+  assert.equal(entry.metadata.consent, "yes");
+
+  const exported = await worker.fetch(
+    exportRequest({ authorization: "Bearer export-secret" }),
+    env
+  );
+  const [header, row] = (await exported.text()).split("\n");
+  assert.ok(header.endsWith(",consent"));
+  assert.ok(row.endsWith(',"yes"'));
+});
+
+test("only the form's consent value counts as consent", async (t) => {
+  stubTurnstile(t);
+
+  for (const consent of [undefined, "", "no", true]) {
+    const kv = new MockKV();
+    await worker.fetch(
+      makeSignupRequest({ consent, email: "person@example.com", turnstileToken: "valid-token" }),
+      makeEnv(kv)
+    );
+    assert.equal(JSON.parse(kv.entry(leadKeys(kv)[0]).value).consent, "");
+  }
+});
+
 test("limits signup attempts by IP", async (t) => {
   const calls = stubTurnstile(t);
   const kv = new MockKV();
