@@ -112,9 +112,9 @@
         if (typeof window.turnstile === "undefined" || window.__bcsTurnstileErrored) {
           // Either the Turnstile script itself never loaded (blocked,
           // offline, etc.) or it loaded but the widget failed to validate
-          // (e.g. a site key that doesn't match this domain — the exact
-          // situation on staging). Either way there's no checkbox the user
-          // can complete, so degrade instead of blocking them forever.
+          // (e.g. a site key that doesn't match this domain). Either way
+          // there's no checkbox the user can complete, so degrade instead of
+          // blocking them forever.
           setStatus(
             form,
             "Verification unavailable — opening your email instead.",
