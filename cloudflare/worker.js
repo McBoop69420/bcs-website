@@ -170,6 +170,10 @@ function buildExportMetadata(record) {
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_SECONDS = 600;
 
+// The privacy policy promises that form submissions are deleted 24 months after
+// they are sent, so KV expires each lead on that schedule.
+const LEAD_RETENTION_SECONDS = 730 * 24 * 60 * 60;
+
 async function checkRateLimit(env, ip) {
   if (!ip) return true; // nothing to key on — fail open rather than block everyone behind it
   const key = `ratelimit:${ip}`;
@@ -237,6 +241,7 @@ async function handleSignup(request, env) {
   const key = `lead:${Date.now()}:${crypto.randomUUID()}`;
   await env.LEADS.put(key, JSON.stringify(record), {
     metadata: buildExportMetadata(record),
+    expirationTtl: LEAD_RETENTION_SECONDS,
   });
 
   return jsonResponse({ ok: true, message: "Thanks — we'll be in touch." });

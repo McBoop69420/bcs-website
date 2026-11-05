@@ -225,6 +225,20 @@ test("records consent on the lead and keeps it in the export when details are tr
   assert.ok(row.endsWith(',"yes"'));
 });
 
+test("leads expire 24 months after they are submitted", async (t) => {
+  t.mock.method(globalThis, "fetch", async () => Response.json({ success: true }));
+  const kv = new MockKV();
+
+  const response = await worker.fetch(
+    makeSignupRequest({ email: "lead@example.com", turnstileToken: "token" }),
+    makeEnv(kv),
+  );
+
+  assert.equal(response.status, 200);
+  const leadWrite = kv.calls.put.find((call) => call.name.startsWith("lead:"));
+  assert.equal(leadWrite.options.expirationTtl, 730 * 24 * 60 * 60);
+});
+
 test("only the form's consent value counts as consent", async (t) => {
   stubTurnstile(t);
 
