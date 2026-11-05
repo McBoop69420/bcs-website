@@ -88,6 +88,22 @@
     window.location.href = mailto;
   }
 
+  function fallBackToEmail(form, data, message) {
+    // A free template form still hands over its file: the visitor shouldn't
+    // lose the download because the human check or our endpoint failed. The
+    // email that opens next still lets them reach us.
+    var downloadUrl = form.dataset.downloadUrl;
+    setStatus(
+      form,
+      downloadUrl ? message + " Your download link is below." : message,
+      "error"
+    );
+    if (downloadUrl) {
+      revealDownload(form, downloadUrl);
+    }
+    degradeToMailto(form, data);
+  }
+
   function wireForm(form) {
     if (!form) return;
     var widget = form.querySelector(".cf-turnstile");
@@ -115,12 +131,11 @@
           // (e.g. a site key that doesn't match this domain). Either way
           // there's no checkbox the user can complete, so degrade instead of
           // blocking them forever.
-          setStatus(
+          fallBackToEmail(
             form,
-            "Verification unavailable — opening your email instead.",
-            "error"
+            data,
+            "Verification unavailable — opening your email instead."
           );
-          degradeToMailto(form, data);
           return;
         }
         setStatus(
@@ -161,12 +176,13 @@
           if (r.ok) {
             var downloadUrl = form.dataset.downloadUrl;
             form.reset();
+            // The Worker's reply is a generic thank-you, so a download form
+            // says what is actually happening instead.
             setStatus(
               form,
-              r.body.message ||
-                (downloadUrl
-                  ? "Thanks — your download is opening in a new tab."
-                  : "Thanks — we'll be in touch shortly."),
+              downloadUrl
+                ? "Thanks — your download is opening in a new tab. If it doesn't, use the link below."
+                : r.body.message || "Thanks — we'll be in touch shortly.",
               "success"
             );
             if (downloadUrl) {
@@ -178,21 +194,19 @@
           } else {
             // Server rejected (e.g. bad email / token). Degrade so the lead
             // is never lost.
-            setStatus(
+            fallBackToEmail(
               form,
-              "Submission failed — opening your email instead.",
-              "error"
+              data,
+              "Submission failed — opening your email instead."
             );
-            degradeToMailto(form, data);
           }
         })
         .catch(function () {
-          setStatus(
+          fallBackToEmail(
             form,
-            "Network error — opening your email instead.",
-            "error"
+            data,
+            "Network error — opening your email instead."
           );
-          degradeToMailto(form, data);
         });
     });
   }
