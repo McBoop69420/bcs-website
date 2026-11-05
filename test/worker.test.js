@@ -74,6 +74,28 @@ test("proxies site requests and adds the canonical security headers", async (t) 
   assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
 });
 
+test("proxied pages hide hosting details and refuse to be framed", async (t) => {
+  t.mock.method(globalThis, "fetch", async () => new Response("origin", {
+    headers: {
+      "content-type": "text/plain",
+      etag: "keep-me",
+      "access-control-allow-origin": "*",
+      via: "1.1 varnish",
+      "x-fastly-request-id": "abc",
+      "x-github-request-id": "abc",
+      "x-served-by": "cache-abc",
+    },
+  }));
+
+  const response = await worker.fetch(new Request(`${BASE_URL}/about.html`), makeEnv());
+
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("etag"), "keep-me");
+  for (const name of ["access-control-allow-origin", "via", "x-fastly-request-id", "x-github-request-id", "x-served-by"]) {
+    assert.equal(response.headers.get(name), null, name);
+  }
+});
+
 test("rejects non-POST signup requests", async () => {
   const response = await worker.fetch(
     new Request(`${BASE_URL}/api/signup`),
@@ -260,6 +282,15 @@ test("export requires a Bearer token and ignores query-string secrets", async (t
       assert.deepEqual(await response.json(), { ok: false, error: "Unauthorized" });
     });
   }
+});
+
+test("export refuses every token when no secret is configured", async () => {
+  const env = makeEnv();
+  delete env.EXPORT_SECRET;
+
+  const response = await worker.fetch(exportRequest({ authorization: "Bearer undefined" }), env);
+
+  assert.equal(response.status, 401);
 });
 
 test("export paginates metadata-backed leads and sorts newest first", async () => {

@@ -4,7 +4,8 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 const config = await readFile(new URL("_config.yml", root), "utf8");
-const excluded = [...config.matchAll(/^\s*-\s+(\S+)\s*$/gm)].map((match) => match[1]);
+const excludeBlock = config.match(/^exclude:\n((?:\s+-\s+\S+\n)+)/m)[1];
+const excluded = [...excludeBlock.matchAll(/-\s+(\S+)/g)].map((match) => match[1]);
 
 const isExcluded = (path) =>
   excluded.some((entry) => (entry.endsWith("/") ? path.startsWith(entry) : path === entry));
@@ -45,4 +46,16 @@ test("every page in the sitemap stays published", async () => {
 
   assert.ok(paths.length > 0);
   assert.deepEqual(paths.filter(isExcluded), []);
+});
+
+test("security.txt gets published and hasn't expired", async () => {
+  assert.match(config, /^include:\n\s+-\s+\.well-known$/m);
+
+  const text = await readFile(new URL(".well-known/security.txt", root), "utf8");
+  assert.match(text, /^Contact: mailto:\S+$/m);
+  assert.match(text, /^Canonical: https:\/\/www\.bluegrasscybersecurity\.com\/\.well-known\/security\.txt$/m);
+
+  const daysLeft = (new Date(text.match(/^Expires: (\S+)$/m)[1]) - Date.now()) / 86_400_000;
+  assert.ok(daysLeft > 30, "security.txt is about to expire: set a new date less than a year out");
+  assert.ok(daysLeft < 366, "security.txt should expire within a year");
 });
