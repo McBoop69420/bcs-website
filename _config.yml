@@ -1,0 +1,17 @@
+# GitHub Pages publishes everything in this repository unless it is listed here,
+# so internal files have to be excluded from the live site one by one.
+# Folders need the trailing slash: Jekyll matches by prefix, so "test" would also
+# hide a page like "testimonials.html". This list replaces the Pages default, which
+# only excludes CNAME.
+exclude:
+  - AGENTS.md
+  - CNAME
+  - HIGH_PRIORITY_TODO.md
+  - Images/deprecated/
+  - README.md
+  - SECURITY_TODO.md
+  - cloudflare/
+  - css/style-bible.css
+  - package.json
+  - style-bible.html
+  - test/
