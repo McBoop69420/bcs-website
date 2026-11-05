@@ -304,3 +304,29 @@ test("form status messages stay readable on light and dark form panels", async (
     );
   }
 });
+
+test("bundle savings match the listed template prices", async () => {
+  const products = await readFile(new URL("products.html", root), "utf8");
+  const price = (name) =>
+    Number(products.match(new RegExp(`<h3>${name}</h3>\\s*<div class="product-price">\\$(\\d+)</div>`))[1]);
+  const claimedSavings = (name) =>
+    Number(products.match(new RegExp(`<h3>${name}</h3>[\\s\\S]*?Save \\$(\\d+) vs`))[1]);
+  const starter = ["Information Security Policy", "Vendor Management Policy", "Incident Response Plan"];
+  const complete = [...starter, "Business Continuity Plan"];
+  const total = (names) => names.reduce((sum, name) => sum + price(name), 0);
+
+  assert.equal(claimedSavings("Compliance Starter Bundle"), total(starter) - price("Compliance Starter Bundle"));
+  assert.equal(claimedSavings("Complete Compliance Bundle"), total(complete) - price("Complete Compliance Bundle"));
+});
+
+test("the security policy allows only what the site loads", async () => {
+  const csp = (await readFile(new URL("cloudflare/csp.txt", root), "utf8"))
+    .split(/\r?\n/)
+    .filter((line) => !line.trim().startsWith("#"))
+    .join(" ");
+
+  assert.doesNotMatch(csp, /fonts\.(googleapis|gstatic)\.com/);
+  assert.match(csp, /script-src [^;]*https:\/\/static\.cloudflareinsights\.com/);
+  assert.match(csp, /connect-src [^;]*https:\/\/cloudflareinsights\.com/);
+  assert.doesNotMatch(csp, /'unsafe-inline'/);
+});

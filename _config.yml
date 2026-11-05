@@ -3,6 +3,10 @@
 # Folders need the trailing slash: Jekyll matches by prefix, so "test" would also
 # hide a page like "testimonials.html". This list replaces the Pages default, which
 # only excludes CNAME.
+# Jekyll skips folders that start with a dot unless they are listed here.
+include:
+  - .well-known
+
 exclude:
   - AGENTS.md
   - CNAME

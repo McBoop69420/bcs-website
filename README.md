@@ -167,6 +167,9 @@ GitHub Pages publishes everything in this repository unless `_config.yml` exclud
 so any new internal file has to be added there. `npm test` fails if a new file at the top
 of the repo would be published by accident.
 
+`.well-known/security.txt` has an expiry date. `npm test` starts failing 30 days before it,
+as the reminder to set a new date less than a year out.
+
 Before publishing meaningful changes:
 
 - Open or locally serve `index.html`, `blog.html`, `products.html`, `contact.html`, and one representative `blog/*.html` page.

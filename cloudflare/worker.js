@@ -23,19 +23,38 @@
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 // Canonical CSP — single source of truth mirrors cloudflare/csp.txt.
-const CSP = `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://www.bluegrasscybersecurity.com; script-src 'self' https://challenges.cloudflare.com 'sha256-884w7bl91WYQj7mzuYBmwGY+y40qiioQcCegSdtt5z0=' 'sha256-Bjl/8HxUcB39yaYTvwVKApeUn/QwOP+gYAzho+ZBY0U=' 'sha256-HgDoNSa9QyCvVTpsEFBR0F/+CBLxvv7jpxmHbmoILPg=' 'sha256-Krsjpsjk0uGiul/SV1pZC4sIow/RlnUf4GqvpCJ4xU0=' 'sha256-LBo6nt183Hhh5MsyaRpDm+/skSTmIna5aK6slCExJZo=' 'sha256-LzVCBVm/40hGGRIWGz8U6WErJNeedCC0zHGyJsvNCWw=' 'sha256-n2JHBBnaPEetNPbqdy+CnC/IN6ro5j8+F7XkeppVCe0=' 'sha256-oub/SoTSmysjXHMKjzorq7JA8ScQLNe3sWhy/lyRsS0=' 'sha256-pbhGiE1An+LL9b9GavH6U9eZx49LOFcPkHBvqdYRPwc=' 'sha256-Pgl2iI1Z6NoWO2bYVmv1VfcUxPj3nOfNANlrnZlTxqE=' 'sha256-SbU7se08/XStXg943bPijHP0V57BHGvL0d51xlEhVPQ=' 'sha256-t33qVoidhyx7etkxyoAHuGCMVvpEnDJqLLOLIsP0Vtc=' 'sha256-ZL2zxjTyYKDPKIXEHrNXLKR/KW45hlukZAvGJZbsRNY='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; child-src https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; upgrade-insecure-requests; block-all-mixed-content`;
+const CSP = `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://www.bluegrasscybersecurity.com; script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com 'sha256-884w7bl91WYQj7mzuYBmwGY+y40qiioQcCegSdtt5z0=' 'sha256-Bjl/8HxUcB39yaYTvwVKApeUn/QwOP+gYAzho+ZBY0U=' 'sha256-HgDoNSa9QyCvVTpsEFBR0F/+CBLxvv7jpxmHbmoILPg=' 'sha256-Krsjpsjk0uGiul/SV1pZC4sIow/RlnUf4GqvpCJ4xU0=' 'sha256-LBo6nt183Hhh5MsyaRpDm+/skSTmIna5aK6slCExJZo=' 'sha256-LzVCBVm/40hGGRIWGz8U6WErJNeedCC0zHGyJsvNCWw=' 'sha256-n2JHBBnaPEetNPbqdy+CnC/IN6ro5j8+F7XkeppVCe0=' 'sha256-oub/SoTSmysjXHMKjzorq7JA8ScQLNe3sWhy/lyRsS0=' 'sha256-pbhGiE1An+LL9b9GavH6U9eZx49LOFcPkHBvqdYRPwc=' 'sha256-Pgl2iI1Z6NoWO2bYVmv1VfcUxPj3nOfNANlrnZlTxqE=' 'sha256-SbU7se08/XStXg943bPijHP0V57BHGvL0d51xlEhVPQ=' 'sha256-t33qVoidhyx7etkxyoAHuGCMVvpEnDJqLLOLIsP0Vtc=' 'sha256-ZL2zxjTyYKDPKIXEHrNXLKR/KW45hlukZAvGJZbsRNY='; style-src 'self'; font-src 'self'; frame-src https://challenges.cloudflare.com; child-src https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com; upgrade-insecure-requests; block-all-mixed-content`;
 
 const SECURITY_HEADERS = {
   "Content-Security-Policy": CSP,
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
   "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy":
     "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
 };
 
+// GitHub Pages and its CDN add these. Nothing on the site needs them: they only
+// tell visitors how the site is hosted, and the wildcard CORS header lets any
+// other website read these pages.
+const ORIGIN_HEADERS_TO_REMOVE = [
+  "access-control-allow-origin",
+  "via",
+  "x-cache",
+  "x-cache-hits",
+  "x-fastly-request-id",
+  "x-github-edge-region",
+  "x-github-request-id",
+  "x-origin-cache",
+  "x-proxy-cache",
+  "x-served-by",
+  "x-timer",
+];
+
 function addSecurityHeaders(response) {
   const headers = new Headers(response.headers);
+  for (const name of ORIGIN_HEADERS_TO_REMOVE) headers.delete(name);
   for (const [k, v] of Object.entries(SECURITY_HEADERS)) headers.set(k, v);
   return new Response(response.body, {
     status: response.status,
@@ -223,14 +242,29 @@ async function handleSignup(request, env) {
   return jsonResponse({ ok: true, message: "Thanks — we'll be in touch." });
 }
 
-function isAuthorizedExport(request, env) {
+async function sha256(value) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return new Uint8Array(digest);
+}
+
+// Comparing hashes byte by byte takes the same time whatever the guess is and
+// however long it is, so response timing can't reveal anything about the secret.
+async function secretsMatch(given, expected) {
+  const [a, b] = await Promise.all([sha256(given), sha256(expected)]);
+  let difference = 0;
+  for (let i = 0; i < a.length; i++) difference |= a[i] ^ b[i];
+  return difference === 0;
+}
+
+async function isAuthorizedExport(request, env) {
   const auth = request.headers.get("authorization") || "";
   const [scheme, token] = auth.split(" ");
-  return scheme === "Bearer" && !!token && token === env.EXPORT_SECRET;
+  if (scheme !== "Bearer" || !token || !env.EXPORT_SECRET) return false;
+  return secretsMatch(token, env.EXPORT_SECRET);
 }
 
 async function handleExport(request, env) {
-  if (!isAuthorizedExport(request, env)) {
+  if (!(await isAuthorizedExport(request, env))) {
     return jsonResponse({ ok: false, error: "Unauthorized" }, 401);
   }
 
