@@ -59,3 +59,19 @@ test("security.txt gets published and hasn't expired", async () => {
   assert.ok(daysLeft > 30, "security.txt is about to expire: set a new date less than a year out");
   assert.ok(daysLeft < 366, "security.txt should expire within a year");
 });
+
+test("every page footer links to the privacy policy and terms", async () => {
+  const htmlIn = async (folder) =>
+    (await readdir(new URL(folder || "./", root))).filter((name) => name.endsWith(".html"));
+  const folders = [["", ""], ["blog/", "../"], ["tools/", "../"]];
+
+  for (const [folder, prefix] of folders) {
+    const names = await htmlIn(folder);
+    for (const name of names) {
+      const html = await readFile(new URL(folder + name, root), "utf8");
+      if (!html.includes('class="footer-links"')) continue;
+      assert.ok(html.includes(`href="${prefix}privacy.html"`), `${name} needs a privacy link`);
+      assert.ok(html.includes(`href="${prefix}terms.html"`), `${name} needs a terms link`);
+    }
+  }
+});

@@ -2787,4 +2787,13 @@
     text-decoration: underline;
 }
 
+/* Privacy policy and terms */
+.legal-content h2 {
+    text-align: left;
+    font-size: 1.4rem;
+    margin: 2rem 0 0.75rem;
+}
 
+.legal-content ul {
+    margin: 0 0 1rem 1.25rem;
+}
