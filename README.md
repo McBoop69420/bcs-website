@@ -32,6 +32,9 @@ infrastructure from production; it only shares the `bluegrasscybersecurity.com` 
   and `www` hostnames, so `/api/signup` (used by the homepage and `contact.html` forms)
   doesn't exist on staging. Turnstile passes there, but a submission gets a 405 and falls
   back to email. Staging is for visual/content review, not end-to-end form testing.
+- **Internal files are still reachable here:** Cloudflare Pages has no Jekyll step, so
+  `_config.yml` doesn't apply and staging serves the to-do lists, Worker code, and tests
+  that production leaves out.
 
 ## Page Inventory
 
@@ -53,7 +56,7 @@ live and are reachable from `resources.html` and the footer link row on every pa
 - `contact.html` - Focused conversion page: primary CTA into the AI assessment, secondary general consultation form.
 - `products.html` - Security policy templates and framework product page.
 - `blog.html` - Blog index, newest first.
-- `style-bible.html` - Brand, style, and component reference (not part of the redesign pass).
+- `style-bible.html` - Brand, style, and component reference (not part of the redesign pass). Staging only; left out of production by `_config.yml`.
 - `404.html` - Custom not-found page.
 
 ### Service Pages
@@ -159,6 +162,10 @@ Primary design tokens are defined in `css/style.css`:
 Most page-specific layout rules are in `css/pages.css`. The file includes styles extracted from individual pages as part of CSP hardening, so check for existing selectors before adding new ones.
 
 ## Deployment Checklist
+
+GitHub Pages publishes everything in this repository unless `_config.yml` excludes it,
+so any new internal file has to be added there. `npm test` fails if a new file at the top
+of the repo would be published by accident.
 
 Before publishing meaningful changes:
 
