@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Offboarding Checklist | Bluegrass Cybersecurity Solutions</title>
+    <meta name="description" content="A repeatable offboarding checklist that closes every door when someone leaves and leaves proof it happened. Free, printable, maintained.">
+    <link rel="canonical" href="https://www.bluegrasscybersecurity.com/tools/employee-offboarding-checklist.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bluegrass Cybersecurity Solutions">
+    <meta property="og:title" content="Employee Offboarding Checklist">
+    <meta property="og:description" content="A repeatable offboarding checklist that closes every door when someone leaves and leaves proof it happened.">
+    <meta property="og:url" content="https://www.bluegrasscybersecurity.com/tools/employee-offboarding-checklist.html">
+    <link rel="icon" type="image/png" href="../Images/logo-new.png">
+    <link rel="apple-touch-icon" href="../Images/logo-new.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/toolkit.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav>
+            <div class="logo"><a href="../index.html"><img src="../Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a></div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../ai-risk-governance.html">AI Risk</a></li>
+                <li><a href="../cybersecurity-grc.html">GRC</a></li>
+                <li><a href="../services.html">Services</a></li>
+                <li><a href="../resources.html" aria-current="page">Resources</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <div class="tool-doc-wrapper">
+            <div class="tool-doc-toolbar">
+                <span class="back-link"><a href="../toolkit.html">&#8592; Back to the Toolkit</a></span>
+                <button type="button" class="print-button" onclick="window.print()">Print / Save as PDF</button>
+            </div>
+
+            <article class="tool-doc">
+                <div class="tool-doc-header">
+                    <p class="tool-doc-kicker">Checklist</p>
+                    <h1>Employee Offboarding Checklist</h1>
+                    <p class="tool-doc-sub">Close every door when someone leaves, and leave proof it happened. Built for SMBs and regulated institutions.</p>
+                    <p class="tool-doc-ver">Version 1.0 &middot; Last updated November 5, 2026</p>
+                </div>
+
+                <h2>Departure details</h2>
+                <div class="tool-fields">
+                    <div class="tool-field"><label>Employee name</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Role / department</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Last working day</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Exit type (planned / termination)</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Offboarding owner</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Elevated access? (Y / N)</label><div class="fill-line"></div></div>
+                </div>
+
+                <div class="tool-note">For a termination, disable the primary account <strong>during</strong> the conversation, not after it. For an elevated user (admin, finance, or access to customer data), treat every step as same-day and have a second person witness it.</div>
+
+                <h2>1. Trigger &amp; scope</h2>
+                <ul class="checklist">
+                    <li><span class="ck-text">HR notice of departure has automatically opened this offboarding task (not word of mouth).</span></li>
+                    <li><span class="ck-text">Cutoff time scheduled for the last working hour (planned exit) or set to immediate (termination).</span></li>
+                    <li><span class="ck-text">Master list of access-granting systems pulled and attached to this record.</span></li>
+                </ul>
+
+                <h2>2. Directory &amp; core accounts <span style="font-weight:400;font-size:.9rem;">(IT)</span></h2>
+                <ul class="checklist">
+                    <li><span class="ck-text">Primary network / directory account disabled.</span></li>
+                    <li><span class="ck-text">Email account disabled; auto-reply or redirect set per policy.</span></li>
+                    <li><span class="ck-text"><strong>Mail forwarding checked and removed</strong> (common way departing staff keep seeing internal traffic).</span></li>
+                    <li><span class="ck-text">Remote access (VPN) disabled; certificates and tokens on personal devices revoked.</span></li>
+                    <li><span class="ck-text">Multi-factor enrollments removed.</span></li>
+                </ul>
+
+                <h2>3. Accounts outside the directory <span style="font-weight:400;font-size:.9rem;">(IT + manager)</span></h2>
+                <ul class="checklist">
+                    <li><span class="ck-text">Standalone SaaS tools the team bought on their own closed or reassigned.</span></li>
+                    <li><span class="ck-text">Banking, payroll, and finance portals access removed.</span></li>
+                    <li><span class="ck-text">Domain registrar, DNS, and hosting logins reviewed.</span></li>
+                    <li><span class="ck-text">Social media and marketing platform access removed.</span></li>
+                </ul>
+
+                <h2>4. Shared &amp; service credentials</h2>
+                <ul class="checklist">
+                    <li><span class="ck-text"><strong>Any shared password the person knew has been rotated</strong> (disabling a named account does nothing here).</span></li>
+                    <li><span class="ck-text">Wi-Fi key rotated if it was shared.</span></li>
+                    <li><span class="ck-text">Shared mailbox / admin login credentials changed.</span></li>
+                    <li><span class="ck-text">API keys and SSH keys the person generated revoked.</span></li>
+                </ul>
+
+                <h2>5. Physical &amp; non-login access <span style="font-weight:400;font-size:.9rem;">(facilities)</span></h2>
+                <ul class="checklist">
+                    <li><span class="ck-text">Building badge deactivated; alarm codes changed if known.</span></li>
+                    <li><span class="ck-text">Company devices returned and wiped / re-imaged.</span></li>
+                    <li><span class="ck-text">Mobile devices unenrolled from MDM.</span></li>
+                    <li><span class="ck-text">Keys, tokens, and company cards collected.</span></li>
+                </ul>
+
+                <h2>6. Data handling &amp; evidence</h2>
+                <ul class="checklist">
+                    <li><span class="ck-text">Mailbox and file retention handled per the decision made up front (not a last-minute judgment call).</span></li>
+                    <li><span class="ck-text">Record shows who left, when access was removed, who removed it, and the systems covered.</span></li>
+                    <li><span class="ck-text">Completed checklist filed with the exam / evidence folder.</span></li>
+                </ul>
+
+                <h2>Sign-off</h2>
+                <div class="tool-fields">
+                    <div class="tool-field"><label>Completed by</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Date completed</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Reviewed by (elevated users)</label><div class="fill-line"></div></div>
+                    <div class="tool-field"><label>Date reviewed</label><div class="fill-line"></div></div>
+                </div>
+
+                <div class="tool-doc-footer">
+                    <p>Based on the article <a href="../blog/employee-offboarding-access.html">Employee Offboarding: Closing the Access Gap When People Leave</a>. Pair it with a <a href="quarterly-access-review-worksheet.html">quarterly access review</a> to catch anything a rushed exit missed.</p>
+                    <p>&copy; 2026 Bluegrass Cybersecurity Solutions. Free to use and adapt within your organization. Not legal advice.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../blog.html">Blog</a>
+            <a href="../toolkit.html">Toolkit</a>
+            <a href="../changelog.html">Changelog</a>
+            <a href="../policy-finder.html">Policy Finder</a>
+            <a href="../products.html">Templates</a>
+        </div>
+        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+        <p>Bridging the gap between findings and fixes</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

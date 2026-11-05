@@ -11,7 +11,7 @@ const isExcluded = (path) =>
   excluded.some((entry) => (entry.endsWith("/") ? path.startsWith(entry) : path === entry));
 
 test("nothing new at the top of the repo gets published by accident", async () => {
-  const publicDirectories = ["blog/", "css/", "downloads/", "Images/", "js/"];
+  const publicDirectories = ["blog/", "css/", "downloads/", "Images/", "js/", "tools/"];
   const publicFiles = /\.html$|^robots\.txt$|^sitemap\.xml$/;
   // Jekyll already skips names that start with these, and never sees node_modules.
   const skippedByJekyll = /^[._#~]|^node_modules$/;
