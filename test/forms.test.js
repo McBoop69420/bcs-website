@@ -20,7 +20,7 @@ function signupForm(html) {
   return match[0];
 }
 
-async function runSignupClient({ extraFields = [], token = "", turnstile } = {}) {
+async function runSignupClient({ extraFields = [], token = "", turnstile, downloadUrl, response } = {}) {
   const status = { className: "form-status", textContent: "" };
   const hiddenToken = { value: token };
   const resetCalls = [];
@@ -41,9 +41,13 @@ async function runSignupClient({ extraFields = [], token = "", turnstile } = {})
     addEventListener(event, handler) {
       formListeners[event] = handler;
     },
-    appendChild() {},
-    dataset: {},
+    appended: [],
+    appendChild(child) {
+      form.appended.push(child);
+    },
+    dataset: downloadUrl ? { downloadUrl } : {},
     querySelector(selector) {
+      if (selector === ".form-download-link") return form.appended.find((el) => el.className.includes("form-download-link")) || null;
       if (selector === ".cf-turnstile") return widget;
       if (selector === ".form-status") return status;
       if (selector === 'input[name="form_type"]') return { value: "contact" };
@@ -59,8 +63,12 @@ async function runSignupClient({ extraFields = [], token = "", turnstile } = {})
   let domReady;
   let fetchCalls = 0;
   const bodies = [];
+  const opened = [];
   const window = {
     location: { href: "" },
+    open(url) {
+      opened.push(url);
+    },
     turnstile: turnstile === undefined ? undefined : {
       reset(target) {
         resetCalls.push(target);
@@ -84,6 +92,8 @@ async function runSignupClient({ extraFields = [], token = "", turnstile } = {})
     fetch: async (_url, init) => {
       fetchCalls += 1;
       bodies.push(JSON.parse(init.body));
+      if (response === "network error") throw new TypeError("Failed to fetch");
+      if (response === "rejected") return { ok: false, json: async () => ({ ok: false, error: "Rejected" }) };
       return { ok: true, json: async () => ({ ok: true, message: "Thanks" }) };
     },
     window,
@@ -94,7 +104,8 @@ async function runSignupClient({ extraFields = [], token = "", turnstile } = {})
   formListeners.submit({ preventDefault() {} });
   await new Promise((resolve) => setImmediate(resolve));
 
-  return { bodies, fetchCalls, resetCalls, status, window };
+  const link = form.querySelector(".form-download-link");
+  return { bodies, fetchCalls, link, opened, resetCalls, status, window };
 }
 
 function fakeElement(props = {}) {
@@ -329,4 +340,39 @@ test("the security policy allows only what the site loads", async () => {
   assert.match(csp, /script-src [^;]*https:\/\/static\.cloudflareinsights\.com/);
   assert.match(csp, /connect-src [^;]*https:\/\/cloudflareinsights\.com/);
   assert.doesNotMatch(csp, /'unsafe-inline'/);
+});
+
+test("free template forms say the download is opening, and open it", async () => {
+  const result = await runSignupClient({ token: "token", turnstile: {}, downloadUrl: "/downloads/password-standard.pdf" });
+
+  assert.equal(result.status.className, "form-status success");
+  assert.match(result.status.textContent, /download is opening/);
+  assert.deepEqual(result.opened, ["/downloads/password-standard.pdf"]);
+  assert.equal(result.link.href, "/downloads/password-standard.pdf");
+});
+
+test("other forms keep the Worker's own thank-you message", async () => {
+  const result = await runSignupClient({ token: "token", turnstile: {} });
+
+  assert.equal(result.status.textContent, "Thanks");
+  assert.deepEqual(result.opened, []);
+});
+
+test("a free template form still hands over the file when submitting fails", async (t) => {
+  const cases = [
+    ["Worker rejects it", { token: "token", turnstile: {}, response: "rejected" }],
+    ["network fails", { token: "token", turnstile: {}, response: "network error" }],
+    ["verification can't load", { token: "" }],
+  ];
+
+  for (const [name, options] of cases) {
+    await t.test(name, async () => {
+      const result = await runSignupClient({ ...options, downloadUrl: "/downloads/acceptable-use-policy.pdf" });
+
+      assert.equal(result.status.className, "form-status error");
+      assert.match(result.status.textContent, /download link is below/);
+      assert.equal(result.link.href, "/downloads/acceptable-use-policy.pdf");
+      assert.match(result.window.location.href, /^mailto:/);
+    });
+  }
 });
