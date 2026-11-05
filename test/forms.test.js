@@ -277,3 +277,30 @@ test("hidden Policy Finder cards override the product card's flex display", asyn
 
   assert.match(css, /\.finder-result-card\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
 });
+
+test("form status messages stay readable on light and dark form panels", async () => {
+  const css = await readFile(new URL("css/pages.css", root), "utf8");
+  const luminance = (hex) => {
+    const [r, g, b] = [1, 3, 5]
+      .map((start) => parseInt(hex.slice(start, start + 2), 16) / 255)
+      .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const contrast = (a, b) => {
+    const [dark, light] = [luminance(a), luminance(b)].sort((x, y) => x - y);
+    return (light + 0.05) / (dark + 0.05);
+  };
+
+  for (const kind of ["info", "success", "error"]) {
+    // Requiring plain hex for both colors is the point: a see-through background
+    // takes on the panel behind it, so its contrast can't be known from the CSS.
+    const rule = css.match(
+      new RegExp(`\\.form-status\\.${kind}\\s*\\{\\s*color:\\s*(#[0-9a-f]{6});\\s*background:\\s*(#[0-9a-f]{6});`, "i"),
+    );
+    assert.ok(rule, `.form-status.${kind} needs a solid text color and background`);
+    assert.ok(
+      contrast(rule[1], rule[2]) >= 4.5,
+      `.form-status.${kind} contrast is ${contrast(rule[1], rule[2]).toFixed(2)}:1, needs 4.5:1`,
+    );
+  }
+});

@@ -1242,9 +1242,11 @@
             padding: 0.5rem 0.75rem;
             border-radius: 5px;
         }
-        .form-status.info { color: var(--primary-blue); background: rgba(74,144,199,0.12); }
-        .form-status.success { color: #2d5016; background: rgba(90,125,61,0.16); }
-        .form-status.error { color: #9a2c2c; background: rgba(154,44,44,0.12); }
+        /* Solid on purpose: forms sit on both white and navy panels, and a
+           see-through background would leave this dark text unreadable on navy. */
+        .form-status.info { color: #131c2e; background: #e9f2f8; }
+        .form-status.success { color: #2d5016; background: #e5eae0; }
+        .form-status.error { color: #9a2c2c; background: #f3e6e6; }
 
         /* The reporting form sits on a dark blue background, so lighten its
            consent copy for contrast. */
