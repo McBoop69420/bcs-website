@@ -16,6 +16,7 @@ exclude:
   - SECURITY_TODO.md
   - cloudflare/
   - css/style-bible.css
+  - drafts/
   - package.json
   - style-bible.html
   - test/
