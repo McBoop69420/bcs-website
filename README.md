@@ -26,6 +26,13 @@ infrastructure from production; it only shares the `bluegrasscybersecurity.com` 
   carry work-in-progress features (e.g. `policy-finder.html`) not yet on `main`.
   If a change needs to be visible on staging, push it to `staging` explicitly.
 
+- **Access control:** staging is gated by a Cloudflare Access (Zero Trust) self-hosted
+  application, `bcs-website - Cloudflare Pages`. It uses the "Allow Members - Cloudflare
+  Pages" policy, which allows a single email address, and Google is the only login method
+  (one-time PIN is off, instant authentication is on). Google's 2-Step Verification
+  provides the second factor. The same application also covers `bcs-website-95q.pages.dev`
+  and `mcboop-bcs.pages.dev`. This is configured in the Cloudflare dashboard (Zero Trust >
+  Access controls > Applications), not in this repo.
 - `_headers`' `X-Robots-Tag: noindex, nofollow` rule takes effect there (Cloudflare
   Pages reads `_headers` natively) even though production ignores the same file.
 - **Known gap:** the `cloudflare/worker.js` signup Worker only binds routes on the apex
