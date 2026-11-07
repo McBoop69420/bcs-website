@@ -39,7 +39,7 @@
         <div class="tool-doc-wrapper">
             <div class="tool-doc-toolbar">
                 <span class="back-link"><a href="../toolkit.html">&#8592; Back to the Toolkit</a></span>
-                <button type="button" class="print-button" onclick="window.print()">Print / Save as PDF</button>
+                <button type="button" class="print-button" data-print>Print / Save as PDF</button>
             </div>
 
             <article class="tool-doc">
@@ -69,7 +69,7 @@
                     <li><span class="ck-text">Master list of access-granting systems pulled and attached to this record.</span></li>
                 </ul>
 
-                <h2>2. Directory &amp; core accounts <span style="font-weight:400;font-size:.9rem;">(IT)</span></h2>
+                <h2>2. Directory &amp; core accounts <span class="section-owner">(IT)</span></h2>
                 <ul class="checklist">
                     <li><span class="ck-text">Primary network / directory account disabled.</span></li>
                     <li><span class="ck-text">Email account disabled; auto-reply or redirect set per policy.</span></li>
@@ -78,7 +78,7 @@
                     <li><span class="ck-text">Multi-factor enrollments removed.</span></li>
                 </ul>
 
-                <h2>3. Accounts outside the directory <span style="font-weight:400;font-size:.9rem;">(IT + manager)</span></h2>
+                <h2>3. Accounts outside the directory <span class="section-owner">(IT + manager)</span></h2>
                 <ul class="checklist">
                     <li><span class="ck-text">Standalone SaaS tools the team bought on their own closed or reassigned.</span></li>
                     <li><span class="ck-text">Banking, payroll, and finance portals access removed.</span></li>
@@ -94,7 +94,7 @@
                     <li><span class="ck-text">API keys and SSH keys the person generated revoked.</span></li>
                 </ul>
 
-                <h2>5. Physical &amp; non-login access <span style="font-weight:400;font-size:.9rem;">(facilities)</span></h2>
+                <h2>5. Physical &amp; non-login access <span class="section-owner">(facilities)</span></h2>
                 <ul class="checklist">
                     <li><span class="ck-text">Building badge deactivated; alarm codes changed if known.</span></li>
                     <li><span class="ck-text">Company devices returned and wiped / re-imaged.</span></li>
@@ -140,5 +140,6 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/toolkit.js"></script>
 </body>
 </html>

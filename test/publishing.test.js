@@ -4,7 +4,8 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 const config = await readFile(new URL("_config.yml", root), "utf8");
-const excludeBlock = config.match(/^exclude:\n((?:\s+-\s+\S+\n)+)/m)[1];
+// \r?\n: Windows checkouts get CRLF line endings.
+const excludeBlock = config.match(/^exclude:\r?\n((?:\s+-\s+\S+\r?\n)+)/m)[1];
 const excluded = [...excludeBlock.matchAll(/-\s+(\S+)/g)].map((match) => match[1]);
 
 const isExcluded = (path) =>
@@ -49,7 +50,7 @@ test("every page in the sitemap stays published", async () => {
 });
 
 test("security.txt gets published and hasn't expired", async () => {
-  assert.match(config, /^include:\n\s+-\s+\.well-known$/m);
+  assert.match(config, /^include:\r?\n\s+-\s+\.well-known$/m);
 
   const text = await readFile(new URL(".well-known/security.txt", root), "utf8");
   assert.match(text, /^Contact: mailto:\S+$/m);
@@ -73,5 +74,34 @@ test("every page footer links to the privacy policy and terms", async () => {
       assert.ok(html.includes(`href="${prefix}privacy.html"`), `${name} needs a privacy link`);
       assert.ok(html.includes(`href="${prefix}terms.html"`), `${name} needs a terms link`);
     }
+  }
+});
+
+test("published pages avoid markup the production CSP blocks", async () => {
+  // The Worker's CSP has no 'unsafe-inline' (or 'unsafe-hashes'), so browsers
+  // ignore inline event handlers and style attributes on the live site. Staging
+  // sends a looser policy, so these break only after shipping. Use classes and
+  // script files instead.
+  const pages = [];
+  for (const folder of ["", "blog/", "tools/"]) {
+    let names = [];
+    try {
+      names = await readdir(new URL(folder, root));
+    } catch {
+      continue;
+    }
+    for (const name of names) {
+      const path = folder + name;
+      if (name.endsWith(".html") && !isExcluded(path)) pages.push(path);
+    }
+  }
+
+  assert.ok(pages.length > 0);
+  for (const path of pages) {
+    const html = await readFile(new URL(path, root), "utf8");
+    const handler = html.match(/<[a-z][^>]*\son[a-z]+\s*=/i);
+    const style = html.match(/<[a-z][^>]*\sstyle\s*=/i);
+    assert.equal(handler, null, `${path} has an inline event handler: ${handler?.[0]}`);
+    assert.equal(style, null, `${path} has an inline style attribute: ${style?.[0]}`);
   }
 });

@@ -39,7 +39,7 @@
         <div class="tool-doc-wrapper">
             <div class="tool-doc-toolbar">
                 <span class="back-link"><a href="../toolkit.html">&#8592; Back to the Toolkit</a></span>
-                <button type="button" class="print-button" onclick="window.print()">Print / Save as PDF</button>
+                <button type="button" class="print-button" data-print>Print / Save as PDF</button>
             </div>
 
             <article class="tool-doc">
@@ -87,11 +87,11 @@
                 <h2>Holding statements (drafted in advance)</h2>
                 <p>Short, honest, no speculation. Fill in the blanks so they're ready to adapt.</p>
                 <h3>Internal (staff)</h3>
-                <p style="border:1px solid var(--line);border-radius:6px;padding:.75rem;min-height:3.5rem;">&nbsp;</p>
+                <p class="write-in">&nbsp;</p>
                 <h3>Customer / member</h3>
-                <p style="border:1px solid var(--line);border-radius:6px;padding:.75rem;min-height:3.5rem;">&nbsp;</p>
+                <p class="write-in">&nbsp;</p>
                 <h3>Public / media</h3>
-                <p style="border:1px solid var(--line);border-radius:6px;padding:.75rem;min-height:3.5rem;">&nbsp;</p>
+                <p class="write-in">&nbsp;</p>
 
                 <div class="tool-note">One person speaks for the organization. Everyone else routes questions to them. Say what you know, what you're doing, and when you'll update &mdash; and nothing you can't yet stand behind.</div>
 
@@ -118,5 +118,6 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/toolkit.js"></script>
 </body>
 </html>

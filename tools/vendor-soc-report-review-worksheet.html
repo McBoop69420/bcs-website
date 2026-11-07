@@ -39,7 +39,7 @@
         <div class="tool-doc-wrapper">
             <div class="tool-doc-toolbar">
                 <span class="back-link"><a href="../toolkit.html">&#8592; Back to the Toolkit</a></span>
-                <button type="button" class="print-button" onclick="window.print()">Print / Save as PDF</button>
+                <button type="button" class="print-button" data-print>Print / Save as PDF</button>
             </div>
 
             <article class="tool-doc">
@@ -98,7 +98,7 @@
                     <div class="tool-field"><label>Overall assessment (Acceptable / Acceptable with follow-up / Concern)</label><div class="fill-line"></div></div>
                     <div class="tool-field"><label>Next review due</label><div class="fill-line"></div></div>
                 </div>
-                <p style="border:1px solid var(--line);border-radius:6px;padding:.75rem;min-height:3rem;"><strong>Summary &amp; rationale:</strong>&nbsp;</p>
+                <p class="write-in short"><strong>Summary &amp; rationale:</strong>&nbsp;</p>
                 <div class="tool-fields">
                     <div class="tool-field"><label>Reviewer sign-off</label><div class="fill-line"></div></div>
                     <div class="tool-field"><label>Date</label><div class="fill-line"></div></div>
@@ -127,5 +127,6 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/toolkit.js"></script>
 </body>
 </html>
