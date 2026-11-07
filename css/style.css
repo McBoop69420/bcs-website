@@ -157,3 +157,16 @@ footer p { margin-bottom: 0.3rem; font-size: 0.9rem; }
     .nav-links.active { display: flex; }
     .logo { height: 60px; }
 }
+
+/* Toolkit button in the main nav */
+.nav-links a.nav-cta {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+}
+.nav-links a.nav-cta:hover,
+.nav-links a.nav-cta[aria-current="page"] {
+    background: var(--light-green);
+    color: var(--white);
+}
