@@ -14,35 +14,41 @@
     <meta property="og:image" content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
     <link rel="icon" type="image/png" href="Images/logo-new.png">
     <link rel="apple-touch-icon" href="Images/logo-new.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/toolkit.css">
 </head>
-<body>
+<body class="legacy">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
-        <nav>
-            <div class="logo"><a href="index.html"><img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a></div>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ai-risk-governance.html">AI Risk</a></li>
-                <li><a href="cybersecurity-grc.html">GRC</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="toolkit.html" class="nav-cta" aria-current="page">Toolkit</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+
+    <header class="site-header">
+        <a class="site-logo" href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="144" height="48"></a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks"><span class="bars" aria-hidden="true"></span>Menu</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="ai-risk-governance.html">AI Risk</a></li>
+            <li><a href="cybersecurity-grc.html">GRC</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="toolkit.html" aria-current="page">Toolkit</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="nav-book"><a href="ai-risk-governance.html#assessment">Book an assessment</a></li>
+        </ul>
+        <a class="btn btn-ink btn-book" href="ai-risk-governance.html#assessment">Book an assessment</a>
     </header>
 
-    <div class="page-banner">
-        <h1>Security &amp; Compliance Toolkit</h1>
-        <p>The practical artifacts from our blog, pulled out as printable checklists, worksheets, and templates. Maintained over time &mdash; added to and amended as the guidance and the exams change.</p>
-    </div>
-
     <main id="main-content">
+        <section class="slab page-hero page-hero-compact">
+            <div class="wrap">
+                <div>
+                    <span class="crumb">Resources</span>
+                    <h1>Security &amp; Compliance Toolkit</h1>
+                    <p class="hero-sub">The practical artifacts from our blog, pulled out as printable checklists, worksheets, and templates. Maintained over time &mdash; added to and amended as the guidance and the exams change.</p>
+                </div>
+            </div>
+        </section>
+        <div class="slab legacy-body">
+            <div class="wrap">
         <div class="container page-container">
 
             <div class="toolkit-intro-card">
@@ -216,21 +222,55 @@
             </section>
 
         </div>
+    
+            </div>
+        </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div class="footer-brand">
+                <a href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="132" height="44"></a>
+                <p>Bridging the gap between findings and fixes.</p>
+                <p><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a><br>Lexington, Kentucky</p>
+            </div>
+            <div>
+                <h2>Services</h2>
+                <ul>
+                    <li><a href="ai-risk-governance.html">AI risk assessment</a></li>
+                    <li><a href="risk-assessments.html">Risk assessments</a></li>
+                    <li><a href="policy-development.html">Policy development</a></li>
+                    <li><a href="msp-oversight.html">MSP oversight</a></li>
+                    <li><a href="exam-prep.html">Exam prep</a></li>
+                    <li><a href="vendor-management.html">Vendor management</a></li>
+                    <li><a href="incident-response.html">Incident response</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="policy-finder.html">Policy Finder</a></li>
+                    <li><a href="products.html">Templates</a></li>
+                    <li><a href="toolkit.html">Toolkit</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Company</h2>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cybersecurity-grc.html">Our GRC approach</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-links">
-            <a href="blog.html">Blog</a>
-            <a href="toolkit.html">Toolkit</a>
-            <a href="changelog.html">Changelog</a>
-            <a href="policy-finder.html">Policy Finder</a>
-            <a href="products.html">Templates</a>
+            <span class="copy">&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</span>
             <a href="privacy.html">Privacy</a>
             <a href="terms.html">Terms</a>
         </div>
-        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
-        <p>Bridging the gap between findings and fixes</p>
     </footer>
+
 
     <script src="js/main.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

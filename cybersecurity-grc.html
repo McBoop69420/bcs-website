@@ -14,95 +14,152 @@
     <meta property="og:image" content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
     <link rel="icon" type="image/png" href="Images/logo-new.png">
     <link rel="apple-touch-icon" href="Images/logo-new.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
-        <nav>
-            <div class="logo"><a href="index.html"><img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a></div>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ai-risk-governance.html">AI Risk</a></li>
-                <li><a href="cybersecurity-grc.html" aria-current="page">GRC</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="toolkit.html" class="nav-cta">Toolkit</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+
+    <header class="site-header">
+        <a class="site-logo" href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="144" height="48"></a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks"><span class="bars" aria-hidden="true"></span>Menu</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="ai-risk-governance.html">AI Risk</a></li>
+            <li><a href="cybersecurity-grc.html" aria-current="page">GRC</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="toolkit.html">Toolkit</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="nav-book"><a href="ai-risk-governance.html#assessment">Book an assessment</a></li>
+        </ul>
+        <a class="btn btn-ink btn-book" href="ai-risk-governance.html#assessment">Book an assessment</a>
     </header>
 
     <main id="main-content">
-        <div class="page-header service-page-header">
-            <h1>Governance, Risk, and Compliance: Built for How SMBs Actually Operate</h1>
-            <p>AI is the newest risk. It won&rsquo;t be the last. GRC is how you manage whatever comes next without starting over each time.</p>
-        </div>
-
-        <section id="grc-explained">
-            <div class="container">
-                <h2>Every organization uses technology differently. GRC starts by understanding yours.</h2>
-                <p class="subtitle">Start with risk, not technology. Instead of recommending a product on day one, a GRC approach starts with how your business operates, how technology and AI are being used, what information is involved, and which obligations already apply.</p>
-            </div>
-        </section>
-
-        <section class="bg-light-gray" id="grc-framework-full">
-            <div class="container">
-                <h2>Govern &rarr; Identify &rarr; Assess &rarr; Prioritize &rarr; Control &rarr; Monitor</h2>
-                <p class="subtitle">The process is a structured, repeatable way to manage cybersecurity and technology risk, not a one-time project.</p>
-                <div class="flow-diagram" aria-label="Govern, Identify, Assess, Prioritize, Control, Monitor">
-                    <div class="flow-step"><div class="flow-step-number">1</div><h3>Govern</h3><p>Define responsibilities, expectations, and decision-making authority for cybersecurity, AI, and technology risk.</p></div>
-                    <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                    <div class="flow-step"><div class="flow-step-number">2</div><h3>Identify</h3><p>Understand your systems, information, vendors, technology use, and emerging sources of risk.</p></div>
-                    <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                    <div class="flow-step"><div class="flow-step-number">3</div><h3>Assess</h3><p>Evaluate cybersecurity, operational, data, vendor, and compliance risk.</p></div>
-                    <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                    <div class="flow-step"><div class="flow-step-number">4</div><h3>Prioritize</h3><p>Determine which risks need attention now, which can wait, and where resources will have the greatest impact.</p></div>
-                    <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                    <div class="flow-step"><div class="flow-step-number">5</div><h3>Control</h3><p>Develop and implement the policies, processes, safeguards, and accountability needed to manage those risks.</p></div>
-                    <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                    <div class="flow-step"><div class="flow-step-number">6</div><h3>Monitor</h3><p>Keep the program current as risk, controls, and requirements change.</p></div>
+        <section class="slab page-hero">
+            <div class="wrap">
+                <div>
+                    <span class="crumb">Cybersecurity GRC</span>
+                    <h1>GRC built for how SMBs <span class="accent">actually operate.</span></h1>
+                    <p class="hero-sub">AI is the newest risk. It won't be the last. GRC is how you manage whatever comes next without starting over each time.</p>
+                    <div class="actions">
+                        <a class="btn btn-green btn-lg" href="ai-risk-governance.html#assessment">Book an assessment <span class="arr" aria-hidden="true"></span></a>
+                        <a class="btn btn-white btn-lg" href="#grc-framework-full">See the process</a>
+                    </div>
+                </div>
+                <div class="qcard">
+                    <h2>Start with risk, not technology</h2>
+                    <ul>
+                        <li>How your business actually operates</li>
+                        <li>How technology and AI are being used</li>
+                        <li>What information is involved</li>
+                        <li>Which obligations already apply</li>
+                    </ul>
+                    <p class="note">Instead of recommending a product on day one, GRC starts by understanding your environment.</p>
                 </div>
             </div>
         </section>
 
-        <section id="grc-services">
-            <div class="container">
-                <h2>A standing partner, not a one-time engagement.</h2>
-                <p class="subtitle">Ongoing GRC services begin once initial risks are addressed. The long-term value is a repeatable system and a partner who already understands your environment.</p>
-                <div class="trust-grid">
-                    <div class="trust-item"><h3>Cybersecurity risk assessments</h3><p>Recurring assessments that keep your risk picture current as the business changes.</p></div>
-                    <div class="trust-item"><h3>Risk register development &amp; management</h3><p>A living, prioritized view of organizational risk your team can actually use.</p></div>
-                    <div class="trust-item"><h3>AI &amp; security governance</h3><p>Policy structures and ownership that keep pace with how technology is adopted.</p></div>
-                    <div class="trust-item"><h3>Policy &amp; procedure development</h3><p>Controls-focused documents grounded in your real environment. <a class="service-link" href="policy-development.html">Learn more</a></p></div>
-                    <div class="trust-item"><h3>Vendor &amp; third-party risk management</h3><p>Due diligence, tiering, and monitoring for vendors and MSPs. <a class="service-link" href="vendor-management.html">Learn more</a></p></div>
-                    <div class="trust-item"><h3>Audit &amp; finding remediation</h3><p>Turning findings into owners, evidence, and closed gaps. <a class="service-link" href="exam-prep.html">Learn more</a></p></div>
-                    <div class="trust-item"><h3>Compliance support</h3><p>Support mapped to the frameworks and obligations that apply to you.</p></div>
-                    <div class="trust-item"><h3>Control implementation</h3><p>Hands-on help putting safeguards in place, not just recommending them.</p></div>
-                    <div class="trust-item"><h3>Security roadmap development</h3><p>A realistic, sequenced plan for improving your posture over time.</p></div>
-                </div>
-                <p class="section-lead">As technology, vendors, and regulations change, your risk picture changes with them. We can stay involved as an ongoing resource: maintaining the risk register, updating policies, tracking remediation, reviewing vendors, and supporting management decisions as things evolve.</p>
-                <div class="section-action">
-                    <a href="services.html" class="cta-button">See All Services</a>
-                    <a href="contact.html" class="cta-button cta-button-secondary">Talk About Your Cybersecurity Risk</a>
+        <section class="slab slab-white slab-tight" id="grc-explained">
+            <div class="wrap">
+                <p class="statement">Every organization uses technology differently. <span class="accent">GRC starts by understanding yours.</span></p>
+            </div>
+        </section>
+
+        <section class="slab slab-mint" id="grc-framework-full" aria-labelledby="framework-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="framework-title">A process you can repeat</h2><p>A structured, repeatable way to manage cybersecurity and technology risk, not a one-time project.</p></div>
+                <ol class="steps steps-white">
+                    <li><span class="num" aria-hidden="true">01</span><h3>Govern</h3><p>Define responsibilities, expectations, and decision-making authority for cybersecurity, AI, and technology risk.</p></li>
+                    <li><span class="num" aria-hidden="true">02</span><h3>Identify</h3><p>Understand your systems, information, vendors, technology use, and emerging sources of risk.</p></li>
+                    <li><span class="num" aria-hidden="true">03</span><h3>Assess</h3><p>Evaluate cybersecurity, operational, data, vendor, and compliance risk.</p></li>
+                    <li><span class="num" aria-hidden="true">04</span><h3>Prioritize</h3><p>Determine which risks need attention now, which can wait, and where resources will have the greatest impact.</p></li>
+                    <li><span class="num" aria-hidden="true">05</span><h3>Control</h3><p>Develop and implement the policies, processes, safeguards, and accountability needed to manage those risks.</p></li>
+                    <li class="key"><span class="num" aria-hidden="true">06</span><h3>Monitor</h3><p>Keep the program current as risk, controls, and requirements change.</p></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="slab slab-white" id="grc-services" aria-labelledby="partner-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="partner-title">A standing partner, not a one-time engagement</h2><p>Ongoing GRC services begin once initial risks are addressed. The long-term value is a repeatable system and a partner who already understands your environment.</p></div>
+                <ul class="gcards">
+                    <li class="gcard"><h3>Cybersecurity risk assessments</h3><p>Recurring assessments that keep your risk picture current as the business changes.</p><a class="more" href="risk-assessments.html"><i aria-hidden="true"></i>Learn more<span class="visually-hidden"> about Cybersecurity risk assessments</span></a></li>
+                    <li class="gcard"><h3>Risk register development &amp; management</h3><p>A living, prioritized view of organizational risk your team can actually use.</p></li>
+                    <li class="gcard"><h3>AI &amp; security governance</h3><p>Policy structures and ownership that keep pace with how technology is adopted.</p><a class="more" href="ai-risk-governance.html"><i aria-hidden="true"></i>Learn more<span class="visually-hidden"> about AI &amp; security governance</span></a></li>
+                    <li class="gcard"><h3>Policy &amp; procedure development</h3><p>Controls-focused documents grounded in your real environment.</p><a class="more" href="policy-development.html"><i aria-hidden="true"></i>Learn more<span class="visually-hidden"> about Policy &amp; procedure development</span></a></li>
+                    <li class="gcard"><h3>Vendor &amp; third-party risk management</h3><p>Due diligence, tiering, and monitoring for vendors and MSPs.</p><a class="more" href="vendor-management.html"><i aria-hidden="true"></i>Learn more<span class="visually-hidden"> about Vendor &amp; third-party risk management</span></a></li>
+                    <li class="gcard"><h3>Audit &amp; finding remediation</h3><p>Turning findings into owners, evidence, and closed gaps.</p><a class="more" href="exam-prep.html"><i aria-hidden="true"></i>Learn more<span class="visually-hidden"> about Audit &amp; finding remediation</span></a></li>
+                    <li class="gcard"><h3>Compliance support</h3><p>Support mapped to the frameworks and obligations that apply to you.</p></li>
+                    <li class="gcard"><h3>Control implementation</h3><p>Hands-on help putting safeguards in place, not just recommending them.</p></li>
+                    <li class="gcard"><h3>Security roadmap development</h3><p>A realistic, sequenced plan for improving your posture over time.</p></li>
+                </ul>
+                <p class="kicker">As technology, vendors, and regulations change, your risk picture changes with them. <span class="accent">We stay involved so the program keeps up.</span></p>
+                <div class="actions"><a class="btn btn-outline" href="services.html">See all services <span class="arr" aria-hidden="true"></span></a></div>
+            </div>
+        </section>
+
+        <section class="slab frameworks" aria-label="Frameworks">
+            <div class="wrap">
+                <p>Mapped to the frameworks you're examined against</p>
+                <span>NIST CSF</span><span class="sep" aria-hidden="true">✦</span><span>FFIEC</span><span class="sep" aria-hidden="true">✦</span><span>GLBA Safeguards</span><span class="sep" aria-hidden="true">✦</span><span>CIS Controls</span>
+            </div>
+        </section>
+
+        <section class="slab cta" aria-labelledby="cta-title">
+            <div class="wrap">
+                <h2 id="cta-title">Start with what's urgent.</h2>
+                <p>Most clients begin with the AI Cyber Risk &amp; Governance Assessment, then build the program from there.</p>
+                <div class="actions">
+                    <a class="btn btn-white btn-lg" href="ai-risk-governance.html#assessment">Book an assessment <span class="arr" aria-hidden="true"></span></a>
+                    <a class="btn btn-outline-light btn-lg" href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div class="footer-brand">
+                <a href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="132" height="44"></a>
+                <p>Bridging the gap between findings and fixes.</p>
+                <p><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a><br>Lexington, Kentucky</p>
+            </div>
+            <div>
+                <h2>Services</h2>
+                <ul>
+                    <li><a href="ai-risk-governance.html">AI risk assessment</a></li>
+                    <li><a href="risk-assessments.html">Risk assessments</a></li>
+                    <li><a href="policy-development.html">Policy development</a></li>
+                    <li><a href="msp-oversight.html">MSP oversight</a></li>
+                    <li><a href="exam-prep.html">Exam prep</a></li>
+                    <li><a href="vendor-management.html">Vendor management</a></li>
+                    <li><a href="incident-response.html">Incident response</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="policy-finder.html">Policy Finder</a></li>
+                    <li><a href="products.html">Templates</a></li>
+                    <li><a href="toolkit.html">Toolkit</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Company</h2>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cybersecurity-grc.html">Our GRC approach</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-links">
-            <a href="blog.html">Blog</a>
-            <a href="policy-finder.html">Policy Finder</a>
-            <a href="products.html">Templates</a>
+            <span class="copy">&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</span>
             <a href="privacy.html">Privacy</a>
             <a href="terms.html">Terms</a>
         </div>
-        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
-        <p>Bridging the gap between findings and fixes</p>
     </footer>
 
     <script src="js/main.js"></script>

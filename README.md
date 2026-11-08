@@ -157,16 +157,26 @@ The homepage itself has no lead form by design — it ends in a CTA banner into 
 
 ## Styling
 
-**Direction B redesign (staging):** `index.html`, `ai-risk-governance.html`, `services.html`,
-`about.html`, and `contact.html` load only `css/site.css`, a self-contained design system
-(tokens, components, and responsive rules for those five pages). Its fonts, Bricolage Grotesque
-and Instrument Sans, are self-hosted in `css/fonts/` under the SIL Open Font License (license
-files alongside), so `font-src 'self'` still covers them. Optimized `.webp` copies of the
-headshot, logo, and service illustrations sit next to their PNG originals in `Images/`. All other
-pages still use `css/style.css` and `css/pages.css` until they're converted. The production CSP
-allows no inline styles, so every variant in `site.css` is a class: don't add `style=""` attributes.
+**Direction B redesign (staging):** the whole staging site uses the Direction B look, applied three ways:
 
-Legacy design tokens are defined in `css/style.css`:
+- **Marketing pages** (`index`, `ai-risk-governance`, `cybersecurity-grc`, `services`, the six service
+  pages, `resources`, `about`, `contact`, `404`) load only `css/site.css`, a self-contained design
+  system with tokens, components, and responsive rules.
+- **Functional pages** (`products`, `policy-finder`, `toolkit`, `changelog`, `privacy`, `terms`,
+  `tools/*`) load `css/site.css` plus `css/components.css`. They keep their original inner markup,
+  so every `data-*` hook, form, and script is unchanged. Only the header, hero, footer, and styling
+  are new. `toolkit.css` still loads after them on the toolkit pages.
+- **Blog** (`blog.html`, `blog/*.html`) lives on `main` (see `AGENTS.md`), so its HTML isn't edited
+  on staging. `css/style.css` re-skins the blog's existing markup instead, and `css/pages.css`
+  still loads after it. Merging `main` into `staging` keeps working without blog conflicts.
+
+Fonts (Bricolage Grotesque and Instrument Sans) are self-hosted in `css/fonts/` under the SIL Open
+Font License, with the license files alongside, so `font-src 'self'` still covers them. Optimized
+`.webp` copies of the headshot, logo, and service illustrations sit next to their PNG originals in
+`Images/`. The production CSP allows no inline styles, so every visual variant is a class: don't
+add `style=""` attributes.
+
+Pre-redesign design tokens (now only in `css/pages.css` and `main`) were:
 
 - Primary blue: `#1e3a5f`
 - Accent blue: `#2c5f8d`

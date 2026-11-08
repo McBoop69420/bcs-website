@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Bluegrass Cybersecurity Solutions</title>
-    <link rel="icon" type="image/png" href="Images/logo-new.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="icon" type="image/png" href="/Images/logo-new.png">
+    <link rel="stylesheet" href="/css/site.css">
 </head>
-<body class="error-page">
-
-    <header>
-        <a href="index.html"><img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
+<body>
+    <header class="site-header">
+        <a class="site-logo" href="/index.html"><img src="/Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="144" height="48"></a>
     </header>
-
     <main>
-        <div class="error-content">
-            <div class="error-code" aria-hidden="true">404</div>
-            <h1>Page Not Found</h1>
-            <p>The page you're looking for doesn't exist or may have moved. Let's get you back on track.</p>
-            <div class="btn-group">
-                <a href="index.html" class="btn btn-primary">Go to Homepage</a>
-                <a href="blog.html" class="btn btn-secondary">Visit the Blog</a>
+        <section class="slab page-hero error-hero">
+            <div class="wrap">
+                <div>
+                    <p class="error-code" aria-hidden="true">404</p>
+                    <h1>This page <span class="accent">doesn't exist.</span></h1>
+                    <p class="hero-sub">It may have moved, or the link may be wrong. Here are the places most people are looking for.</p>
+                    <div class="actions">
+                        <a class="btn btn-green btn-lg" href="/index.html">Go to the homepage <span class="arr" aria-hidden="true"></span></a>
+                        <a class="btn btn-white btn-lg" href="/blog.html">Visit the blog</a>
+                        <a class="btn btn-white btn-lg" href="/contact.html">Contact us</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
-
-    <footer>
-        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
+    <footer class="site-footer">
+        <div class="footer-legal"><span class="copy">&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</span><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
     </footer>
-
 </body>
 </html>

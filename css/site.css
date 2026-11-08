@@ -34,7 +34,10 @@
   --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
   --r-xl:32px; --r-lg:26px; --r-md:18px; --r-sm:14px;
+  /* names toolkit.css still reads */
+  --slate:#3D5A80; --body-text:#2B3242; --mist:#EEF1F6; --sage:#2E7D57;
 }
+[hidden]{display:none!important}
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -223,8 +226,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .site-footer ul{list-style:none;padding:0;line-height:2}
 .site-footer a{text-decoration:none}
 .site-footer a:hover{color:var(--ink);text-decoration:underline}
-.footer-links{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px}
-.footer-links .copy{margin-right:auto}
+.footer-links,.footer-legal{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px}
+.footer-links .copy,.footer-legal .copy{margin-right:auto}
 
 /* ---------- inner-page hero ---------- */
 .page-hero{background:linear-gradient(160deg,#fff 0%,var(--mint-2) 55%,var(--mint) 100%);padding:76px 0 84px}
@@ -378,6 +381,52 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .next b{display:block;font:700 21px var(--display);letter-spacing:-.02em}
 .next span{color:var(--muted);font-size:15.5px}
 
+
+/* ---------- service detail pages ---------- */
+.crumb a{color:var(--muted);text-decoration:none}
+.crumb a:hover{color:var(--ink);text-decoration:underline}
+.service-art{justify-self:center;width:340px;height:340px;border-radius:50%;background:var(--white);display:grid;place-items:center;box-shadow:0 40px 80px -40px rgba(15,26,43,.45)}
+.service-art img{width:230px;height:230px}
+.split-top{align-items:start}
+.help-card{background:var(--paper);border-radius:var(--r-lg);padding:30px}
+.help-card h3{font-size:24px;font-weight:700}
+.help-card .checks{margin-top:14px}
+.help-card .checks li:first-child{border-top:0}
+.sc-compact .sc-art{height:140px}
+.sc-compact .sc-art img{width:100px;height:100px}
+.sec-head p a{color:var(--ink)}
+
+/* ---------- GRC page ---------- */
+.steps-white li{background:var(--white)}
+.steps-white .key{background:var(--green)}
+.gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;padding:0}
+.gcard{background:var(--paper);border-radius:22px;padding:24px 26px;display:flex;flex-direction:column}
+.gcard h3{font-size:23px;font-weight:700;line-height:1.1}
+.gcard p{color:var(--muted);font-size:15.5px;margin-top:8px}
+.gcard .more{padding-top:14px}
+#grc-services .kicker{margin-top:44px}
+#grc-services .actions,#how-it-works .actions{margin-top:24px}
+
+/* ---------- resources ---------- */
+.res-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;list-style:none;padding:0}
+.res{grid-column:span 2;border-radius:var(--r-lg);padding:30px;min-height:280px;display:flex;flex-direction:column;align-items:flex-start}
+.res:nth-child(1),.res:nth-child(2){grid-column:span 3}
+.res h2{font-size:34px;font-weight:800;line-height:1.02}
+.res p{font-size:16.5px;margin-top:10px;margin-bottom:24px;max-width:30em}
+.res .btn{margin-top:auto}
+.res a:not(.btn){color:inherit}
+.r-green{background:var(--green);color:#fff}.r-green p{color:rgba(255,255,255,.86)}
+.r-ink{background:var(--ink);color:#fff}.r-ink p{color:rgba(255,255,255,.78)}
+.r-amber{background:var(--amber)}.r-amber p{color:var(--amber-ink)}
+.r-paper{background:var(--paper)}.r-paper p{color:var(--muted)}
+.r-mint{background:var(--mint)}.r-mint p{color:#2D4A3C}
+
+/* ---------- 404 ---------- */
+.error-hero{padding:90px 0 110px}
+.error-hero .wrap{grid-template-columns:minmax(0,1fr)}
+.error-code{font:800 160px/.8 var(--display);letter-spacing:-.06em;color:var(--mint-num)}
+.error-hero h1{margin-top:10px}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -404,7 +453,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .collage{max-width:520px}
   .fam,.vals,.flow4{grid-template-columns:1fr 1fr}
   .bento{grid-template-columns:1fr 1fr}
-  .rgrid,.scards{grid-template-columns:1fr 1fr}
+  .rgrid,.scards,.gcards{grid-template-columns:1fr 1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+  .res,.res:nth-child(1),.res:nth-child(2){grid-column:auto}
+  .service-art{width:260px;height:260px;justify-self:start}
+  .service-art img{width:170px;height:170px}
   .footer-cols{grid-template-columns:1fr 1fr}
   .footer-brand{grid-column:1 / -1}
   .contact-hero .contact-intro{display:contents}
@@ -437,7 +490,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .sec-head p{font-size:16.5px}
   .fam{gap:8px}
   .fam li{font-size:18px;min-height:160px;padding:18px;border-radius:20px}
-  .bento,.rgrid,.scards,.vals{grid-template-columns:1fr;gap:8px}
+  .bento,.rgrid,.scards,.vals,.gcards,.res-grid{grid-template-columns:1fr;gap:8px}
+  .res{min-height:0;padding:24px;border-radius:22px}
+  .res h2{font-size:28px}
+  .service-art{display:none}
+  .help-card{padding:22px}
+  .error-code{font-size:110px}
   .t-green,.t-full{grid-column:auto;grid-row:auto}
   .t{min-height:0;padding:22px;border-radius:22px}
   .t h3{font-size:26px}
