@@ -10,3 +10,6 @@
   - `blog/*.html`
   - `sitemap.xml`
 - Verify local `file://` rendering paths still work after changes.
+- The blog lives on `main` only. Write and publish posts on `main` (branch from it and open a PR), never on `staging`. `staging` receives posts by merging `main` into it; on a conflict in blog files, take `main`'s version.
+- Keep the blog independent of the toolkit: no Toolkit nav item or other toolkit code or links in blog post pages. The toolkit stays off production until the owner says otherwise.
+- Only `main` and `staging` branches should exist; delete working branches once merged.
