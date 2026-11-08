@@ -110,6 +110,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .collage{position:relative;height:600px}
 .portrait{position:absolute;right:10px;top:0;width:320px;height:430px;border-radius:28px;background:linear-gradient(170deg,#B9D2C3,#3E6B57);overflow:hidden;box-shadow:0 30px 60px -30px rgba(15,26,43,.5)}
 .portrait img{position:absolute;left:50%;bottom:-24px;width:330px;height:330px;transform:translateX(-50%)}
+.portrait .emblem{position:absolute;right:34px;top:170px;width:120px;height:120px}
+.portrait .emblem svg{display:block;width:100%;height:100%}
 .portrait .name{position:absolute;left:14px;right:14px;top:14px;background:rgba(255,255,255,.94);border-radius:16px;padding:12px 14px;font-size:14px;line-height:1.35;color:var(--muted);z-index:1}
 .portrait .name b{display:block;font-size:16px;color:var(--ink)}
 .sticker{position:absolute;left:40px;top:40px;width:128px;height:128px;border-radius:50%;background:var(--amber);display:grid;place-items:center;text-align:center;font:700 15px/1.15 var(--display);padding:16px;transform:rotate(-10deg);box-shadow:0 14px 30px -14px rgba(138,83,16,.6);z-index:2}
@@ -480,6 +482,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .collage{height:440px}
   .portrait{width:220px;height:300px;right:0}
   .portrait img{width:240px;height:240px;bottom:-20px}
+  .portrait .emblem{display:none}
   .plan{width:280px;top:170px;padding:16px}
   .sticker{left:0;top:10px;width:104px;height:104px;font-size:13px;padding:12px}
   .toast{display:none}
