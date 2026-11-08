@@ -15,8 +15,7 @@
 
     <link rel="icon" type="image/png" href="Images/logo-new.png">
     <link rel="apple-touch-icon" href="Images/logo-new.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/site.css">
 
     <script type="application/ld+json">
     {
@@ -115,211 +114,221 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Header & Navigation -->
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions">
-                </a>
-            </div>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" aria-current="page">Home</a></li>
-                <li><a href="ai-risk-governance.html">AI Risk</a></li>
-                <li><a href="cybersecurity-grc.html">GRC</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="toolkit.html" class="nav-cta">Toolkit</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <a class="site-logo" href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="144" height="48"></a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks"><span class="bars" aria-hidden="true"></span>Menu</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="ai-risk-governance.html">AI Risk</a></li>
+            <li><a href="cybersecurity-grc.html">GRC</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="toolkit.html">Toolkit</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="nav-book"><a href="ai-risk-governance.html#assessment">Book an assessment</a></li>
+        </ul>
+        <a class="btn btn-ink btn-book" href="ai-risk-governance.html#assessment">Book an assessment</a>
     </header>
 
     <main id="main-content">
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="hero-headline">AI Is Changing Your Cyber Risk.<br>Don&rsquo;t Chase Every New Threat.</h1>
-            <p class="hero-supporting">AI is changing how businesses operate, how their data moves, and how attackers target them. We help small and midsize organizations understand where risk is coming from, prioritize what matters, and build a security program that can keep up. That's especially true for regulated businesses and those handling sensitive information.</p>
-            <div class="hero-actions" aria-label="Primary actions">
-                <a href="ai-risk-governance.html#assessment" class="cta-button">Assess Your AI Risk</a>
-                <a href="contact.html" class="cta-button cta-button-secondary">Talk About Your Cybersecurity Risk</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="audience-strip" aria-label="Who we help">
-        <div class="container audience-grid">
-            <div>
-                <h2>Built for SMBs that need a practical way to manage risk, not another vendor pitch.</h2>
-            </div>
-            <ul class="audience-list">
-                <li>Businesses with one IT person (or a small team) covering everything</li>
-                <li>Organizations adopting AI tools faster than they can govern them</li>
-                <li>Companies handling sensitive business, customer, financial, or regulated data</li>
-                <li>Leaders who need a clear risk picture, not enterprise-scale complexity</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Section 1: The AI Risk Environment -->
-    <section class="bg-light-gray" id="ai-risk-environment">
-        <div class="container">
-            <h2>AI Changed the Risk Environment. It Didn&rsquo;t Change How Risk Should Be Managed.</h2>
-            <p class="subtitle">In this new risk environment, AI is changing how your employees work and how attackers target your business.</p>
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <h3>Shadow AI</h3>
-                    <p>Where are employees using AI outside your approval process, and what information are they putting into it?</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Sensitive data exposure</h3>
-                    <p>What happens to customer, financial, or regulated information once it enters an AI platform?</p>
-                </div>
-                <div class="trust-item">
-                    <h3>AI-enabled social engineering</h3>
-                    <p>How does increasingly convincing phishing and impersonation hold up against your existing controls?</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Deepfake fraud</h3>
-                    <p>Could synthetic voice or video bypass the verification process your organization relies on?</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Third-party AI risk</h3>
-                    <p>What changes when the vendors and software you already use quietly add AI capabilities?</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Governance gaps</h3>
-                    <p>Who is responsible for AI use, what is permitted, and how are those decisions documented?</p>
-                </div>
-            </div>
-            <p class="section-lead">The problem isn&rsquo;t knowing these threats exist. It&rsquo;s knowing which ones matter to your business.</p>
-        </div>
-    </section>
-
-    <!-- Section 2: Reframe + Framework -->
-    <section class="bg-light-gray" id="start-with-risk">
-        <div class="container">
-            <h2>Start With Risk. Not Technology.</h2>
-            <p class="subtitle">Our approach begins with a simple fact: every organization uses technology differently, so we don&rsquo;t start by recommending a product. We start with how your business actually operates, then manage risk through a structured, repeatable process.</p>
-            <div class="flow-diagram" aria-label="Govern, Identify, Assess, Prioritize, Control, Monitor">
-                <div class="flow-step"><div class="flow-step-number">1</div><h3>Govern</h3><p>Establish clear expectations for how AI and technology should be used.</p></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">2</div><h3>Identify</h3><p>Understand where AI and other emerging technologies are entering the business.</p></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">3</div><h3>Assess</h3><p>Evaluate cybersecurity, operational, data, and compliance risks.</p></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">4</div><h3>Prioritize</h3><p>Focus time and resources on the risks that matter most.</p></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">5</div><h3>Control</h3><p>Implement practical policies, processes, and safeguards.</p></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">6</div><h3>Monitor</h3><p>Continuously adapt as technology and threats change.</p></div>
-            </div>
-            <div class="section-action">
-                <a href="cybersecurity-grc.html" class="cta-button-secondary cta-button">See the GRC approach in full</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: The Differentiator -->
-    <section id="differentiator">
-        <div class="container">
-            <h2>The Report Isn&rsquo;t the Solution.</h2>
-            <p class="subtitle">What sets us apart is what happens after the assessment. A cybersecurity assessment can tell you what&rsquo;s wrong. It doesn&rsquo;t tell you what to fix first, who owns it, how to document the work, or when the risk is actually closed.</p>
-            <div class="flow-diagram" aria-label="Assessment to Findings to Prioritized Risks to Action Plan to Implementation to Ongoing Risk Management">
-                <div class="flow-step"><div class="flow-step-number">1</div><h3>Assessment</h3></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">2</div><h3>Findings</h3></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">3</div><h3>Prioritized Risks</h3></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">4</div><h3>Action Plan</h3></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">5</div><h3>Implementation</h3></div>
-                <div class="flow-arrow" aria-hidden="true">&#8594;</div>
-                <div class="flow-step"><div class="flow-step-number">6</div><h3>Ongoing Risk Management</h3></div>
-            </div>
-            <p class="section-lead">Every risk gets an owner, a deadline, and evidence when it&rsquo;s closed, not just a line item in a report.</p>
-        </div>
-    </section>
-
-    <!-- Section 5: Entry Service -->
-    <section class="finder-teaser-section bg-light-gray" id="entry-service">
-        <div class="container">
-            <div class="blog-lead-card">
+        <section class="slab hero">
+            <div class="wrap">
                 <div>
-                    <h2>AI Cyber Risk &amp; Governance Assessment</h2>
-                    <p>Start here with a structured process that identifies where AI is being used, what data may be exposed, which risks apply to your business, where governance gaps exist, which controls already address them, and what to fix first. The outcome: a practical, prioritized AI Risk Action Plan.</p>
+                    <span class="eyebrow"><b>New</b>AI Cyber Risk &amp; Governance Assessment</span>
+                    <h1>Get a grip on <span class="accent">AI risk.</span></h1>
+                    <p class="hero-sub">Independent cyber risk and GRC for small and midsize organizations. We find what's exposed, rank what matters, and stay until every risk is closed with proof.</p>
+                    <div class="actions">
+                        <a class="btn btn-green btn-lg" href="ai-risk-governance.html#assessment">Book an assessment <span class="arr" aria-hidden="true"></span></a>
+                        <a class="btn btn-white btn-lg" href="#how-it-works">See how it works</a>
+                    </div>
                 </div>
-                <a href="ai-risk-governance.html#assessment" class="cta-button">Assess Your AI Risk</a>
+                <div class="collage">
+                    <div class="portrait">
+                        <div class="name"><b>Jared Luyster</b>Your consultant, start to finish. Lexington, KY</div>
+                        <img src="Images/jared-luyster.webp" alt="Jared Luyster" width="480" height="480">
+                    </div>
+                    <div class="sticker" aria-hidden="true">No MSP resale. No quotas.</div>
+                    <div class="plan" aria-label="Sample AI Risk Action Plan">
+                        <h2>AI Risk Action Plan</h2>
+                        <span class="sample-label">Sample client</span>
+                        <div class="ring"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" fill="none" stroke="#E1E6E2" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#1F6B4A" stroke-width="5" stroke-dasharray="47 95" transform="rotate(-90 18 18)" stroke-linecap="round"/></svg><div><b>2 of 4</b><span>closed with evidence</span></div></div>
+                        <div class="plan-row">Voice-callback wire approvals<span class="chip chip-closed">Closed</span></div>
+                        <div class="plan-row">AI acceptable-use policy<span class="chip chip-closed">Closed</span></div>
+                        <div class="plan-row">Client data in chatbots<span class="chip chip-progress">In progress</span></div>
+                        <div class="plan-row">CRM vendor AI features<span class="chip chip-open">Open</span></div>
+                    </div>
+                    <div class="toast" aria-hidden="true"><i></i><div><b>Risk closed</b><span>Evidence: wire-procedure-v2.pdf</span></div></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Trust section (retained, broadened) -->
-    <section class="trust-section">
-        <div class="container">
-            <h2>Security work that turns findings into visible progress.</h2>
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <h3>Independent</h3>
-                    <p>Recommendations are independent of MSP resale incentives, software quotas, and AI product bundles.</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Framework fluent</h3>
-                    <p>Guidance maps to NIST CSF, FFIEC, GLBA Safeguards, CIS Controls, and other frameworks your organization may already be measured against.</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Board-ready</h3>
-                    <p>Engagements produce evidence, management summaries, and remediation tracking leadership can actually use.</p>
-                </div>
-                <div class="trust-item">
-                    <h3>Built for follow-through</h3>
-                    <p>We stay engaged through remediation, not just the assessment. Findings become owners, actions, and evidence.</p>
-                </div>
+        <section class="slab frameworks" aria-label="Frameworks">
+            <div class="wrap">
+                <p>Mapped to the frameworks you're examined against</p>
+                <span>NIST CSF</span><span class="sep" aria-hidden="true">✦</span><span>FFIEC</span><span class="sep" aria-hidden="true">✦</span><span>GLBA Safeguards</span><span class="sep" aria-hidden="true">✦</span><span>CIS Controls</span>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Section 6: Long-Term Relationship -->
-    <section class="bg-light-gray" id="long-term">
-        <div class="container">
-            <h2>AI Is the Newest Risk. It Won&rsquo;t Be the Last.</h2>
-            <p class="subtitle">Beyond AI, technology and threats will keep changing. The long-term value is having a repeatable process for managing them, not starting over every time something new shows up.</p>
-            <div class="trust-grid">
-                <div class="trust-item"><h3>Risk register &amp; management</h3><p>A living view of what your risks are and how they&rsquo;re being addressed.</p></div>
-                <div class="trust-item"><h3>Security &amp; AI governance</h3><p>Policy and oversight structures that keep pace with how the business actually operates.</p></div>
-                <div class="trust-item"><h3>Vendor &amp; third-party risk</h3><p>Due diligence, monitoring, and reporting for the vendors and MSPs you depend on.</p></div>
-                <div class="trust-item"><h3>Audit &amp; exam remediation</h3><p>Turning findings into owners, evidence, and closed gaps, not repeat findings.</p></div>
-                <div class="trust-item"><h3>Compliance &amp; board reporting</h3><p>Clear reporting that connects risk to action for boards, regulators, and leadership.</p></div>
-                <div class="trust-item"><h3>Ongoing GRC support</h3><p>A standing partner for policy, control implementation, and roadmap decisions as things change.</p></div>
+        <section class="slab slab-white" aria-labelledby="familiar-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="familiar-title">Sound familiar?</h2><p>We work with organizations that need a practical way to manage risk, not another vendor pitch.</p></div>
+                <ul class="fam">
+                    <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>One IT person, or a small team, covering everything</li>
+                    <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></span>Adopting AI tools faster than you can govern them</li>
+                    <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span>Handling customer, financial, or regulated data</li>
+                    <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></span>Leaders who need a clear risk picture, not enterprise complexity</li>
+                </ul>
             </div>
-            <div class="section-action">
-                <a href="services.html" class="cta-button">See All Services</a>
-                <a href="cybersecurity-grc.html" class="cta-button cta-button-secondary">Learn About Our GRC Approach</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="slab slab-mint" aria-labelledby="risks-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="risks-title">Where AI risk shows up first</h2><p>Knowing these threats exist is easy. Knowing which ones apply to your business is the work.</p></div>
+                <div class="bento">
+                    <article class="t t-green">
+                        <h3>Shadow AI</h3>
+                        <p>Where are employees using AI outside your approval process, and what are they putting into it?</p>
+                        <div class="prompt"><small>Pasted into a public chatbot</small>Summarize these accounts and draft renewal emails: <mark>client names</mark> <mark>account numbers</mark> <mark>balances</mark></div>
+                        <p class="warnline"><i aria-hidden="true">!</i>Customer data left your environment. No policy covered it.</p>
+                    </article>
+                    <article class="t t-ink">
+                        <h3>Deepfake fraud</h3>
+                        <p>Could a synthetic voice get past your wire verification?</p>
+                        <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </article>
+                    <article class="t t-amber">
+                        <h3>AI-enabled phishing</h3>
+                        <p>Flawless, targeted lures that your training was never built for.</p>
+                    </article>
+                    <article class="t t-white">
+                        <h3>Sensitive data</h3>
+                        <p>What happens to regulated data once it enters an AI platform?</p>
+                        <div class="tags"><span class="hot">Customer PII</span><span class="hot">Account numbers</span><span>Contracts</span></div>
+                    </article>
+                    <article class="t t-white">
+                        <h3>Third-party AI</h3>
+                        <p>What changes when the tools you already use quietly add AI?</p>
+                    </article>
+                    <article class="t t-white t-full">
+                        <div><h3>Governance gaps</h3><p>Who decides what AI use is allowed, and where is that written down?</p></div>
+                        <a class="btn btn-ink" href="ai-risk-governance.html">See the full list <span class="arr" aria-hidden="true"></span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="slab slab-white" id="how-it-works" aria-labelledby="how-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="how-title">From finding to fixed</h2><p>An assessment tells you what's wrong. We stay until every risk has an owner, a deadline, and evidence it's closed.</p></div>
+                <ol class="steps">
+                    <li><span class="num" aria-hidden="true">01</span><h3>Assess</h3><p>Map where AI is used and what data it touches.</p></li>
+                    <li><span class="num" aria-hidden="true">02</span><h3>Prioritize</h3><p>Rank risks by business impact, not headlines.</p></li>
+                    <li><span class="num" aria-hidden="true">03</span><h3>Assign</h3><p>Every risk gets an owner and a deadline.</p></li>
+                    <li><span class="num" aria-hidden="true">04</span><h3>Fix</h3><p>Policies, controls, and vendor changes, done with your team.</p></li>
+                    <li class="key"><span class="num" aria-hidden="true">05</span><h3>Prove</h3><p>Evidence each risk is closed, ready for a board or examiner.</p></li>
+                    <li><span class="num" aria-hidden="true">06</span><h3>Monitor</h3><p>Keep the register current as threats change.</p></li>
+                </ol>
+                <p class="kicker">You leave with a living risk register, <span class="accent">not a PDF that goes in a drawer.</span></p>
+                <div class="actions"><a class="btn btn-outline" href="cybersecurity-grc.html">See the full GRC approach <span class="arr" aria-hidden="true"></span></a></div>
+            </div>
+        </section>
+
+        <section class="slab slab-white" aria-labelledby="services-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="services-title">Services</h2><p>Start with the risk that has your attention now, then build the program that handles what comes next.</p></div>
+                <ul class="svc-list">
+                    <li class="svc-feat"><a href="ai-risk-governance.html"><h3>AI risk assessment<span class="pill">Start here</span></h3><p>A prioritized AI Risk Action Plan with owners and deadlines.</p><span class="go" aria-hidden="true"></span></a></li>
+                    <li><a href="risk-assessments.html"><h3>Risk assessments</h3><p>Identify, prioritize, and address real vulnerabilities across IT, operations, and vendors.</p><span class="go" aria-hidden="true"></span></a></li>
+                    <li><a href="policy-development.html"><h3>Policy development</h3><p>Policies mapped to NIST, FFIEC, and GLBA that match how you actually operate.</p><span class="go" aria-hidden="true"></span></a></li>
+                    <li><a href="msp-oversight.html"><h3>MSP oversight</h3><p>An independent check on what your provider manages and what you still own.</p><span class="go" aria-hidden="true"></span></a></li>
+                    <li><a href="exam-prep.html"><h3>Exam prep</h3><p>Organized evidence, closed gaps, and a defensible request package.</p><span class="go" aria-hidden="true"></span></a></li>
+                    <li><a href="vendor-management.html"><h3>Vendor management</h3><p>Risk tiering, contract review, due diligence, and ongoing monitoring.</p><span class="go" aria-hidden="true"></span></a></li>
+                    <li><a href="incident-response.html"><h3>Incident response</h3><p>A plan your team can actually follow under pressure.</p><span class="go" aria-hidden="true"></span></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slab slab-ink founder" aria-labelledby="founder-title">
+            <div class="founder-photo"><img src="Images/jared-luyster.webp" alt="Jared Luyster, Principal Consultant" width="480" height="480" loading="lazy"></div>
+            <div class="founder-text">
+                <h2 id="founder-title">You work with Jared. Start to finish.</h2>
+                <blockquote>"I don't hand over generic templates and disappear. I work alongside your team to implement controls, document decisions, and make sure your security posture is genuinely defensible."</blockquote>
+                <ul class="facts">
+                    <li><b>Independent</b>No MSP, software, or AI vendor ties</li>
+                    <li><b>Lexington, KY</b>Based in the Bluegrass</li>
+                    <li><b>IT and security</b>Background in IT management and cybersecurity</li>
+                    <li><b>Board-ready</b>Work built to hold up under review</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slab slab-white" aria-labelledby="faq-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="faq-title">Questions</h2><p>Straight answers to the questions people ask before the first call.</p></div>
+                <div class="faq">
+                    <details open><summary>Do you replace our MSP?</summary><p>No. We're independent and often work alongside your MSP, clarifying what they manage, what you still own, and whether it supports your risk requirements.</p></details>
+                    <details open><summary>Do you sell software or hardware?</summary><p>No. There's no product behind any recommendation, so the advice is about your risk and nothing else.</p></details>
+                    <details open><summary>Which frameworks do you work with?</summary><p>NIST CSF, FFIEC, GLBA Safeguards, CIS Controls, and others your organization may already be measured against.</p></details>
+                    <details open><summary>What happens after the assessment?</summary><p>Findings become a prioritized plan with owners and deadlines, and we stay engaged through remediation until each risk is closed.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <section class="slab cta" aria-labelledby="cta-title">
+            <div class="wrap">
+                <h2 id="cta-title">Know your AI risk in plain English.</h2>
+                <p>Start with a 20-minute call. You'll know whether an assessment makes sense and what it would cover.</p>
+                <div class="actions">
+                    <a class="btn btn-white btn-lg" href="ai-risk-governance.html#assessment">Book an assessment <span class="arr" aria-hidden="true"></span></a>
+                    <a class="btn btn-outline-light btn-lg" href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div class="footer-brand">
+                <a href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="132" height="44"></a>
+                <p>Bridging the gap between findings and fixes.</p>
+                <p><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a><br>Lexington, Kentucky</p>
+            </div>
+            <div>
+                <h2>Services</h2>
+                <ul>
+                    <li><a href="ai-risk-governance.html">AI risk assessment</a></li>
+                    <li><a href="risk-assessments.html">Risk assessments</a></li>
+                    <li><a href="policy-development.html">Policy development</a></li>
+                    <li><a href="msp-oversight.html">MSP oversight</a></li>
+                    <li><a href="exam-prep.html">Exam prep</a></li>
+                    <li><a href="vendor-management.html">Vendor management</a></li>
+                    <li><a href="incident-response.html">Incident response</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="policy-finder.html">Policy Finder</a></li>
+                    <li><a href="products.html">Templates</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Company</h2>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cybersecurity-grc.html">Our GRC approach</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-links">
-            <a href="blog.html">Blog</a>
-            <a href="policy-finder.html">Policy Finder</a>
-            <a href="products.html">Templates</a>
+            <span class="copy">&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</span>
             <a href="privacy.html">Privacy</a>
             <a href="terms.html">Terms</a>
         </div>
-        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
-        <p>Bridging the gap between findings and fixes</p>
     </footer>
 
     <script src="js/main.js"></script>
-
 </body>
 </html>

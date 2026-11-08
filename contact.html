@@ -14,132 +14,164 @@
     <meta property="og:image" content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
     <link rel="icon" type="image/png" href="Images/logo-new.png">
     <link rel="apple-touch-icon" href="Images/logo-new.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html"><img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a>
-            </div>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ai-risk-governance.html">AI Risk</a></li>
-                <li><a href="cybersecurity-grc.html">GRC</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="toolkit.html" class="nav-cta">Toolkit</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" aria-current="page">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <a class="site-logo" href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="144" height="48"></a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks"><span class="bars" aria-hidden="true"></span>Menu</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="ai-risk-governance.html">AI Risk</a></li>
+            <li><a href="cybersecurity-grc.html">GRC</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="toolkit.html">Toolkit</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+            <li class="nav-book"><a href="ai-risk-governance.html#assessment">Book an assessment</a></li>
+        </ul>
+        <a class="btn btn-ink btn-book" href="ai-risk-governance.html#assessment">Book an assessment</a>
     </header>
 
     <main id="main-content">
-        <div class="page-header">
-            <h1>Talk About Your Cybersecurity Risk</h1>
-            <p>Not sure where AI risk fits into everything else? Tell us what you're trying to solve and we'll help identify the right next step.</p>
-        </div>
-
-        <section id="assessment-cta">
-            <div class="container">
-                <div class="blog-lead-card">
+        <section class="slab page-hero contact-hero">
+            <div class="wrap">
+                <div class="contact-intro">
                     <div>
-                        <h2>Ready to find out which AI risks actually apply to your business?</h2>
-                        <p>The AI Cyber Risk &amp; Governance Assessment is the most common starting point: a structured way to get a prioritized action plan, not just a list of things to worry about.</p>
+                        <span class="crumb">Contact</span>
+                        <h1>Let's talk about <span class="accent">your risk.</span></h1>
+                        <p class="hero-sub">Tell us what you're trying to solve. If an assessment isn't the right first step, we'll say so and point you to what is.</p>
                     </div>
-                    <a href="ai-risk-governance.html#assessment" class="cta-button">Assess Your AI Risk</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-page-section bg-light-gray">
-            <div class="container contact-page-grid">
-                <div class="consultation-copy">
-                    <h2>Use this form for consulting help, not just newsletter signup.</h2>
-                    <p>Bluegrass Cybersecurity Solutions helps organizations move from vague security concerns to clear, prioritized action. Share the basics for a general consultation and we will help identify the right next conversation.</p>
-                    <div class="contact-methods">
-                        <p><strong>Email:</strong> <a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a></p>
-                        <p><strong>Typical response:</strong> within one business day after launch and production form setup.</p>
+                    <div class="contact-next">
+                        <ol class="next">
+                            <li><div><b>We reply within one business day</b><span>With a few times for a 20-minute call.</span></div></li>
+                            <li><div><b>A short call about your situation</b><span>How you use AI and technology today, and what's driving the question.</span></div></li>
+                            <li><div><b>A written scope before any work starts</b><span>So you know exactly what you're getting.</span></div></li>
+                        </ol>
+                        <div class="dcards">
+                            <div><b>Email</b><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a></div>
+                            <div><b>Based in</b>Lexington, Kentucky</div>
+                        </div>
                     </div>
                 </div>
 
-                <form class="consultation-form" data-bcs-signup action="/api/signup" method="POST">
+                <form class="lead-form" data-bcs-signup action="/api/signup" method="POST">
                     <input type="hidden" name="form_type" value="consultation_request">
                     <input type="hidden" name="subject" value="New BCS consultation request">
+                    <h2>Send a request</h2>
+                    <p class="form-hint">Fields marked optional can be skipped.</p>
                     <noscript>
-                        <p class="form-footer-note">This form needs JavaScript to submit. Please <a href="mailto:info@bluegrasscybersecurity.com?subject=New%20BCS%20consultation%20request">email info@bluegrasscybersecurity.com</a> instead.</p>
+                        <p class="form-note">This form needs JavaScript to submit. Please <a href="mailto:info@bluegrasscybersecurity.com?subject=New%20BCS%20consultation%20request">email info@bluegrasscybersecurity.com</a> instead.</p>
                     </noscript>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" name="name" placeholder="Jane Smith" required>
+                            <input type="text" id="contact-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" name="email" placeholder="jane@yourcompany.com" required>
+                            <label for="contact-email">Work email</label>
+                            <input type="email" id="contact-email" name="email" placeholder="jane@yourcompany.com" autocomplete="email" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="organization">Organization</label>
-                        <input type="text" id="organization" name="organization" placeholder="Your organization name">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="service-interest">Service Interest</label>
-                            <select id="service-interest" name="service_interest">
-                                <option>AI risk &amp; governance</option>
-                                <option>Risk assessment</option>
-                                <option>Exam prep</option>
-                                <option>Vendor management</option>
-                                <option>MSP oversight</option>
-                                <option>Policy development</option>
-                                <option>Incident response</option>
-                                <option>Not sure yet</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="timeline">Timeline</label>
-                            <select id="timeline" name="timeline">
-                                <option>Need help this month</option>
-                                <option>Within 60 days</option>
-                                <option>This quarter</option>
-                                <option>Planning ahead</option>
-                            </select>
-                        </div>
+                        <label for="organization">Organization <span>(optional)</span></label>
+                        <input type="text" id="organization" name="organization" placeholder="Your organization name" autocomplete="organization">
                     </div>
                     <div class="form-group">
-                        <label for="message">What are you trying to solve?</label>
-                        <textarea id="message" name="message" placeholder="AI usage concerns, a finding, exam date, vendor concern, policy need, or security gap."></textarea>
+                        <label for="service-interest">What do you need help with?</label>
+                        <select id="service-interest" name="service_interest">
+                            <option>AI risk &amp; governance</option>
+                            <option>Risk assessment</option>
+                            <option>Exam prep</option>
+                            <option>Vendor management</option>
+                            <option>MSP oversight</option>
+                            <option>Policy development</option>
+                            <option>Incident response</option>
+                            <option>Not sure yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">What are you trying to solve? <span>(optional)</span></label>
+                        <textarea id="message" name="message" placeholder="AI usage concerns, a finding, an exam date, a vendor concern, a policy need, or a security gap."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option>Need help this month</option>
+                            <option>Within 60 days</option>
+                            <option>This quarter</option>
+                            <option>Planning ahead</option>
+                        </select>
                     </div>
                     <div class="cf-turnstile" data-sitekey="0x4AAAAAAD1VpZjDFdK7P_Fm" data-size="flexible" data-error-callback="bcsTurnstileError"></div>
-                    <div class="form-group consent-group">
+                    <div class="form-group">
                         <label class="consent-label">
                             <input type="checkbox" name="consent" value="yes" required>
                             <span>I agree to be contacted by Bluegrass Cybersecurity Solutions about this request, and understand my information is used only to respond to it. You can withdraw consent by emailing info@bluegrasscybersecurity.com.</span>
                         </label>
                     </div>
-                    <button type="submit" class="contact-button">Request Consultation</button>
-                    <p class="form-footer-note dark-note">This form is protected by Cloudflare Turnstile. Your details are stored only so we can follow up on your request. No lists, no resale. See our <a href="privacy.html">Privacy Policy</a>.</p>
+                    <button type="submit" class="btn btn-green btn-lg btn-block">Send request <span class="arr" aria-hidden="true"></span></button>
+                    <p class="form-note">Protected by Cloudflare Turnstile. No lists, no resale. See our <a href="privacy.html">Privacy Policy</a>.</p>
                 </form>
+            </div>
+        </section>
+
+        <section class="slab slab-white" aria-labelledby="faq-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="faq-title">Before you reach out</h2><p>Straight answers to the questions people ask first.</p></div>
+                <div class="faq">
+                    <details open><summary>Do you replace our MSP?</summary><p>No. We're independent and often work alongside your MSP, clarifying what they manage, what you still own, and whether it supports your risk requirements.</p></details>
+                    <details open><summary>Do you sell software or hardware?</summary><p>No. There's no product behind any recommendation, so the advice is about your risk and nothing else.</p></details>
+                    <details open><summary>Is this a newsletter signup?</summary><p>No. This form is for consulting requests, and your details are used only to respond to yours. No lists, no resale.</p></details>
+                    <details open><summary>What if we're not sure what we need?</summary><p>Choose "Not sure yet." Many conversations start there, and the first call is about finding the right next step.</p></details>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div class="footer-brand">
+                <a href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="132" height="44"></a>
+                <p>Bridging the gap between findings and fixes.</p>
+                <p><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a><br>Lexington, Kentucky</p>
+            </div>
+            <div>
+                <h2>Services</h2>
+                <ul>
+                    <li><a href="ai-risk-governance.html">AI risk assessment</a></li>
+                    <li><a href="risk-assessments.html">Risk assessments</a></li>
+                    <li><a href="policy-development.html">Policy development</a></li>
+                    <li><a href="msp-oversight.html">MSP oversight</a></li>
+                    <li><a href="exam-prep.html">Exam prep</a></li>
+                    <li><a href="vendor-management.html">Vendor management</a></li>
+                    <li><a href="incident-response.html">Incident response</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="policy-finder.html">Policy Finder</a></li>
+                    <li><a href="products.html">Templates</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Company</h2>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cybersecurity-grc.html">Our GRC approach</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-links">
-            <a href="blog.html">Blog</a>
-            <a href="policy-finder.html">Policy Finder</a>
-            <a href="products.html">Templates</a>
+            <span class="copy">&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</span>
             <a href="privacy.html">Privacy</a>
             <a href="terms.html">Terms</a>
         </div>
-        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
-        <p>Bridging the gap between findings and fixes</p>
     </footer>
 
     <script src="js/main.js"></script>

@@ -157,7 +157,16 @@ The homepage itself has no lead form by design — it ends in a CTA banner into 
 
 ## Styling
 
-Primary design tokens are defined in `css/style.css`:
+**Direction B redesign (staging):** `index.html`, `ai-risk-governance.html`, `services.html`,
+`about.html`, and `contact.html` load only `css/site.css`, a self-contained design system
+(tokens, components, and responsive rules for those five pages). Its fonts, Bricolage Grotesque
+and Instrument Sans, are self-hosted in `css/fonts/` under the SIL Open Font License (license
+files alongside), so `font-src 'self'` still covers them. Optimized `.webp` copies of the
+headshot, logo, and service illustrations sit next to their PNG originals in `Images/`. All other
+pages still use `css/style.css` and `css/pages.css` until they're converted. The production CSP
+allows no inline styles, so every variant in `site.css` is a class: don't add `style=""` attributes.
+
+Legacy design tokens are defined in `css/style.css`:
 
 - Primary blue: `#1e3a5f`
 - Accent blue: `#2c5f8d`

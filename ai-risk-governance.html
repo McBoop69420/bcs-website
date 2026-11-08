@@ -14,131 +14,131 @@
     <meta property="og:image" content="https://www.bluegrasscybersecurity.com/Images/logo-new.png">
     <link rel="icon" type="image/png" href="Images/logo-new.png">
     <link rel="apple-touch-icon" href="Images/logo-new.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
-        <nav>
-            <div class="logo"><a href="index.html"><img src="Images/logo-new.png" alt="Bluegrass Cybersecurity Solutions"></a></div>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ai-risk-governance.html" aria-current="page">AI Risk</a></li>
-                <li><a href="cybersecurity-grc.html">GRC</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="toolkit.html" class="nav-cta">Toolkit</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+
+    <header class="site-header">
+        <a class="site-logo" href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="144" height="48"></a>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks"><span class="bars" aria-hidden="true"></span>Menu</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="ai-risk-governance.html" aria-current="page">AI Risk</a></li>
+            <li><a href="cybersecurity-grc.html">GRC</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="toolkit.html">Toolkit</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="nav-book"><a href="ai-risk-governance.html#assessment">Book an assessment</a></li>
+        </ul>
+        <a class="btn btn-ink btn-book" href="ai-risk-governance.html#assessment">Book an assessment</a>
     </header>
 
     <main id="main-content">
-        <div class="page-header service-page-header">
-            <h1>AI Is Changing Where Your Business Is Exposed to Risk</h1>
-            <p>Not by replacing your cybersecurity problems, but by adding new ones on top of them. Here&rsquo;s how to find out which ones actually apply to you.</p>
-        </div>
-
-        <section id="ai-risks-detail">
-            <div class="container">
-                <h2>AI is creating risk in how your employees work, and in how attackers target your business.</h2>
-                <div class="trust-grid">
-                    <div class="trust-item">
-                        <h3>Shadow AI</h3>
-                        <p>Employees adopt AI tools on their own to move faster, often outside of any approval process and without anyone tracking what data those tools see.</p>
-                    </div>
-                    <div class="trust-item">
-                        <h3>Sensitive data exposure</h3>
-                        <p>Customer records, financial details, contracts, and internal plans get pasted into AI platforms with unclear data handling and retention practices.</p>
-                    </div>
-                    <div class="trust-item">
-                        <h3>AI-generated phishing and social engineering</h3>
-                        <p>AI makes convincing, well-written, targeted attacks available to anyone and much harder for employees to catch by instinct alone.</p>
-                    </div>
-                    <div class="trust-item">
-                        <h3>Deepfake impersonation and fraud</h3>
-                        <p>Synthetic voice and video are being used to impersonate executives and authorize payments or access that would normally be verified in person.</p>
-                    </div>
-                    <div class="trust-item">
-                        <h3>AI vendors and third-party data risk</h3>
-                        <p>The software you already use is adding AI features, which can quietly change what happens to your data once it leaves your systems.</p>
-                    </div>
-                    <div class="trust-item">
-                        <h3>New governance and compliance obligations</h3>
-                        <p>Regulators, insurers, and customers are starting to ask how you govern AI use, before most SMBs have an answer ready.</p>
+        <section class="slab page-hero">
+            <div class="wrap">
+                <div>
+                    <span class="eyebrow"><b>Assessment</b>AI Cyber Risk &amp; Governance</span>
+                    <h1>AI added new risks. <span class="accent">Find out which are yours.</span></h1>
+                    <p class="hero-sub">AI isn't replacing your cybersecurity problems. It's adding new ones on top of them. The assessment shows which ones actually apply to your business, and what to do first.</p>
+                    <div class="actions">
+                        <a class="btn btn-green btn-lg" href="#assessment">Request an assessment <span class="arr" aria-hidden="true"></span></a>
+                        <a class="btn btn-white btn-lg" href="#what-you-get">What you get</a>
                     </div>
                 </div>
-                <p class="section-lead">You don&rsquo;t need to become an AI security expert. You need to know where AI is creating risk in your business, which risks matter, and what to do about them.</p>
+                <div class="qcard">
+                    <h2>The questions we answer</h2>
+                    <ul>
+                        <li>How is AI actually being used in our organization?</li>
+                        <li>What data is being exposed to AI tools?</li>
+                        <li>Which risks apply to us, and which matter most?</li>
+                        <li>Who is responsible for AI governance?</li>
+                        <li>What controls already exist, and where are the real gaps?</li>
+                        <li>What should we do first?</li>
+                    </ul>
+                    <p class="note">Every business has a different AI risk profile. The goal isn't to solve every possible AI risk.</p>
+                </div>
             </div>
         </section>
 
-        <section class="bg-light-gray" id="questions">
-            <div class="container">
-                <h2>Every business has a different AI risk profile.</h2>
-                <p class="subtitle">The goal isn&rsquo;t to solve every possible AI risk. It&rsquo;s to answer the real questions, the ones that actually determine yours.</p>
-                <ul class="audience-list audience-list--centered">
-                    <li>How is AI actually being used in our organization?</li>
-                    <li>What data is being exposed to AI tools?</li>
-                    <li>Which risks actually apply to us?</li>
-                    <li>Which risks matter most?</li>
-                    <li>Who is responsible for AI governance?</li>
-                    <li>What controls already exist?</li>
-                    <li>Where are the real gaps?</li>
-                    <li>What should we do first?</li>
-                </ul>
+        <section class="slab slab-white" aria-labelledby="risks-title">
+            <div class="wrap">
+                <div class="sec-head"><h2 id="risks-title">Where AI creates risk</h2><p>In how your employees work, and in how attackers target your business.</p></div>
+                <div class="rgrid">
+                    <article class="rg rg-green"><span class="tile-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3>Shadow AI</h3><p>Employees adopt AI tools on their own to move faster, often outside any approval process and without anyone tracking what data those tools see.</p></article>
+                    <article class="rg"><span class="tile-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></span><h3>Sensitive data exposure</h3><p>Customer records, financial details, contracts, and internal plans get pasted into AI platforms with unclear data handling and retention.</p></article>
+                    <article class="rg rg-ink"><span class="tile-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6 12 13l8.5-7"/></svg></span><h3>AI-generated phishing</h3><p>Convincing, well-written, targeted attacks are now available to anyone, and much harder to catch by instinct alone.</p></article>
+                    <article class="rg rg-amber"><span class="tile-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 8v8M19 11v2"/></svg></span><h3>Deepfake fraud</h3><p>Synthetic voice and video are used to impersonate executives and authorize payments or access that would normally be verified in person.</p></article>
+                    <article class="rg"><span class="tile-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14l4-4M8.5 11.5 7 13a3 3 0 004 4l1.5-1.5M15.5 12.5 17 11a3 3 0 00-4-4l-1.5 1.5"/></svg></span><h3>Third-party AI</h3><p>The software you already use is adding AI features, which can quietly change what happens to your data once it leaves your systems.</p></article>
+                    <article class="rg"><span class="tile-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 20h14M5 8h14M7 8l-3 6h6zM17 8l-3 6h6z"/></svg></span><h3>New governance obligations</h3><p>Regulators, insurers, and customers are starting to ask how you govern AI use, before most SMBs have an answer ready.</p></article>
+                </div>
             </div>
         </section>
 
-        <section class="service-detail-section" id="assessment">
-            <div class="container service-detail-grid">
-                <div class="service-main-copy">
-                    <h2>AI Cyber Risk &amp; Governance Assessment</h2>
-                    <p>The assessment is a structured process that helps your organization understand where AI is being used, what data may be exposed, what risks apply to your business, where governance gaps exist, which controls already address the risk, and what should be addressed first.</p>
-                    <p>This isn&rsquo;t another generic report that sits in a folder. It&rsquo;s the beginning of a solution: the first step in a repeatable process for managing AI and cybersecurity risk over time.</p>
-                    <h3>What this helps with</h3>
-                    <ul class="detail-list">
-                        <li>Understanding real AI usage across the organization, approved and unapproved</li>
-                        <li>Mapping sensitive data flows into AI tools and vendors</li>
-                        <li>Identifying governance gaps and assigning ownership</li>
-                        <li>Prioritizing the handful of risks that matter most right now</li>
+        <section class="slab slab-white slab-tight">
+            <div class="wrap">
+                <p class="statement">You don't need to become an AI security expert. <span class="accent">You need to know where AI is creating risk, which risks matter, and what to do about them.</span></p>
+            </div>
+        </section>
+
+        <section class="slab slab-mint" id="what-you-get" aria-labelledby="get-title">
+            <div class="wrap split">
+                <div>
+                    <h2 id="get-title">What you get</h2>
+                    <p class="lead">A structured look at where AI is used, what data may be exposed, which risks apply, where governance gaps exist, and which controls already cover you. It ends in a prioritized AI Risk Action Plan, the first step in a repeatable process, not a report that sits in a folder.</p>
+                    <ul class="checks">
+                        <li>Real AI usage across the organization, approved and unapproved</li>
+                        <li>Sensitive data flows into AI tools and vendors, mapped</li>
+                        <li>Governance gaps identified, with an owner for each</li>
+                        <li>The handful of risks that matter most right now, prioritized</li>
                     </ul>
                 </div>
+                <div class="doc" aria-label="Sample AI Risk Action Plan">
+                    <span class="stamp" aria-hidden="true">Every risk gets an owner</span>
+                    <h3>AI Risk Action Plan</h3>
+                    <span class="sample-label">Sample client</span>
+                    <div class="doc-big"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" fill="none" stroke="#E1E6E2" stroke-width="5"/><circle cx="18" cy="18" r="15" fill="none" stroke="#1F6B4A" stroke-width="5" stroke-dasharray="47 95" transform="rotate(-90 18 18)" stroke-linecap="round"/></svg><div><b>2 of 4</b><span>top risks closed with evidence</span></div></div>
+                    <div class="doc-row">Voice-callback wire approvals<em>CFO, due Nov 30</em><span class="chip chip-closed">Closed</span></div>
+                    <div class="doc-row">AI acceptable-use policy<em>CEO, due Dec 5</em><span class="chip chip-closed">Closed</span></div>
+                    <div class="doc-row">Client data in public chatbots<em>Ops, due Dec 15</em><span class="chip chip-progress">In progress</span></div>
+                    <div class="doc-row">CRM vendor AI features<em>IT, due Jan 10</em><span class="chip chip-open">Open</span></div>
+                </div>
             </div>
         </section>
 
-        <section class="bg-light-gray" id="assessment-form-section">
-            <div class="container contact-page-grid">
-                <div class="consultation-copy">
-                    <h2>Request your AI Cyber Risk &amp; Governance Assessment.</h2>
-                    <p>To get started, tell us a bit about how AI shows up in your business today. We&rsquo;ll follow up to scope the assessment and next steps. No pressure, no product pitch.</p>
-                    <div class="contact-methods">
-                        <p><strong>Email:</strong> <a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a></p>
-                        <p><strong>Typical response:</strong> within one business day after launch and production form setup.</p>
+        <section class="slab slab-green form-slab" id="assessment" aria-labelledby="assessment-title">
+            <div class="wrap">
+                <div>
+                    <h2 id="assessment-title">Request your assessment</h2>
+                    <p class="hero-sub">Tell us a bit about how AI shows up in your business today. We'll follow up to scope the assessment and next steps. No pressure, no product pitch.</p>
+                    <div class="direct">
+                        <div><b>Prefer email?</b><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a></div>
+                        <div><b>Based in Lexington, KY</b>Working directly with Jared Luyster, Principal Consultant</div>
                     </div>
                 </div>
 
-                <form class="consultation-form" id="assessment-form" data-bcs-signup action="/api/signup" method="POST">
+                <form class="lead-form" id="assessment-form" data-bcs-signup action="/api/signup" method="POST">
                     <input type="hidden" name="form_type" value="ai_risk_assessment">
                     <input type="hidden" name="subject" value="New BCS AI Cyber Risk & Governance Assessment request">
+                    <h2>Tell us where you are</h2>
+                    <p class="form-hint">Takes about two minutes.</p>
                     <noscript>
-                        <p class="form-footer-note">This form needs JavaScript to submit. Please <a href="mailto:info@bluegrasscybersecurity.com?subject=New%20BCS%20AI%20risk%20assessment%20request">email info@bluegrasscybersecurity.com</a> instead.</p>
+                        <p class="form-note">This form needs JavaScript to submit. Please <a href="mailto:info@bluegrasscybersecurity.com?subject=New%20BCS%20AI%20risk%20assessment%20request">email info@bluegrasscybersecurity.com</a> instead.</p>
                     </noscript>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="ai-name">Name</label>
-                            <input type="text" id="ai-name" name="name" placeholder="Jane Smith" required>
+                            <input type="text" id="ai-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="ai-email">Email</label>
-                            <input type="email" id="ai-email" name="email" placeholder="jane@yourcompany.com" required>
+                            <label for="ai-email">Work email</label>
+                            <input type="email" id="ai-email" name="email" placeholder="jane@yourcompany.com" autocomplete="email" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="ai-org">Organization</label>
-                        <input type="text" id="ai-org" name="organization" placeholder="Your organization name">
+                        <label for="ai-org">Organization <span>(optional)</span></label>
+                        <input type="text" id="ai-org" name="organization" placeholder="Your organization name" autocomplete="organization">
                     </div>
                     <div class="form-group">
                         <label for="ai-usage">How is AI currently used at your organization?</label>
@@ -154,29 +154,60 @@
                         </select>
                     </div>
                     <div class="cf-turnstile" data-sitekey="0x4AAAAAAD1VpZjDFdK7P_Fm" data-size="flexible" data-error-callback="bcsTurnstileError"></div>
-                    <div class="form-group consent-group">
+                    <div class="form-group">
                         <label class="consent-label">
                             <input type="checkbox" name="consent" value="yes" required>
                             <span>I agree to be contacted by Bluegrass Cybersecurity Solutions about this request, and understand my information is used only to respond to it. You can withdraw consent by emailing info@bluegrasscybersecurity.com.</span>
                         </label>
                     </div>
-                    <button type="submit" class="contact-button">Assess Your AI Risk</button>
-                    <p class="form-footer-note dark-note">This form is protected by Cloudflare Turnstile. Your details are stored only so we can follow up on your request. No lists, no resale. See our <a href="privacy.html">Privacy Policy</a>.</p>
+                    <button type="submit" class="btn btn-green btn-lg btn-block">Request an assessment <span class="arr" aria-hidden="true"></span></button>
+                    <p class="form-note">Protected by Cloudflare Turnstile. Your details are stored only so we can follow up. No lists, no resale. See our <a href="privacy.html">Privacy Policy</a>.</p>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
+        <div class="footer-cols">
+            <div class="footer-brand">
+                <a href="index.html"><img src="Images/logo-header.webp" alt="Bluegrass Cybersecurity Solutions" width="132" height="44"></a>
+                <p>Bridging the gap between findings and fixes.</p>
+                <p><a href="mailto:info@bluegrasscybersecurity.com">info@bluegrasscybersecurity.com</a><br>Lexington, Kentucky</p>
+            </div>
+            <div>
+                <h2>Services</h2>
+                <ul>
+                    <li><a href="ai-risk-governance.html">AI risk assessment</a></li>
+                    <li><a href="risk-assessments.html">Risk assessments</a></li>
+                    <li><a href="policy-development.html">Policy development</a></li>
+                    <li><a href="msp-oversight.html">MSP oversight</a></li>
+                    <li><a href="exam-prep.html">Exam prep</a></li>
+                    <li><a href="vendor-management.html">Vendor management</a></li>
+                    <li><a href="incident-response.html">Incident response</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Resources</h2>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="policy-finder.html">Policy Finder</a></li>
+                    <li><a href="products.html">Templates</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Company</h2>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cybersecurity-grc.html">Our GRC approach</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-links">
-            <a href="blog.html">Blog</a>
-            <a href="policy-finder.html">Policy Finder</a>
-            <a href="products.html">Templates</a>
+            <span class="copy">&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</span>
             <a href="privacy.html">Privacy</a>
             <a href="terms.html">Terms</a>
         </div>
-        <p>&copy; 2026 Bluegrass Cybersecurity Solutions. All rights reserved.</p>
-        <p>Bridging the gap between findings and fixes</p>
     </footer>
 
     <script src="js/main.js"></script>

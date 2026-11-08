@@ -30,6 +30,8 @@ const TYPES = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".woff2": "font/woff2",
   ".ico": "image/x-icon",
   ".pdf": "application/pdf",
   ".txt": "text/plain; charset=utf-8",
