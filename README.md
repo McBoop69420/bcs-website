@@ -54,7 +54,9 @@ update when any branch changes. The `old` CNAME points at `bcs-old-site.pages.de
   with staging (same single-email Google login). Both `old.bluegrasscybersecurity.com` and
   `bcs-old-site.pages.dev` are listed in that application. Preview-deployment hostnames
   (`*.bcs-old-site.pages.dev`) are not, so don't deploy that project from a branch.
-- **Not indexed:** its `robots.txt` disallows everything and `_headers` sends noindex.
+- **Not indexed:** `_headers` sends `X-Robots-Tag: noindex, nofollow`, and the Access login
+  stops crawlers anyway. Its own `robots.txt` (`Disallow: /`) is not what gets served:
+  Cloudflare's zone-level managed `robots.txt` overrides it and allows general crawlers.
 - **View-only:** forms don't submit there, and pages added after Aug 21 (About, Services,
   AI Risk, Resources) don't exist in it.
 - **Rebuilding it:** export the commit with `git archive cc4edda`, delete the internal
