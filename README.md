@@ -43,6 +43,25 @@ infrastructure from production; it only shares the `bluegrasscybersecurity.com` 
   `_config.yml` doesn't apply and staging serves the to-do lists, Worker code, and tests
   that production leaves out.
 
+## Old-site archive
+
+`https://old.bluegrasscybersecurity.com` is a frozen copy of the site as of commit
+`cc4edda` (Aug 21, 2026, before the AI-risk redesign). It is a Cloudflare Pages
+**direct-upload** project, `bcs-old-site`: it is not connected to this repo and does not
+update when any branch changes. The `old` CNAME points at `bcs-old-site.pages.dev`.
+
+- **Access control:** it shares the `bcs-website - Cloudflare Pages` Access application
+  with staging (same single-email Google login). Both `old.bluegrasscybersecurity.com` and
+  `bcs-old-site.pages.dev` are listed in that application. Preview-deployment hostnames
+  (`*.bcs-old-site.pages.dev`) are not, so don't deploy that project from a branch.
+- **Not indexed:** its `robots.txt` disallows everything and `_headers` sends noindex.
+- **View-only:** forms don't submit there, and pages added after Aug 21 (About, Services,
+  AI Risk, Resources) don't exist in it.
+- **Rebuilding it:** export the commit with `git archive cc4edda`, delete the internal
+  files `_config.yml` would exclude (plus `.claude/` and `.github/`), set `robots.txt` to
+  `Disallow: /`, drop any images nothing references so the zip stays under 10 MB, and upload
+  the zip under Workers & Pages > `bcs-old-site` > Create deployment (Production).
+
 ## Page Inventory
 
 Navigation IA (as of the AI-risk/GRC redesign): `Home | AI Risk & Governance |
