@@ -35,6 +35,10 @@ infrastructure from production; it only shares the `bluegrasscybersecurity.com` 
   Access controls > Applications), not in this repo.
 - `_headers`' `X-Robots-Tag: noindex, nofollow` rule takes effect there (Cloudflare
   Pages reads `_headers` natively) even though production ignores the same file.
+- **Asset caching:** Pages caches static files for 4 hours by default, and `css/` and `js/`
+  files are linked without a version suffix, so `_headers` sets `Cache-Control: max-age=0,
+  must-revalidate` on `/css/*` and `/js/*`. A browser that cached a file before that rule
+  existed can still show the old copy until its 4 hours run out (a hard reload clears it).
 - **Known gap:** the `cloudflare/worker.js` signup Worker only binds routes on the apex
   and `www` hostnames, so `/api/signup` (used by the homepage and `contact.html` forms)
   doesn't exist on staging. Turnstile passes there, but a submission gets a 405 and falls

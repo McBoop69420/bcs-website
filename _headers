@@ -21,5 +21,15 @@
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
   X-Robots-Tag: noindex, nofollow
 
+# Cloudflare Pages defaults static assets to "max-age=14400, must-revalidate" (4 hours)
+# and these files are linked without a version suffix, so a deploy would not reach a
+# browser that already had the old stylesheet or script for up to 4 hours. Make the
+# browser revalidate on each load instead: a cheap 304 when unchanged, the new file when not.
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /style-bible.html
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; upgrade-insecure-requests; block-all-mixed-content
