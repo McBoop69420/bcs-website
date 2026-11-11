@@ -196,7 +196,7 @@ test("signup pages use the Worker endpoint and flexible Turnstile widgets", () =
     assert.match(form, /action="\/api\/signup"/i, `${name} action`);
     assert.match(form, /method="POST"/i, `${name} method`);
     assert.match(form, /class="cf-turnstile"[^>]*data-size="flexible"/i, `${name} widget`);
-    assert.match(html, /<script src="js\/signup\.js"><\/script>/i, `${name} signup script`);
+    assert.match(html, /<script src="js\/signup\.js(\?v=[0-9a-f]+)?"><\/script>/i, `${name} signup script`);
   }
 });
 

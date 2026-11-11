@@ -18,5 +18,6 @@ exclude:
   - css/style-bible.css
   - drafts/
   - package.json
+  - scripts/
   - style-bible.html
   - test/

@@ -36,14 +36,14 @@ infrastructure from production; it only shares the `bluegrasscybersecurity.com` 
 - `_headers`' `X-Robots-Tag: noindex, nofollow` rule takes effect there (Cloudflare
   Pages reads `_headers` natively) even though production ignores the same file.
 - **Asset caching:** Pages serves static files (CSS, JS, images, fonts) with
-  `Cache-Control: max-age=14400` (4 hours), and `css/` and `js/` files are linked without
-  a version suffix. After a deploy, a browser that already has the old stylesheet or script
-  keeps using it for up to 4 hours, so a change can look like it didn't deploy. Hard-reload
-  (Ctrl+Shift+R) when checking staging. HTML is not affected: it revalidates on every load.
-  A `_headers` rule for `Cache-Control` on `/css/*` and `/js/*` was tried and Pages accepted
-  it ("valid header rules") but did not apply it to static assets, so it was removed. The
-  remaining fixes are a version suffix on every asset link (57 pages, plus the exact-match
-  `signup.js` test) or a Cloudflare Cache Rule for this hostname.
+  `Cache-Control: max-age=14400` (4 hours). HTML revalidates on every load, so without
+  help a deploy could show new HTML with a stylesheet cached from before it. To prevent
+  that, every `css/` and `js/` link carries a content hash (`css/site.css?v=3db1428635`)
+  that changes only when that file does. **After editing any `css/` or `js/` file, run
+  `npm run stamp`** and commit the pages it rewrites; `npm test` fails if a hash is stale.
+  Blog pages (`blog.html`, `blog/*`) are not stamped on `staging`, because the blog lives
+  on `main` only. (A `_headers` rule for `Cache-Control` on `/css/*` and `/js/*` was tried
+  and Pages accepted it but did not apply it to static assets, so it was removed.)
 - **Known gap:** the `cloudflare/worker.js` signup Worker only binds routes on the apex
   and `www` hostnames, so `/api/signup` (used by the homepage and `contact.html` forms)
   doesn't exist on staging. Turnstile passes there, but a submission gets a 405 and falls
