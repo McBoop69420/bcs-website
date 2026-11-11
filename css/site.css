@@ -186,7 +186,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* ---------- services list (home) ---------- */
 .svc-list{list-style:none;padding:0;border-top:2px solid var(--ink)}
-.svc-list a{display:grid;grid-template-columns:1.1fr 1.4fr 56px;gap:30px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.svc-list a{display:grid;grid-template-columns:84px 1.1fr 1.4fr 56px;gap:30px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.svc-ico{width:84px;height:84px;display:block}
 .svc-list h3{font-size:32px;font-weight:700;line-height:1.05}
 .svc-list p{color:var(--muted);font-size:17px}
 .go{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center}
@@ -292,14 +293,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .tag-amber{display:inline-block;background:var(--amber);color:var(--ink);font-weight:600;font-size:14px;border-radius:999px;padding:4px 12px}
 
 /* service cards */
-.scards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;padding:0}
-.sc{background:var(--white);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
-.sc-art{height:180px;display:grid;place-items:center;background:var(--mint-2)}
-.sc-art img{width:132px;height:132px}
-.sc:nth-child(3n+2) .sc-art{background:var(--amber-soft)}
-.sc:nth-child(3n) .sc-art{background:var(--slate-soft)}
-.sc-text{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
-.sc h3{font-size:27px;font-weight:700}
+/* Classic shield-badge card: white, blue top rule that turns green on hover */
+.scards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;list-style:none;padding:0}
+.sc{--sc-rule:#2c5f8d;--sc-rule-hover:#2d5016;--sc-title:#1e3a5f;background:var(--white);border-radius:8px;border-top:4px solid var(--sc-rule);box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-top-color .3s}
+.sc:hover,.sc:focus-within{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.13);border-top-color:var(--sc-rule-hover)}
+.sc-art{padding:36px 0 4px;display:grid;place-items:center}
+.sc-art img{width:180px;height:180px}
+.sc-text{padding:20px 26px 26px;display:flex;flex-direction:column;flex:1}
+.sc h3{font-size:22px;font-weight:700;color:var(--sc-title);text-align:center}
 .sc p{color:var(--muted);font-size:16px;margin-top:8px}
 .fit{margin-top:16px;font-size:14.5px;background:var(--paper);border-radius:14px;padding:10px 14px}
 .fit b{display:block;font-size:12.5px;color:var(--green);font-weight:600}
@@ -400,8 +401,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .help-card h3{font-size:24px;font-weight:700}
 .help-card .checks{margin-top:14px}
 .help-card .checks li:first-child{border-top:0}
-.sc-compact .sc-art{height:140px}
-.sc-compact .sc-art img{width:100px;height:100px}
+.sc-compact .sc-art{padding-top:28px}
+.sc-compact .sc-art img{width:128px;height:128px}
 .sec-head p a{color:var(--ink)}
 
 /* ---------- GRC page ---------- */
@@ -514,9 +515,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .num{font-size:40px}
   .steps h3{font-size:20px;margin-top:28px}
   .kicker{font-size:22px}
-  .svc-list a{grid-template-columns:1fr 44px;gap:6px 14px;padding:20px 0}
-  .svc-list p{grid-column:1;grid-row:2;font-size:15.5px}
-  .go{grid-row:1 / span 2;grid-column:2;width:44px;height:44px}
+  .svc-list a{grid-template-columns:56px 1fr 44px;gap:6px 14px;padding:20px 0}
+  .svc-ico{grid-row:1 / span 2;grid-column:1;width:56px;height:56px}
+  .svc-list h3{grid-column:2}
+  .svc-list p{grid-column:2;grid-row:2;font-size:15.5px}
+  .go{grid-row:1 / span 2;grid-column:3;width:44px;height:44px}
   .svc-list h3{font-size:24px}
   .svc-list .svc-feat a{margin:0 -12px;padding:20px 12px}
   .founder-photo{min-height:0;padding:36px}
@@ -547,9 +550,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .form-slab,.feat,.bio{padding:56px 0}
   .lead-form{padding:22px;border-radius:22px}
   .form-row{grid-template-columns:1fr;gap:0}
-  .sc-art{height:140px}
-  .sc-art img{width:104px;height:104px}
-  .sc h3{font-size:23px}
+  .sc-art{padding-top:28px}
+  .sc-art img{width:140px;height:140px}
+  .sc h3{font-size:21px}
   .flow4{gap:8px}
   .flow4 li{min-height:180px;padding:18px;border-radius:20px}
   .flow4 .num{font-size:44px}
