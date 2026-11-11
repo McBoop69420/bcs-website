@@ -246,7 +246,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .page-hero .actions{margin-top:32px}
 
 .qcard{background:var(--ink);color:#fff;border-radius:28px;padding:34px 34px 30px;box-shadow:0 30px 60px -30px rgba(15,26,43,.55)}
-.qcard h2{font-size:26px;font-weight:700;margin-bottom:16px}
+.qcard h2,.qcard h3{font-size:26px;font-weight:700;margin-bottom:16px}
 .qcard ul{list-style:none;padding:0}
 .qcard li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:16.5px;color:rgba(255,255,255,.88)}
 .qcard li::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:5px solid var(--green-2);background:#fff;margin-top:3px}
@@ -266,7 +266,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .rg-ink{background:var(--ink);color:#fff}.rg-ink p{color:rgba(255,255,255,.75)}.rg-ink .tile-ico{background:rgba(255,255,255,.1)}.rg-ink .tile-ico svg{stroke:#9FE3BE}
 .rg-amber{background:var(--amber)}.rg-amber p{color:var(--amber-ink)}.rg-amber .tile-ico{background:rgba(255,255,255,.55)}.rg-amber .tile-ico svg{stroke:var(--ink)}
 
-.statement{font:700 48px/1.08 var(--display);letter-spacing:-.035em;max-width:20em}
+.statement,.split h2.statement{font:700 48px/1.08 var(--display);letter-spacing:-.035em;max-width:20em}
 
 /* deliverable split */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
@@ -536,12 +536,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .page-hero h1{font-size:50px}
   .contact-hero h1{font-size:56px}
   .qcard{padding:24px;border-radius:24px}
-  .qcard h2{font-size:22px}
+  .qcard h2,.qcard h3{font-size:22px}
   .qcard li{font-size:15.5px}
   .rg{min-height:0;padding:22px;border-radius:22px}
   .tile-ico{margin-bottom:0}
   .rg h3{font-size:22px;margin-top:18px}
-  .statement{font-size:30px}
+  .statement,.split h2.statement{font-size:30px}
   .split h2,.feat h2,.form-slab h2,.bio h2,.bw h2{font-size:40px}
   .doc{padding:20px;border-radius:22px}
   .stamp{width:88px;height:88px;font-size:12px;right:-6px;top:-18px}
