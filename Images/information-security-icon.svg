@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="320" height="320">
+  <defs>
+    <linearGradient id="is-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#306E56"/>
+      <stop offset=".42" stop-color="#3B7A3E"/>
+      <stop offset=".72" stop-color="#5A8636"/>
+      <stop offset=".9" stop-color="#A89621"/>
+      <stop offset="1" stop-color="#C69B1C"/>
+    </linearGradient>
+  </defs>
+  <!-- shield -->
+  <path d="M512 82 L878 180 L878 540 C878 760 700 872 512 942 C324 872 146 760 146 540 L146 180 Z"
+        fill="url(#is-fill)" stroke="#1E3A5F" stroke-width="36" stroke-linejoin="round"/>
+  <path d="M180 198 L510 128" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="14" stroke-linecap="round"/>
+  <!-- padlock shackle -->
+  <path d="M414 470 V392 a98 98 0 0 1 196 0 V470" fill="none" stroke="#1E3A5F" stroke-width="50" stroke-linecap="round"/>
+  <path d="M414 470 V392 a98 98 0 0 1 196 0 V470" fill="none" stroke="#F4F1E6" stroke-width="18" stroke-linecap="round"/>
+  <!-- padlock body -->
+  <rect x="352" y="458" width="320" height="262" rx="34" fill="#F4F1E6" stroke="#1E3A5F" stroke-width="20"/>
+  <path d="M378 520 H646" stroke="#1E3A5F" stroke-opacity=".18" stroke-width="10" stroke-linecap="round"/>
+  <!-- keyhole -->
+  <path d="M512 548 a40 40 0 0 1 22 73 l12 52 h-68 l12 -52 a40 40 0 0 1 22 -73 z"
+        fill="#D4A017" stroke="#1E3A5F" stroke-width="14" stroke-linejoin="round"/>
+</svg>
