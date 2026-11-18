@@ -248,6 +248,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .qcard li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:16.5px;color:rgba(255,255,255,.88)}
 .qcard li::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:5px solid var(--green-2);background:#fff;margin-top:3px}
 .qcard .note{margin-top:14px;font-size:13.5px;color:rgba(255,255,255,.62)}
+.qcard .fw{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12)}
+.qcard .fw p{font-size:13.5px;color:rgba(255,255,255,.62);margin-bottom:10px}
+.qcard .fw span{display:inline-block;font:700 15px var(--display);letter-spacing:-.01em;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);margin:0 6px 6px 0}
 .qcard-light{background:var(--white);color:var(--ink)}
 .qcard-light p{color:var(--muted);font-size:16.5px}
 .qcard-light .actions{margin-top:22px}
